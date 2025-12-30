@@ -1,52 +1,201 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Garbage of Paris</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
-      text-align: center;
+    :root{
+      --bg:#ffffff;
+      --text:#0f0f0f;
+      --muted:#2a2a2a;
+      --line:#0f0f0f;
+      --max: 920px;   /* ширина как на макете */
+      --pad: 22px;
     }
-    header {
-      padding: 80px 20px;
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Times New Roman", Times, serif;
     }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #222;
-      font-weight: bold;
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad) 56px;
     }
-    section {
-      padding: 60px 20px;
+
+    /* Заголовок */
+    header{
+      padding: 42px 0 18px;
+      text-align:center;
+    }
+    h1{
+      margin:0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      font-size: clamp(26px, 4vw, 36px);
+    }
+
+    /* Фото */
+    .hero{
+      margin: 0 auto;
+      border: 1px solid transparent; /* чтобы не прыгало при загрузке */
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Соц-панель */
+    .social{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 14px;
+      padding: 10px 0 26px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .social a{
+      color: inherit;
+      text-decoration:none;
+    }
+    .social a:hover{
+      text-decoration: underline;
+    }
+    .social .item{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      white-space:nowrap;
+    }
+    .icon{
+      width: 16px;
+      height: 16px;
+      display:inline-block;
+    }
+
+    /* Заголовок секции */
+    .section-title{
+      text-align:center;
+      margin: 6px 0 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: 14px;
+    }
+
+    /* Рамка с текстом */
+    .manifesto{
+      border: 1px solid var(--line);
+      padding: 22px 24px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .manifesto p{
+      margin: 0 0 12px;
+      text-indent: 18px; /* как в твоём макете */
+    }
+    .manifesto p:last-child{
+      margin-bottom:0;
+    }
+
+    /* Небольшая адаптация под мобильные */
+    @media (max-width: 520px){
+      header{ padding-top: 28px; }
+      .social{ flex-direction: column; align-items:flex-start; }
+      .manifesto{ padding: 18px 16px; }
+      .manifesto p{ text-indent: 14px; }
     }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <header>
+      <h1>Garbage of Paris</h1>
+    </header>
 
-<header>
-  <h1>Garbage of Paris</h1>
-  <p>Urban archive of everyday waste.</p>
-  <nav>
-    <a href="#archive">Archive</a>
-    <a href="#about">About</a>
-  </nav>
-</header>
+    <section class="hero" aria-label="Hero photo">
+      <!-- ВАЖНО: положи фото по этому пути -->
+      <img src="assets/hero.jpg" alt="Garbage of Paris" />
+    </section>
 
-<section id="archive">
-  <h2>Archive</h2>
-  <p>2023 · 2024 · 2025</p>
-</section>
+    <div class="social" aria-label="Social links">
+      <div class="item">
+        <!-- Instagram icon (inline SVG) -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A3.5 3.5 0 1 1 8.5 12 3.5 3.5 0 0 1 12 8.5zm0 2A1.5 1.5 0 1 0 13.5 12 1.5 1.5 0 0 0 12 10.5zM17.75 6.5a.75.75 0 1 1-.75.75.75.75 0 0 1 .75-.75z"/>
+        </svg>
+        <a href="#" title="Instagram">@garbageofparis</a>
+      </div>
 
-<section id="about">
-  <h2>About</h2>
-  <p>
-    Мусорные красоты Парижа
-  </p>
-</section>
+      <div class="item">
+        <!-- Telegram icon (inline SVG) -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M21.9 4.6 19.3 19c-.2 1-1 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.6.6-1.2.6l.4-5.5 10-9c.4-.4-.1-.6-.7-.3L6.2 10.1 1.8 8.7c-1-.3-1-1 .2-1.5L20 3c.9-.3 1.7.2 1.9 1.6z"/>
+        </svg>
+        <a href="#" title="Telegram">@garbageofparis</a>
+      </div>
+    </div>
 
+    <div class="section-title">Garbage manifesto</div>
+
+    <section class="manifesto" aria-label="Manifesto text">
+      <!-- Вставь сюда свой текст (можно на русском/французском) -->
+      <p>
+Перед тем, как я кратко, лаконично и просто изложу свои умозаключения касательно общего оправдания на тему того, 
+        чего же особенного из себя представляет мусор, хотелось бы сразу сделать несколько важных уточнений. 
+        Во-первых данный “манифест” - это скорее издевка над форматом и жанром. 
+        У меня нет выкристаллизованной “мусорной” идеологии, а даже если бы подобное стремление и имелось бы, 
+        зная мою натуру, я бы вряд ли выплюнула это все в стройный текст, 
+        ну и тем более опубликовала. 
+        Во-вторых изложенные мною мысли на тему мусорок в Париже и мусора в целом не претендуют на философскую ценность, 
+        и уж тем более на какую-либо серьезность. 
+      </p>
+      <p>
+       Итак, мусор. По мере своего развития западноевропейская культура стремилась скрыть, 
+        подавить и сгладить так называемые “аффекты”, 
+        т.е. различные непредсказуемые проявления биологической природы человека, 
+        тем самым увеличивая к ним общий порог чувствительности. Таким образом создавались все более сложные и запутанные ( порой даже противоречивые) системы норм и ценностей,
+        которые тем не менее вписывались в общую идею прогресса и развития европейской цивилизации. 
+        Из данного утверждения логично вытекает то, что любые события и явления, которые относились к этому миру аффектов, 
+        либо покрывались прочной ширмой стыда, либо вообще выбрасывались на свалку ( иронично ) истории,  
+        и не поднимались в контексте глобального общественного дискурса, и в частности искусства. 
+      </p>
+      <p>
+Однако все, что “имеет право на существование”, все, признанное красивым, эстетичным и достойным внимания, так или иначе устаревает, стирается, подобно пластинке, и уже не доставляет известного “дискомфорта”. Соответственно искусство, которое ставит своей целью ,прежде всего, расшатывание внутренней гармонии человека, перестает работать. 
+И тут на сцену выходят скрывавшиеся за ней аффекты и их проявления. 
+      </p>
+      <p>
+Мусор - идеальный объект для созерцания. 
+        Он выдерживает тонкую грань между отвращением и интересом, 
+        притом в дуалистическом ключе, где интерес у созерцающего рождает отвращение, 
+        а отвращение при должной саморефлексии рождает интерес. 
+
+Мусор -  это не просто способ побеспокоить, 
+        задать каверзный вопрос, это попытка обратить внимание на стыд, 
+        на все, что человеческая история так тщательно пытается скрыть. 
+        
+Мусор - это символ ненужности, символ упадка, это анти-красота, 
+        формирующая наше представление о прекрасном.
+
+Несложно понять, чем я руководствуюсь, занимаясь мусорными фотоснимками.
+        Я вношу в отполированную реальность частицу настоящего, того, 
+        что принято скрывать и чего принято избегать. 
+        Я возвращаю мусору его законное место в канве общей истории.
+    
+      </p>
+    </section>
+  </div>
 </body>
 </html>
+
