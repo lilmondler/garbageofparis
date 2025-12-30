@@ -112,6 +112,29 @@ body{
       .manifesto{ padding: 18px 16px; }
       .manifesto p{ text-indent: 14px; }
     }
+
+    .hero{
+  width: 100vw;          /* вся ширина экрана */
+  height: 260px;         /* высота обрезки */
+  overflow: hidden;      /* режем всё лишнее */
+
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+
+.hero img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* ВЫРЕЗАЕМ ГОРИЗОНТАЛЬ */
+  object-position: center;
+  display: block;
+}
   </style>
 </head>
 
@@ -122,6 +145,8 @@ body{
     </header>
 
     <section class="hero" aria-label="Hero photo">
+  <img src="assets/garbage.jpg" alt="Garbage of Paris" />
+</section>
       
       <img src="assets/garbage.jpeg" alt="Garbage of Paris" />
     </section>
