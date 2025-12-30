@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Garbage of Paris</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      color: #222;
+      text-align: center;
+    }
+    header {
+      padding: 80px 20px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Garbage of Paris</h1>
+  <p>Urban archive of everyday waste.</p>
+  <nav>
+    <a href="#archive">Archive</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section id="archive">
+  <h2>Archive</h2>
+  <p>2023 · 2024 · 2025</p>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>
+    Мусорные красоты Парижа
+  </p>
+</section>
+
+</body>
+</html>
