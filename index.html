@@ -46,9 +46,26 @@ body{
     }
 
     /* Фото */
-<div class="garbage">
-  <img src="assets/garbage.jpg">
-</div>
+.hero{
+  width: 100vw;
+  height: 260px;          /* высота прямоугольника */
+  overflow: hidden;
+
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.hero img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* ОБРЕЗКА ИЗ КВАДРАТА */
+  object-position: center;
+  display: block;
+}
 
     /* Соц-панель */
     .social{
@@ -144,7 +161,9 @@ body{
     <header>
       <h1>Garbage of Paris</h1>
     </header>
-
+<section class="hero" aria-label="Garbage photo">
+  <img src="assets/garbage.jpg" alt="">
+</section>
 
     <div class="social" aria-label="Social links">
       <div class="item">
