@@ -155,6 +155,35 @@ body{
   object-position: center;
   display: block;
 }
+.nav{
+  display:flex;
+  justify-content:center;
+  gap: 24px;
+  margin: 12px 0 0;      /* прямо под заголовком */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.nav-link{
+  color: var(--text);
+  text-decoration: none;           /* убираем подчёркивание */
+  padding: 6px 12px;
+  border: 1px solid transparent;   /* рамка появится только у active/hover */
+  display:inline-block;
+}
+
+.nav-link:hover{
+  border-color: var(--line);
+}
+
+.nav-link.active{
+  border-color: var(--line);       /* активная вкладка — в рамке */
+}
+
+/* чтобы visited не становился фиолетовым */
+.nav-link:visited{
+  color: var(--text);
+}
   </style>
 </head>
 
