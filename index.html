@@ -99,22 +99,24 @@ body{
     }
 
     /* Заголовок секции */
-    .section-title{
-      text-align:center;
-      margin: 6px 0 14px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      font-size: 14px;
-    }
+     .section-title{
+  text-align:center;
+  margin: 28px 0 18px;   /* больше воздуха сверху */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 18px;       /* БОЛЬШЕ */
+  text-transform: uppercase;
+}
 
     /* Рамка с текстом */
-    .manifesto{
-      border: 1px solid var(--line);
-      padding: 22px 24px;
-      font-size: 13px;
-      line-height: 1.55;
-    }
+.manifesto{
+  border: 1px solid var(--line);
+  padding: 26px 28px;     /* одинаковое «тело» */
+  font-size: 14px;        /* чуть крупнее */
+  line-height: 1.65;      /* одинаковая читаемость */
+  margin-bottom: 32px;    /* одинаковый отступ между блоками */
+}
     .manifesto p{
       margin: 0 0 12px;
       text-indent: 18px; /* как в твоём макете */
