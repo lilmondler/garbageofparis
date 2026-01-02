@@ -231,47 +231,54 @@
     <img class="lb-img" id="lbImg" alt="">
   </div>
 </div>
-  <script>
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbClose = document.getElementById('lbClose');
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
 
-  function openLB(src, altText){
-    lbImg.src = src;
-    lbImg.alt = altText || '';
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
+    if (!lightbox || !lbImg || !lbClose) return;
 
-  function closeLB(){
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lbImg.src = '';
-    document.body.style.overflow = '';
-  }
+    function openLB(src, altText){
+      lbImg.src = src;
+      lbImg.alt = altText || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
 
-  // клики по картинкам галереи
-  document.querySelectorAll('.card img').forEach(img => {
-    img.addEventListener('click', () => openLB(img.src, img.alt));
-  });
+    function closeLB(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
 
-  // закрытие по крестику
-  lbClose.addEventListener('click', (e) => {
-    e.stopPropagation();
-    closeLB();
-  });
+    // КЛИК ПО ЛЮБОЙ КАРТИНКЕ В ГАЛЕРЕЕ (делегирование)
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('.card img');
+      if (!img) return;
+      openLB(img.src, img.alt);
+    });
 
-  // закрытие по клику на фон (не по картинке)
-  lightbox.addEventListener('click', (e) => {
-    const clickedBackdrop = e.target.classList.contains('lb-backdrop') || e.target === lightbox;
-    if (clickedBackdrop) closeLB();
-  });
+    // закрытие по крестику
+    lbClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeLB();
+    });
 
-  // ESC
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLB();
+    // закрытие по клику на фон
+    lightbox.addEventListener('click', (e) => {
+      if (e.target.classList.contains('lb-backdrop')) closeLB();
+    });
+
+    // ESC
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLB();
+    });
   });
 </script>
+
 
 </body>
