@@ -100,6 +100,70 @@
       .grid{ grid-template-columns: 1fr; }
       .card img{ height: 280px; }
     }
+
+/* Lightbox */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+
+.lightbox.open{ display: block; }
+
+/* фон: затемнение + размытие */
+.lb-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* контейнер с картинкой */
+.lb-panel{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+}
+
+/* картинка в "исходном" качестве, но не вылезает за экран */
+.lb-img{
+  max-width: min(1200px, 92vw);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(255,255,255,.25);
+  background: #000;
+}
+
+/* крестик */
+.lb-close{
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 10000;
+
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 34px;
+  line-height: 1;
+  color: #fff;
+
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  cursor: pointer;
+
+  opacity: .75;
+}
+
+.lb-close:hover{ opacity: 1; }
+
+/* чтобы было понятно, что картинки кликабельны */
+.card img{ cursor: zoom-in; }
   </style>
 </head>
 
@@ -155,4 +219,57 @@
     </div>
 
   </div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lb-backdrop"></div>
+
+  <div class="lb-panel" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+    <img class="lb-img" id="lbImg" alt="">
+  </div>
+</div>
+  <script>
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+
+  function openLB(src, altText){
+    lbImg.src = src;
+    lbImg.alt = altText || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLB(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // клики по картинкам галереи
+  document.querySelectorAll('.card img').forEach(img => {
+    img.addEventListener('click', () => openLB(img.src, img.alt));
+  });
+
+  // закрытие по крестику
+  lbClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLB();
+  });
+
+  // закрытие по клику на фон (не по картинке)
+  lightbox.addEventListener('click', (e) => {
+    const clickedBackdrop = e.target.classList.contains('lb-backdrop') || e.target === lightbox;
+    if (clickedBackdrop) closeLB();
+  });
+
+  // ESC
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLB();
+  });
+</script>
+
 </body>
