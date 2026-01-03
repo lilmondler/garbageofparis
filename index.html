@@ -193,6 +193,26 @@ body{
   background: #000;
   color: #fff;
 }
+/* Preview с "размытием" снизу как на примере */
+.manifesto-preview{
+  position: relative;
+  padding-bottom: 28px; /* чтобы кнопка не липла к тексту */
+}
+
+.manifesto-preview::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height: 90px;
+  pointer-events:none;
+
+  /* плавное исчезновение текста */
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  /* лёгкое размытие снизу (если браузер поддерживает) */
+  backdrop-filter: blur(6px);
+}
 
   </style>
 </head>
