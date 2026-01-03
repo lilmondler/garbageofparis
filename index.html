@@ -123,11 +123,20 @@ body{
 
     /* Небольшая адаптация под мобильные */
     @media (max-width: 520px){
-      header{ padding-top: 28px; }
-      .social{ flex-direction: column; align-items:flex-start; }
-      .manifesto{ padding: 18px 16px; }
-      .manifesto p{ text-indent: 14px; }
-    }
+  header{ padding-top: 28px; }
+  .social{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .social .item:first-child,
+  .social .item:last-child{
+    justify-self: start;
+  }
+  .social-center{ text-align:left; }
+  .manifesto{ padding: 18px 16px; }
+  .manifesto p{ text-indent: 14px; }
+}
+
 
     .hero{
   width: 100vw;          /* вся ширина экрана */
