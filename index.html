@@ -184,6 +184,68 @@ body{
 .nav-link:visited{
   color: var(--text);
 }
+
+    /* ===== ДОБАВЛЕНО: текст между соц-ссылками ===== */
+    .social .bio{
+      flex: 1;
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.4;
+      padding: 0 10px;
+    }
+
+    /* ===== ДОБАВЛЕНО: раздел под значок сайта ===== */
+    .site-icon{
+      border: 1px solid var(--line);
+      padding: 18px;
+      margin: 18px 0 32px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .site-icon img{
+      max-width: 220px;  /* можешь менять под свой файл */
+      width: 100%;
+      height: auto;
+      display:block;
+    }
+
+    /* ===== ДОБАВЛЕНО: "читать далее" для манифеста ===== */
+    .manifesto .collapsible{
+      position: relative;
+      overflow: hidden;
+      max-height: 240px; /* сколько показываем по умолчанию */
+    }
+    .manifesto:not(.expanded) .collapsible::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+      pointer-events:none;
+    }
+    .manifesto.expanded .collapsible{
+      max-height: none;
+    }
+    .read-more{
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .read-more:hover{
+      background: rgba(15,15,15,0.04);
+    }
   </style>
 </head>
 
@@ -197,6 +259,13 @@ body{
       <a class="nav-link" href="/">Home</a>
       <a class="nav-link active" href="gallery.html">Gallery</a>
     </nav>
+
+    <!-- ===== ДОБАВЛЕНО: раздел для значка сайта ===== -->
+    <div class="section-title">Site icon</div>
+    <section class="site-icon" aria-label="Site icon">
+      <!-- заменишь src на свой файл -->
+      <img src="assets/site-icon.png" alt="Site icon">
+    </section>
     
 <section class="hero" aria-label="Garbage photo">
   <img src="assets/garbage.jpg" alt="">
@@ -211,20 +280,26 @@ body{
         <a href="https://www.instagram.com/garbagesofparis/#" title="Instagram">@garbageofparis</a>
       </div>
 
+      <!-- ===== ДОБАВЛЕНО: текст между соц-ссылками ===== -->
+      <div class="item bio">
+        My name is Snezhana. Or Jane. As you want. Sociologist who makes photos of garbage in Paris
+      </div>
+
       <div class="item">
         <!-- Telegram icon (inline SVG) -->
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="currentColor" d="M21.9 4.6 19.3 19c-.2 1-1 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.6.6-1.2.6l.4-5.5 10-9c.4-.4-.1-.6-.7-.3L6.2 10.1 1.8 8.7c-1-.3-1-1 .2-1.5L20 3c.9-.3 1.7.2 1.9 1.6z"/>
         </svg>
-        <a href="https://t.me/garbagesofparis" title="Telegram">@garbageofparis</a>
+        <a href="https://t.me/garbagesofparis" title="Telegram">@garbagesofparis</a>
       </div>
     </div>
 
     <div class="section-title">Мусорный манифест</div>
 
+    <!-- ===== ИЗМЕНЕНО: обертка collapsible + кнопка ===== -->
     <section class="manifesto" aria-label="Мусорный манифест">
-      <!-- Вставь сюда свой текст (можно на русском/французском) -->
-      <p>
+      <div class="collapsible">
+        <p>
 Перед тем, как я кратко, лаконично и просто изложу свои умозаключения касательно общего оправдания на тему того, 
         чего же особенного из себя представляет мусор, хотелось бы сразу сделать несколько важных уточнений. 
         Во-первых данный “манифест” - это скорее издевка над форматом и жанром. 
@@ -267,11 +342,19 @@ body{
         Я возвращаю мусору его законное место в канве общей истории.
     
       </p>
+      </div>
+
+      <button class="read-more" type="button" data-readmore="ru" aria-expanded="false">
+        читать далее
+      </button>
     </section>
+
  <div class="section-title">Garbage manifesto</div>
+
+ <!-- ===== ИЗМЕНЕНО: обертка collapsible + кнопка ===== -->
  <section class="manifesto" aria-label="Manifesto">
-      <!-- Вставь сюда свой текст (можно на русском/французском) -->
-      <p>
+      <div class="collapsible">
+        <p>
 Before I offer a brief, concise, and simple justification of what makes "trash" so special, 
         I would like to make a few important clarifications. First, this “manifesto” is more of a mockery of the format and genre itself. 
         I do not possess a crystallized “garbage ideology,” and even if I had such an ambition, knowing my nature, 
@@ -305,8 +388,36 @@ It is easy to see what guides me when I take photographs of garbage.
         I am returning trash to its rightful place within the fabric of our shared history.
     
       </p>
+      </div>
+
+      <button class="read-more" type="button" data-readmore="en" aria-expanded="false">
+        read more
+      </button>
     </section>
   </div>
+
+  <!-- ===== ДОБАВЛЕНО: логика раскрытия ===== -->
+  <script>
+    (function(){
+      var buttons = document.querySelectorAll('.read-more');
+      for (var i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener('click', function(){
+          var section = this.closest('.manifesto');
+          var lang = this.getAttribute('data-readmore');
+          var expanded = section.classList.toggle('expanded');
+
+          this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+          if (lang === 'ru'){
+            this.textContent = expanded ? 'свернуть' : 'читать далее';
+          } else {
+            this.textContent = expanded ? 'show less' : 'read more';
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
+
 
