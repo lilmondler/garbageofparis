@@ -390,6 +390,36 @@ body{
 
 
   </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-readmore]').forEach(section => {
+      const preview = section.querySelector('.manifesto-preview');
+      const full = section.querySelector('.manifesto-full');
+      const btn = section.querySelector('.manifesto__btn');
+      if (!preview || !full || !btn) return;
+
+      const moreText = btn.textContent.trim(); // "читать полностью" или "read more"
+      const lessText = (moreText.toLowerCase().includes('read')) ? 'hide' : 'свернуть';
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+
+        if (expanded) {
+          full.hidden = true;
+          preview.hidden = false;
+          btn.textContent = moreText;
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          preview.hidden = true;
+          full.hidden = false;
+          btn.textContent = lessText;
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
 
