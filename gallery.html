@@ -247,15 +247,6 @@
 
   </div>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox__close" type="button" aria-label="Close">×</button>
-
-  <button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous">‹</button>
-  <button class="lightbox__nav lightbox__next" type="button" aria-label="Next">›</button>
-
-  <div class="lightbox__inner">
-    <img class="lightbox__img" id="lightboxImg" alt="">
-  </div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // 1) Собираем все изображения галереи: предполагаем <a href="FULL"><img ...></a>
@@ -353,6 +344,15 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
   <div class="lightbox__meta" id="lightboxMeta" hidden></div>
+</div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" type="button" aria-label="Close">×</button>
+  <button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__next" type="button" aria-label="Next">›</button>
+
+  <div class="lightbox__inner">
+    <img class="lightbox__img" id="lightboxImg" alt="">
+  </div>
 </div>
 
 </body>
