@@ -230,6 +230,66 @@ body{
   display: none;
 }
 }
+
+  /* ===== Photo + Text Block (no frame on photo) ===== */
+
+.entry{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 26px;
+  margin: 40px 0;
+  align-items: start;
+}
+
+/* Фото — БЕЗ рамки */
+.entry-photo{
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+}
+
+.entry-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Текстовая рамка */
+.entry-text{
+  border: 1px solid var(--line); /* та же тонкая рамка */
+  min-height: 280px;
+  padding: 18px 22px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* Дата */
+.entry-date{
+  font-size: 12px;
+  color: #bdbdbd; /* светло-серый */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Адаптация */
+@media (max-width: 720px){
+  .entry{
+    grid-template-columns: 1fr;
+  }
+  .entry-photo{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .entry-text{
+    min-height: auto;
+  }
+}
+
+
+    
   </style>
 </head>
 
@@ -384,6 +444,30 @@ body{
   <button class="manifesto__btn" type="button" aria-expanded="false">
     read more
   </button>
+</section>
+<section class="entry" aria-label="Photo entry">
+
+  <div class="entry-photo">
+    <!-- ВОТ СЮДА ПИШЕШЬ ПУТЬ К ФОТО -->
+    <img src="assets/garbbb.jpg" alt="">
+  </div>
+
+  <div class="entry-text">
+    <div class="entry-date">06.08.2024</div>
+
+    <p>
+Rien n’est plus triste qu’un déchet solitaire : un morceau de papier abandonné, une bouteille vide sur une rue silencieuse, ou un mégot tordu écrasé contre une rambarde.
+
+À l’image des hommes, les déchets tendent vers les déchets, comme l’être humain aspire parfois à rentrer chez lui. Et lorsque je parle de maison, je parle de la maison au sens large. Le déchet semble atteindre ce calme désiré, cette apparence apaisée, lorsqu’il se rassemble avec d’autres.
+
+Il n’est pas difficile de deviner pourquoi ce sont les poubelles qui m’intéressent, plutôt que les objets isolés. Dans cet élan esthétique se cache une impulsion intime, une nostalgie du foyer si profonde que j’en perçois l’éclat jusque dans des choses aussi étranges, en apparence répugnantes, qu’un conteneur à ordures.
+
+Il y a dans le déchet quelque chose de touchant, lié à ce rêve idéaliste. Nous trouvons rarement une masse informe de détritus. Emballages, fragments, restes — tous, tournoyant autour de leur propre axe, trouvent refuge parmi des objets à la fois semblables et différents.
+
+Quel dommage que l’être humain ne puisse trouver une telle demeure. Ne pas être un emballage de chips errant, poussé par le vent ; ne pas devenir maison en se confondant avec elle dans l’ennui mortel des fondations et des murs silencieux — mais être chez soi.
+    </p>
+  </div>
+
 </section>
 
 
