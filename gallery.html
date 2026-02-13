@@ -101,6 +101,96 @@
       .grid{ grid-template-columns: 1fr; }
       .card img{ height: 280px; }
     }
+
+        }/* ===== Lightbox ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.92);
+  display: none;
+  z-index: 9999;
+}
+
+.lightbox.open{
+  display: block;
+}
+
+.lightbox__inner{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.lightbox__img{
+  max-width: min(1200px, 92vw);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Close (серый крестик) */
+.lightbox__close{
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  background: transparent;
+  color: #bdbdbd;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.lightbox__close:hover{
+  color: #8f8f8f;
+}
+
+/* Навигация */
+.lightbox__nav{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid transparent;
+  background: transparent;
+  color: #bdbdbd;
+  font: inherit;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px 12px;
+  user-select: none;
+}
+
+.lightbox__nav:hover{
+  color: #8f8f8f;
+  border-color: rgba(15,15,15,0.12);
+}
+
+.lightbox__prev{ left: 14px; }
+.lightbox__next{ right: 14px; }
+
+/* Подпись (если захочешь) */
+.lightbox__meta{
+  position: fixed;
+  left: 18px;
+  bottom: 16px;
+  color: #bdbdbd;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* На очень узких — убираем рамки нав-кнопок */
+@media (max-width: 520px){
+  .lightbox__nav{ border-color: transparent; }
+}
+
   </style>
 </head>
 
