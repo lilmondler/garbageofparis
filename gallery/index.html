@@ -101,17 +101,95 @@
       header{ padding-top: 28px; }
       .grid{ grid-template-columns: 1fr; }
       .card img{ height: 280px; }
-    }
-
-/* Lightbox */
+    }/* ===== Lightbox ===== */
 .lightbox{
   position: fixed;
   inset: 0;
+  background: rgba(255,255,255,0.92);
   display: none;
   z-index: 9999;
 }
 
-.lightbox.open{ display: block; }
+.lightbox.open{
+  display: block;
+}
+
+.lightbox__inner{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.lightbox__img{
+  max-width: min(1200px, 92vw);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Close (серый крестик) */
+.lightbox__close{
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  background: transparent;
+  color: #bdbdbd;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.lightbox__close:hover{
+  color: #8f8f8f;
+}
+
+/* Навигация */
+.lightbox__nav{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid transparent;
+  background: transparent;
+  color: #bdbdbd;
+  font: inherit;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px 12px;
+  user-select: none;
+}
+
+.lightbox__nav:hover{
+  color: #8f8f8f;
+  border-color: rgba(15,15,15,0.12);
+}
+
+.lightbox__prev{ left: 14px; }
+.lightbox__next{ right: 14px; }
+
+/* Подпись (если захочешь) */
+.lightbox__meta{
+  position: fixed;
+  left: 18px;
+  bottom: 16px;
+  color: #bdbdbd;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* На очень узких — убираем рамки нав-кнопок */
+@media (max-width: 520px){
+  .lightbox__nav{ border-color: transparent; }
+}
+
 
 /* фон: затемнение + размытие */
 .lb-backdrop{
@@ -232,53 +310,113 @@
   </div>
 </div>
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Собираем все изображения галереи: предполагаем <a href="FULL"><img ...></a>
+  const galleryLinks = Array.from(document.querySelectorAll('.gallery a[href]'));
 
-    if (!lightbox || !lbImg || !lbClose) return;
+  // Если у тебя нет .gallery, замени селектор на: '.gallery-item a[href]'
+  // const galleryLinks = Array.from(document.querySelectorAll('.gallery-item a[href]'));
 
-    function openLB(src, altText){
-      lbImg.src = src;
-      lbImg.alt = altText || '';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbMeta = document.getElementById('lightboxMeta');
+
+  const btnClose = lb.querySelector('.lightbox__close');
+  const btnPrev = lb.querySelector('.lightbox__prev');
+  const btnNext = lb.querySelector('.lightbox__next');
+
+  if (!galleryLinks.length || !lb || !lbImg) return;
+
+  // 2) Формируем массив источников (href) + опционально подпись
+  const items = galleryLinks.map(a => {
+    const img = a.querySelector('img');
+    const captionEl = a.closest('.gallery-item')?.querySelector('.gallery-caption');
+    const metaEl = a.closest('.gallery-item')?.querySelector('.gallery-meta');
+
+    const caption = captionEl ? captionEl.textContent.trim() : '';
+    const meta = metaEl ? metaEl.textContent.replace(/\s+/g, ' ').trim() : '';
+
+    return {
+      href: a.getAttribute('href'),
+      alt: img?.getAttribute('alt') || '',
+      meta: [meta, caption].filter(Boolean).join(' — ')
+    };
+  });
+
+  let index = 0;
+
+  function openAt(i){
+    index = (i + items.length) % items.length;
+    const it = items[index];
+
+    lbImg.src = it.href;
+    lbImg.alt = it.alt || '';
+
+    if (it.meta){
+      lbMeta.hidden = false;
+      lbMeta.textContent = it.meta;
+    } else {
+      lbMeta.hidden = true;
+      lbMeta.textContent = '';
     }
 
-    function closeLB(){
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lbImg.src = '';
-      document.body.style.overflow = '';
-    }
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // чтобы страница не скроллилась под оверлеем
+  }
 
-    // КЛИК ПО ЛЮБОЙ КАРТИНКЕ В ГАЛЕРЕЕ (делегирование)
-    document.addEventListener('click', (e) => {
-      const img = e.target.closest('.card img');
-      if (!img) return;
-      openLB(img.src, img.alt);
-    });
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
 
-    // закрытие по крестику
-    lbClose.addEventListener('click', (e) => {
+  function prev(){ openAt(index - 1); }
+  function next(){ openAt(index + 1); }
+
+  // 3) Клики по миниатюрам: открываем вместо перехода
+  galleryLinks.forEach((a, i) => {
+    a.addEventListener('click', (e) => {
       e.preventDefault();
-      e.stopPropagation();
-      closeLB();
-    });
-
-    // закрытие по клику на фон
-    lightbox.addEventListener('click', (e) => {
-      if (e.target.classList.contains('lb-backdrop')) closeLB();
-    });
-
-    // ESC
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLB();
+      openAt(i);
     });
   });
+
+  // 4) Кнопки
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', prev);
+  btnNext.addEventListener('click', next);
+
+  // 5) Клик по фону (не по картинке) — закрыть
+  lb.addEventListener('click', (e) => {
+    const clickedInside = e.target.closest('.lightbox__inner') || e.target.closest('.lightbox__nav') || e.target.closest('.lightbox__close');
+    if (!clickedInside) close();
+  });
+
+  // 6) Клавиатура
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+});
+
 </script>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" type="button" aria-label="Close">×</button>
+
+  <button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__next" type="button" aria-label="Next">›</button>
+
+  <div class="lightbox__inner">
+    <img class="lightbox__img" id="lightboxImg" alt="">
+  </div>
+
+  <div class="lightbox__meta" id="lightboxMeta" hidden></div>
+</div>
 
 
 </body>
