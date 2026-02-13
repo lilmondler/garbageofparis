@@ -246,5 +246,114 @@
     </div>
 
   </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" type="button" aria-label="Close">×</button>
+
+  <button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__next" type="button" aria-label="Next">›</button>
+
+  <div class="lightbox__inner">
+    <img class="lightbox__img" id="lightboxImg" alt="">
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Собираем все изображения галереи: предполагаем <a href="FULL"><img ...></a>
+  const galleryLinks = Array.from(document.querySelectorAll('.gallery a[href]'));
+
+  // Если у тебя нет .gallery, замени селектор на: '.gallery-item a[href]'
+  // const galleryLinks = Array.from(document.querySelectorAll('.gallery-item a[href]'));
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbMeta = document.getElementById('lightboxMeta');
+
+  const btnClose = lb.querySelector('.lightbox__close');
+  const btnPrev = lb.querySelector('.lightbox__prev');
+  const btnNext = lb.querySelector('.lightbox__next');
+
+  if (!galleryLinks.length || !lb || !lbImg) return;
+
+  // 2) Формируем массив источников (href) + опционально подпись
+  const items = galleryLinks.map(a => {
+    const img = a.querySelector('img');
+    const captionEl = a.closest('.gallery-item')?.querySelector('.gallery-caption');
+    const metaEl = a.closest('.gallery-item')?.querySelector('.gallery-meta');
+
+    const caption = captionEl ? captionEl.textContent.trim() : '';
+    const meta = metaEl ? metaEl.textContent.replace(/\s+/g, ' ').trim() : '';
+
+    return {
+      href: a.getAttribute('href'),
+      alt: img?.getAttribute('alt') || '',
+      meta: [meta, caption].filter(Boolean).join(' — ')
+    };
+  });
+
+  let index = 0;
+
+  function openAt(i){
+    index = (i + items.length) % items.length;
+    const it = items[index];
+
+    lbImg.src = it.href;
+    lbImg.alt = it.alt || '';
+
+    if (it.meta){
+      lbMeta.hidden = false;
+      lbMeta.textContent = it.meta;
+    } else {
+      lbMeta.hidden = true;
+      lbMeta.textContent = '';
+    }
+
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // чтобы страница не скроллилась под оверлеем
+  }
+
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function prev(){ openAt(index - 1); }
+  function next(){ openAt(index + 1); }
+
+  // 3) Клики по миниатюрам: открываем вместо перехода
+  galleryLinks.forEach((a, i) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      openAt(i);
+    });
+  });
+
+  // 4) Кнопки
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', prev);
+  btnNext.addEventListener('click', next);
+
+  // 5) Клик по фону (не по картинке) — закрыть
+  lb.addEventListener('click', (e) => {
+    const clickedInside = e.target.closest('.lightbox__inner') || e.target.closest('.lightbox__nav') || e.target.closest('.lightbox__close');
+    if (!clickedInside) close();
+  });
+
+  // 6) Клавиатура
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+});
+</script>
+
+  <div class="lightbox__meta" id="lightboxMeta" hidden></div>
+</div>
+
 </body>
 </html>
