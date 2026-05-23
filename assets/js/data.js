@@ -39,56 +39,56 @@ const photos = [
     alt: " Merry Christmas"
   },
   {
-    title: "After the market",
-    image: "assets/img/gallery/placeholder-2.jpg",
-    year: "2025",
-    date: "2025-04-27",
-    location: "Marché d'Aligre",
-    category: "leftovers",
-    caption: "What the market leaves behind. A still life that nobody arranged.",
-    alt: "Leftover produce and boxes after a Paris street market"
-  },
-  {
-    title: "Official notice",
-    image: "assets/img/gallery/placeholder-3.jpg",
-    year: "2025",
-    date: "2025-03-08",
-    location: "20e arrondissement",
-    category: "signs",
-    caption: "A sign explaining how to sort your waste correctly. The bins next to it contain everything mixed together.",
-    alt: "Waste sorting instructions sign next to unsorted bins in Paris"
-  },
-  {
-    title: "Sofa, Tuesday",
-    image: "assets/img/gallery/placeholder-4.jpg",
-    year: "2025",
-    date: "2025-02-18",
-    location: "18e arrondissement",
+    title: "Bread and shoes",
+    image: "assets/img/gallery/photo_2024-08-04_18-39-15.jpg",
+    year: "2024",
+    date: "2024-08-04",
+    location: "Paris",
     category: "objects",
-    caption: "Someone's sofa, Tuesday morning. By afternoon it was gone. By Wednesday, forgotten.",
-    alt: "Abandoned sofa on a Paris sidewalk"
+    caption: "bread and shoes",
+    alt: "Someone ran so fast that they left their baguettes and shoes behind!"
   },
   {
-    title: "Traces",
-    image: "assets/img/gallery/placeholder-5.jpg",
+    title: "Add some pink",
+    image: "assets/img/gallery/photo_2024-07-01_14-47-06.jpg",
+    year: "2024",
+    date: "2024-07-01",
+    location: "1e arrondissement",
+    category: "bins",
+    caption: "to some trash",
+    alt: "Nobody will pay me for advertisement"
+  },
+  {
+    title: "Red Umbrella",
+    image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
     year: "2025",
-    date: "2025-01-30",
-    location: "Canal Saint-Martin",
-    category: "traces",
+    date: "2025-10-13",
+    location: "Saint-Michel-Notre-Dame",
+    category: "signs",
+    caption: "umbrella",
+    alt: "Even the trash is protected from the autumn rain"
+  },
+  {
+    title: "Some basic trash",
+    image: "assets/img/gallery/photo_2025-11-19_10-48-22.jpg",
+    year: "2025",
+    date: "2025-11-19",
+    location: "Paris",
+    category: "bins",
     caption: "The pavement records everything. Rain doesn't wash it all away.",
-    alt: "Stains and traces on Paris pavement near Canal Saint-Martin"
+    alt: ""
   },
 
   // — ПРИМЕР 2024 —
   {
-    title: "Bin at dusk",
-    image: "assets/img/gallery/placeholder-6.jpg",
+    title: "Upper-class x Paris's Trash",
+    image: "assets/img/gallery/photo_2024-06-20_00-28-22.jpg",
     year: "2024",
-    date: "2024-11-14",
-    location: "5e arrondissement",
+    date: "2025-06-20",
+    location: "2e arrondissement",
     category: "bins",
-    caption: "The light at dusk makes everything look more considered than it is.",
-    alt: "Paris garbage bin photographed at dusk"
+    caption: "The pavement records everything. Rain doesn't wash it all away.",
+    alt: "The key is to always look up"
   },
   {
     title: "Accident on rue de la Roquette",
