@@ -32,7 +32,7 @@ const photos = [
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     year: "2026",
-    date: "2025-04-06",
+    date: "2026-04-06",
     location: "Stalingrad",
     category: "bins",
     caption: "A whole lot of popcorn!",
