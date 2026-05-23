@@ -29,6 +29,16 @@ const photos = [
 
   // — ПРИМЕР 2025 —
   {
+    title: "J'adore le cinéma!",
+    image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
+    year: "2026",
+    date: "2025-04-06",
+    location: "Stalingrad",
+    category: "bins",
+    caption: "A whole lot of popcorn!",
+    alt: "popcorn"
+  },
+  {
     title: "Nike shoe",
     image: "assets/img/gallery/photo_2025-12-30_19-50-29.jpg",
     year: "2025",
