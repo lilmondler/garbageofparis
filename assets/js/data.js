@@ -29,14 +29,14 @@ const photos = [
 
   // — ПРИМЕР 2025 —
   {
-    title: "Two monuments",
-    image: "assets/img/gallery/placeholder-1.jpg",
+    title: "Nike shoe",
+    image: "assets/img/gallery/photo_2025-12-30_19-50-29.jpg",
     year: "2025",
-    date: "2025-05-12",
-    location: "11e arrondissement",
-    category: "bins",
-    caption: "Two green bins standing at the corner like municipal monuments. Nobody photographs them. Nobody ignores them either.",
-    alt: "Two green garbage bins on a Paris street corner"
+    date: "2025-12-30",
+    location: "Madeleine",
+    category: "objects",
+    caption: "Someone ran off wearing just one shoe!",
+    alt: " Merry Christmas"
   },
   {
     title: "After the market",
