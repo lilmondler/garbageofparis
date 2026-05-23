@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manifesto — Garbage of Paris</title>
+  <meta name="description" content="On garbage as cultural object. A manifesto about waste, urban traces, and material culture in Paris." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page-offset">
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">Garbage of Paris</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="manifesto.html" aria-current="page">Manifesto</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==================== ЗАГОЛОВОК ==================== -->
+  <div class="section section--sm" style="border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
+    <div class="container">
+      <p class="label" style="margin-bottom: 0.5rem;">§ 04 — Position</p>
+      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">Manifesto</h1>
+
+      <!-- Переключатель языков -->
+      <div class="manifesto-lang-toggle">
+        <button class="active" data-lang="en" onclick="switchLang('en')">English</button>
+        <button data-lang="fr" onclick="switchLang('fr')">Français</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МАНИФЕСТ ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="manifesto-text">
+
+        <!-- ======= АНГЛИЙСКИЙ ТЕКСТ ======= -->
+        <!--
+          КАК РЕДАКТИРОВАТЬ МАНИФЕСТ:
+          Просто меняй содержимое абзацев <p>.
+          Не меняй class="manifesto-lang" и id="manifesto-en".
+          Чтобы добавить цитату — используй блок .manifesto-quote.
+        -->
+        <div class="manifesto-lang active" id="manifesto-en">
+
+          <h2>On Garbage as Cultural Object</h2>
+
+          <p class="drop-cap">Garbage is not outside the city. It is one of the city's most honest archives. Unlike monuments, it was not designed to be seen. Unlike façades, it does not perform. It simply accumulates, overflows, waits.</p>
+
+          <div class="manifesto-quote">
+            <p>Waste is where private life becomes public evidence.</p>
+          </div>
+
+          <p>We pass it every morning. We arrange it in bags and place it at the door, then we forget about it — until it becomes someone else's problem. But in the hours between placement and collection, something unusual happens: the interior becomes exterior. The domestic becomes urban. The private becomes public.</p>
+
+          <p>A broken chair left on the pavement is not just a broken chair. It is the record of a decision, a move, a change in circumstances. A bag of leftovers photographed before the street market is hosed down documents a meal, a season, a set of economic relations. A sign instructing residents how to sort their waste, photographed next to bins where everything is mixed — this is not just irony. It is data.</p>
+
+          <div class="manifesto-quote">
+            <p>Paris is not only monuments, cafés and façades. It is also bags, bins, stains, leftovers and routines.</p>
+          </div>
+
+          <p>Visual sociology is not street photography. It is not documentary in the journalistic sense. It is a practice of noticing what is systematically overlooked — not because it is invisible, but because we have learned to look through it. The garbage bin, the discarded object, the wet cardboard on a cold morning: these are not background. They are primary text.</p>
+
+          <p>This project does not celebrate garbage. It does not aestheticize poverty or make spectacle of precarity. It pays attention. It insists that what is discarded is worth looking at. Not despite its ordinariness, but because of it.</p>
+
+          <p>The city is an archive. Most of it goes uncollected.</p>
+
+        </div>
+
+        <!-- ======= ФРАНЦУЗСКИЙ ТЕКСТ ======= -->
+        <!--
+          Замени текст на свой французский вариант манифеста.
+          Структура та же: абзацы <p>, цитаты .manifesto-quote.
+        -->
+        <div class="manifesto-lang" id="manifesto-fr">
+
+          <h2>Les déchets comme objet culturel</h2>
+
+          <p class="drop-cap">Les ordures ne sont pas en dehors de la ville. Elles en constituent l'une des archives les plus honnêtes. Contrairement aux monuments, elles n'ont pas été conçues pour être vues. Contrairement aux façades, elles ne se mettent pas en scène. Elles s'accumulent, débordent, attendent.</p>
+
+          <div class="manifesto-quote">
+            <p>Les déchets, c'est là où la vie privée devient preuve publique.</p>
+          </div>
+
+          <p>Nous passons devant elles chaque matin. Nous les mettons en sacs et nous les posons devant la porte, puis nous les oublions — jusqu'à ce qu'elles deviennent le problème de quelqu'un d'autre. Mais dans les heures qui séparent le dépôt de la collecte, quelque chose d'inhabituel se produit : l'intérieur devient extérieur. Le domestique devient urbain. Le privé devient public.</p>
+
+          <p>Une chaise cassée posée sur le trottoir n'est pas seulement une chaise cassée. C'est la trace d'une décision, d'un déménagement, d'un changement de situation. Un sac de restes photographié avant que le marché ne soit nettoyé au jet documente un repas, une saison, un ensemble de relations économiques. Un panneau indiquant aux riverains comment trier leurs déchets, photographié à côté de poubelles où tout est mélangé — ce n'est pas juste de l'ironie. C'est une donnée.</p>
+
+          <div class="manifesto-quote">
+            <p>Paris n'est pas seulement les monuments, les cafés et les façades. C'est aussi les sacs, les poubelles, les taches, les restes et les routines.</p>
+          </div>
+
+          <p>La sociologie visuelle n'est pas de la photographie de rue. Ce n'est pas du documentaire au sens journalistique. C'est une pratique qui consiste à remarquer ce qui est systématiquement négligé — non pas parce que c'est invisible, mais parce que nous avons appris à le traverser du regard. La poubelle, l'objet mis au rebut, le carton mouillé par un matin froid : ce ne sont pas des arrière-plans. Ce sont des textes premiers.</p>
+
+          <p>Ce projet ne célèbre pas les ordures. Il n'esthétise pas la pauvreté et ne fait pas spectacle de la précarité. Il fait attention. Il insiste sur le fait que ce qui est mis au rebut mérite d'être regardé. Non pas malgré son caractère ordinaire, mais à cause de lui.</p>
+
+          <p>La ville est une archive. La plupart reste non collectée.</p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <strong>Garbage of Paris</strong>
+          <p>Visual sociology. Paris, 2024–</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="gallery.html">Gallery</a>
+          <a href="archive.html">Archive</a>
+          <a href="manifesto.html">Manifesto</a>
+          <a href="about.html">About</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Garbage of Paris. All photographs by Snezhana.</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Переключение языков манифеста
+    function switchLang(lang) {
+      document.querySelectorAll('.manifesto-lang').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.manifesto-lang-toggle button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('manifesto-' + lang).classList.add('active');
+      document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
+    }
+  </script>
+</body>
+</html>

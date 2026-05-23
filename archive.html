@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive — Garbage of Paris</title>
+  <meta name="description" content="Archive of urban observations indexed by year. A field log of waste, traces and objects in Paris." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page-offset">
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">Garbage of Paris</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="archive.html" aria-current="page">Archive</a></li>
+        <li><a href="manifesto.html">Manifesto</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==================== ЗАГОЛОВОК ==================== -->
+  <div class="section section--sm" style="border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
+    <div class="container">
+      <p class="label" style="margin-bottom: 0.5rem;">§ 03 — Field log</p>
+      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.5rem;">Archive</h1>
+      <p style="color: var(--grey-dark); font-style: italic; max-width: 500px;">
+        All observations indexed chronologically. Waste as evidence. The city as document.
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== АРХИВ ==================== -->
+  <section class="section">
+    <div class="container">
+      <!--
+        АРХИВ:
+        Строится автоматически из data.js, сгруппирован по годам.
+        Для добавления новой записи — только data.js.
+      -->
+      <div id="archive-container">
+        <!-- Заполняется через main.js из data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <strong>Garbage of Paris</strong>
+          <p>Visual sociology. Paris, 2024–</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="gallery.html">Gallery</a>
+          <a href="archive.html">Archive</a>
+          <a href="manifesto.html">Manifesto</a>
+          <a href="about.html">About</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Garbage of Paris. All photographs by Snezhana.</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
