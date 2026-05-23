@@ -91,13 +91,13 @@ const photos = [
 
   // — ПРИМЕР 2024 —
   {
-    title: "Upper-class x Paris's Trash",
-    image: "assets/img/gallery/photo_2024-06-20_00-28-22.jpg",
+    title: "Garbage",
+    image: "assets/img/gallery/photo_2024-09-15_22-35-06.jpg",
     year: "2024",
-    date: "2025-06-20",
-    location: "2e arrondissement",
+    date: "2025-09-15",
+    location: "Paris",
     category: "bins",
-    caption: "The key is to always look up",
+    caption: "Just an rdinary garbage",
     alt: "The key is to always look up"
   },
   {
