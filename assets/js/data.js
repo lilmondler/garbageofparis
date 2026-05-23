@@ -107,8 +107,8 @@ const photos = [
     date: "2024-07-01",
     location: "1e arrondissement",
     category: "bins",
-    caption: "to some trash",
-    alt: "Nobody will pay me for advertisement"
+    caption: "Nobody will pay me for advertisement",
+    alt: "some trash"
   },
 
 ];
