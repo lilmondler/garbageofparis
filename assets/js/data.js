@@ -59,24 +59,24 @@ const photos = [
     alt: ""
   },
   {
-    title: "Red Umbrella",
-    image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
+    title: "After the party",
+    image: "assets/img/gallery/photo_2025-09-11_13-30-12.jpg",
     year: "2025",
-    date: "2025-10-13",
+    date: "2025-09-11",
     location: "Saint-Michel-Notre-Dame",
-    category: "signs",
-    caption: "umbrella",
-    alt: "Even the trash is protected from the autumn rain"
+    category: "objects",
+    caption: "bottles",
+    alt: "Lots of fun and lots of trash!"
   },
   {
-    title: "Some basic trash",
-    image: "assets/img/gallery/photo_2025-11-19_10-48-22.jpg",
+    title: "Cis men",
+    image: "assets/img/gallery/photo_2025-12-20_16-36-12.jpg",
     year: "2025",
-    date: "2025-11-19",
+    date: "2025-12-20",
     location: "Paris",
     category: "bins",
     caption: "The pavement records everything. Rain doesn't wash it all away.",
-    alt: ""
+    alt: "Statement"
   },
 
   // — ПРИМЕР 2024 —
