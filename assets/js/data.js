@@ -45,8 +45,8 @@ const photos = [
     date: "2025-10-13",
     location: "Saint-Michel-Notre-Dame",
     category: "signs",
-    caption: "umbrella",
-    alt: "Even the trash is protected from the autumn rain"
+    caption: "Even the trash is protected from the autumn rain",
+    alt: "umbrella"
   },
   {
     title: "Some basic trash",
@@ -55,8 +55,8 @@ const photos = [
     date: "2025-11-19",
     location: "Paris",
     category: "bins",
-    caption: "The pavement records everything. Rain doesn't wash it all away.",
-    alt: ""
+    caption: "Oh, another piece of art!",
+    alt: "trash"
   },
   {
     title: "After the party",
@@ -65,8 +65,8 @@ const photos = [
     date: "2025-09-11",
     location: "Saint-Michel-Notre-Dame",
     category: "objects",
-    caption: "bottles",
-    alt: "Lots of fun and lots of trash!"
+    caption: "Lots of fun and lots of trash!",
+    alt: "bottles"
   },
   {
     title: "Cis men",
@@ -75,7 +75,7 @@ const photos = [
     date: "2025-12-20",
     location: "Paris",
     category: "bins",
-    caption: "The pavement records everything. Rain doesn't wash it all away.",
+    caption: "A bin can be a statement",
     alt: "Statement"
   },
 
@@ -87,7 +87,7 @@ const photos = [
     date: "2025-06-20",
     location: "2e arrondissement",
     category: "bins",
-    caption: "The pavement records everything. Rain doesn't wash it all away.",
+    caption: "The key is to always look up",
     alt: "The key is to always look up"
   },
   {
