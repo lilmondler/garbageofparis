@@ -39,24 +39,24 @@ const photos = [
     alt: " Merry Christmas"
   },
   {
-    title: "Bread and shoes",
-    image: "assets/img/gallery/photo_2024-08-04_18-39-15.jpg",
-    year: "2024",
-    date: "2024-08-04",
-    location: "Paris",
-    category: "objects",
-    caption: "bread and shoes",
-    alt: "Someone ran so fast that they left their baguettes and shoes behind!"
+    title: "Red Umbrella",
+    image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
+    year: "2025",
+    date: "2025-10-13",
+    location: "Saint-Michel-Notre-Dame",
+    category: "signs",
+    caption: "umbrella",
+    alt: "Even the trash is protected from the autumn rain"
   },
   {
-    title: "Add some pink",
-    image: "assets/img/gallery/photo_2024-07-01_14-47-06.jpg",
-    year: "2024",
-    date: "2024-07-01",
-    location: "1e arrondissement",
+    title: "Some basic trash",
+    image: "assets/img/gallery/photo_2025-11-19_10-48-22.jpg",
+    year: "2025",
+    date: "2025-11-19",
+    location: "Paris",
     category: "bins",
-    caption: "to some trash",
-    alt: "Nobody will pay me for advertisement"
+    caption: "The pavement records everything. Rain doesn't wash it all away.",
+    alt: ""
   },
   {
     title: "Red Umbrella",
@@ -91,24 +91,24 @@ const photos = [
     alt: "The key is to always look up"
   },
   {
-    title: "Accident on rue de la Roquette",
-    image: "assets/img/gallery/placeholder-7.jpg",
+    title: "Bread and shoes",
+    image: "assets/img/gallery/photo_2024-08-04_18-39-15.jpg",
     year: "2024",
-    date: "2024-09-22",
-    location: "Rue de la Roquette",
-    category: "accidents",
-    caption: "A bag broke mid-route. The contents form an unintended map.",
-    alt: "Broken garbage bag contents spilled on Paris street"
+    date: "2024-08-04",
+    location: "Paris",
+    category: "objects",
+    caption: "bread and shoes",
+    alt: "Someone ran so fast that they left their baguettes and shoes behind!"
   },
   {
-    title: "Street corner archive",
-    image: "assets/img/gallery/placeholder-8.jpg",
+    title: "Add some pink",
+    image: "assets/img/gallery/photo_2024-07-01_14-47-06.jpg",
     year: "2024",
-    date: "2024-07-05",
-    location: "Belleville",
-    category: "streets",
-    caption: "Every corner is an archive. Most of it goes uncollected.",
-    alt: "Garbage and objects accumulated at a Paris street corner in Belleville"
+    date: "2024-07-01",
+    location: "1e arrondissement",
+    category: "bins",
+    caption: "to some trash",
+    alt: "Nobody will pay me for advertisement"
   },
 
 ];
