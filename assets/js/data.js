@@ -7,37 +7,39 @@
 
   КАК ДОБАВИТЬ НОВОЕ ФОТО:
   1. Загрузи изображение в папку assets/img/gallery/
-  2. Скопируй один объект ниже и добавь его В НАЧАЛО массива
+  2. Скопируй один объект ниже и добавь его в массив
   3. Сохрани файл — галерея, архив и главная обновятся сами
 
   ПОЛЯ:
   - title:    короткое название (показывается в галерее)
   - image:    путь к файлу от корня сайта
-  - year:     "2024" или "2025" — используется для фильтров
+  - year:     год съёмки, например "2025" — используется для фильтров
+              (если не указать, возьмётся из date)
   - date:     "2025-05-12" — ISO формат, для сортировки
   - location: район или адрес в Париже
   - category: одна из: bins / streets / leftovers / signs / objects / accidents / traces
   - caption:  подпись к фото (одна-две фразы)
-  - alt:      описание для скринридеров (accessibility)
+  - alt:      описание того, что на фото, для скринридеров (accessibility)
 
-  ПОРЯДОК: сначала самые свежие фотографии.
-  Сортировка по дате происходит автоматически.
+  Порядок в массиве не важен — сортировка по дате автоматическая.
   ============================================================
 */
 
 const photos = [
 
-  // — ПРИМЕР 2025 —
+  // — 2026 —
   {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     year: "2026",
     date: "2026-04-06",
     location: "Stalingrad",
-    category: "bins",
+    category: "leftovers",
     caption: "A whole lot of popcorn!",
-    alt: "popcorn"
+    alt: "A cardboard box full of red and white striped popcorn boxes next to a grey street bin"
   },
+
+  // — 2025 —
   {
     title: "Nike shoe",
     image: "assets/img/gallery/photo_2025-12-30_19-50-29.jpg",
@@ -46,17 +48,17 @@ const photos = [
     location: "Madeleine",
     category: "objects",
     caption: "Someone ran off wearing just one shoe!",
-    alt: " Merry Christmas"
+    alt: "A pair of navy sneakers left on top of a street bin near the Madeleine"
   },
   {
-    title: "Red Umbrella",
-    image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
+    title: "Cis men",
+    image: "assets/img/gallery/photo_2025-12-20_16-36-12.jpg",
     year: "2025",
-    date: "2025-10-13",
-    location: "Saint-Michel-Notre-Dame",
+    date: "2025-12-20",
+    location: "Paris",
     category: "signs",
-    caption: "Even the trash is protected from the autumn rain",
-    alt: "umbrella"
+    caption: "A bin can be a statement.",
+    alt: "A grey wheelie bin with “CIS MEN” written in chalk under an arrow pointing to the lid"
   },
   {
     title: "Some basic trash",
@@ -66,7 +68,17 @@ const photos = [
     location: "Paris",
     category: "bins",
     caption: "Oh, another piece of art!",
-    alt: "trash"
+    alt: "An overflowing street bin between two bollards, a black bag and flattened beer cartons on the pavement"
+  },
+  {
+    title: "Red umbrella",
+    image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
+    year: "2025",
+    date: "2025-10-13",
+    location: "Saint-Michel-Notre-Dame",
+    category: "objects",
+    caption: "Even the trash is protected from the autumn rain.",
+    alt: "An open red umbrella stuck in a metal street bin"
   },
   {
     title: "After the party",
@@ -74,31 +86,21 @@ const photos = [
     year: "2025",
     date: "2025-09-11",
     location: "Saint-Michel-Notre-Dame",
-    category: "objects",
+    category: "leftovers",
     caption: "Lots of fun and lots of trash!",
-    alt: "bottles"
-  },
-  {
-    title: "Cis men",
-    image: "assets/img/gallery/photo_2025-12-20_16-36-12.jpg",
-    year: "2025",
-    date: "2025-12-20",
-    location: "Paris",
-    category: "bins",
-    caption: "A bin can be a statement",
-    alt: "Statement"
+    alt: "Dozens of empty wine and beer bottles lined up on the pavement next to a street bin"
   },
 
-  // — ПРИМЕР 2024 —
+  // — 2024 —
   {
     title: "Garbage",
     image: "assets/img/gallery/photo_2024-09-15_22-35-06.jpg",
     year: "2024",
-    date: "2025-09-15",
+    date: "2024-09-15",
     location: "Paris",
     category: "bins",
-    caption: "Just an rdinary garbage",
-    alt: "The key is to always look up"
+    caption: "Just an ordinary garbage.",
+    alt: "An overflowing street bin with cups and bottles on top, a black bag and a paper bag at its foot"
   },
   {
     title: "Bread and shoes",
@@ -107,8 +109,8 @@ const photos = [
     date: "2024-08-04",
     location: "Paris",
     category: "objects",
-    caption: "bread and shoes",
-    alt: "Someone ran so fast that they left their baguettes and shoes behind!"
+    caption: "Someone ran so fast that they left their baguettes and shoes behind!",
+    alt: "White sneakers, baguettes and a paper bag of bread scattered on the pavement next to rubbish bags"
   },
   {
     title: "Add some pink",
@@ -117,15 +119,26 @@ const photos = [
     date: "2024-07-01",
     location: "1e arrondissement",
     category: "bins",
-    caption: "Nobody will pay me for advertisement",
-    alt: "some trash"
+    caption: "Nobody will pay me for advertisement.",
+    alt: "An overflowing street bin at night with a pink paper bag and a black bag beside it"
+  },
+  {
+    title: "Business as usual",
+    image: "assets/img/gallery/photo_2024-06-20_00-28-22.jpg",
+    year: "2024",
+    date: "2024-06-20",
+    location: "Paris",
+    category: "streets",
+    caption: "Someone is always too busy to notice.",
+    alt: "A full street bin and black rubbish bags on the pavement, a man in a suit checking his phone nearby"
   },
 
 ];
 
 /*
-  КАТЕГОРИИ — не меняй названия, если хочешь, чтобы фильтры работали.
-  Если добавляешь новую категорию, добавь её также в массив CATEGORIES ниже.
+  КАТЕГОРИИ — порядок, в котором показываются фильтры.
+  В галерее появляются только те категории, у которых есть хотя бы одно фото.
+  Если добавляешь новую категорию, добавь её также сюда.
 */
 
 const CATEGORIES = [

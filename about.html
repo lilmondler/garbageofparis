@@ -4,21 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Garbage of Paris</title>
-  <meta name="description" content="About Garbage of Paris - a visual sociology project by Jane, documenting waste, traces and everyday life in Paris." />
+  <meta name="description" content="About Garbage of Paris — a visual sociology project by Snezhana (Jane), documenting waste, traces and everyday life in Paris." />
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
 
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="About — Garbage of Paris" />
+  <meta property="og:description" content="About Garbage of Paris — a visual sociology project by Snezhana (Jane), documenting waste, traces and everyday life in Paris." />
+  <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="page-offset">
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">Garbage of Paris</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
+        <span>Garbage of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -29,113 +48,122 @@
     </nav>
   </header>
 
-  <!-- ==================== ЗАГОЛОВОК ==================== -->
-  <div class="section section--sm" style="border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
-    <div class="container">
-      <p class="label" style="margin-bottom: 0.5rem;">§ 05 — Who and why</p>
-      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem);">About</h1>
-    </div>
-  </div>
+  <main id="main">
 
-  <!-- ==================== КОНТЕНТ ==================== -->
-  <section class="section">
-    <div class="container">
-      <div class="about-layout">
-
-        <!-- Боковая панель: фото + контакты -->
-        <aside class="about-sidebar">
-          <!--
-            ФОТО АВТОРА:
-            Загрузи своё фото в assets/img/hero/author.jpg
-            Или замени src на другой путь.
-            Если фото нет — показывается серый прямоугольник.
-          -->
-          <div style="aspect-ratio: 3/4; background: var(--grey-light); overflow: hidden; margin-bottom: 1.2rem;">
-            <img
-              src="assets/img/hero/author.jpg"
-              alt="Portrait of Snezhana"
-              class="about-sidebar__photo"
-              style="width:100%; height:100%; object-fit:cover;"
-              onerror="this.parentElement.style.background='var(--grey-light)'; this.style.display='none';"
-            />
+    <!-- ==================== ЗАГОЛОВОК ==================== -->
+    <header class="page-head">
+      <div class="container">
+        <div class="page-head__inner">
+          <div>
+            <p class="label">§ 06 — Who and why</p>
+            <h1>About</h1>
           </div>
-
-          <p class="about-sidebar__name">Snezhana</p>
-          <p class="about-sidebar__role">Sociology student,trash photographer, observer</p>
-          <p class="about-sidebar__role" style="margin-top: 0.2em;">Paris</p>
-
-          <div class="about-sidebar__links mt-md">
-            <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">
-              ↗ Instagram
-            </a>
-            <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">
-              ↗ Telegram
-            </a>
-          </div>
-        </aside>
-
-        <!-- Основной текст -->
-        <!--
-          ТЕКСТ О ПРОЕКТЕ:
-          Редактируй только содержимое абзацев <p>.
-          Не трогай HTML-структуру и классы.
-        -->
-        <div class="about-content">
-
-          <h3>Who am I?</h3>
-          <p>My name is Snezhana. Or Jane. As you want. I am a sociologist who lives in Paris and makes photographs of garbage.</p>
-          <p>I was just wondering... What do people throw away? And what does that say about us?</p>
-
-          <h3>The project</h3>
-          <p>Garbage of Paris started in 2022 as a private observation practice and became a public archive. I'm not a professional photographer, and I don't strive for perfection.</p>
-          <p>What really interests me is how the things we throw away become an invisible part of our daily lives</p>
-          <p>The project sits between visual sociology, urban ethnography, and what some might call contemporary art practice - though I am not attached to any of these categories. The photographs exist. You can look at them or not.</p>
-
-          <h3>The method</h3>
-          <p>I’ve always looked up in every sense of the word. But one day something happened, and I looked down. Now, whenever I notice trash, I immediately take a picture of it.</p>
-          <p>Every photograph in this archive has a date and a location because place and time matter. Trash is always unique. As unique as every walk</p>
-
-          <h3>What this is not</h3>
-          <p>This isn’t a serious, methodologically rigorous project. I already write research papers and love sociology. Perhaps it’s more of an observational exercise? My friends and family already send me photos of garbage cans, so what else do I need to be happy? </p>
-
-          <div style="margin-top: 2.5rem; padding: 1.5rem; border: 1px solid var(--border);">
-            <p style="font-style: italic; color: var(--grey-dark); margin-bottom: 1rem;">
-              "Like people, garbage tends to stay close to other garbage."
-            </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="manifesto.html" class="btn">Read the manifesto</a>
-              <a href="gallery.html" class="btn btn--ghost">View the gallery</a>
-            </div>
-          </div>
-
+          <p class="page-head__lead">A sociologist, a phone camera, and the streets of Paris.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
+
+    <!-- ==================== КОНТЕНТ ==================== -->
+    <section class="section" style="padding-top: var(--space-lg);">
+      <div class="container">
+        <div class="about-layout">
+
+          <!-- Боковая панель: фото + контакты -->
+          <aside class="about-sidebar">
+            <!--
+              ФОТО АВТОРА:
+              Загрузи своё фото в assets/img/hero/author.jpg
+              Или замени src на другой путь.
+              Если фото нет — показывается серый прямоугольник.
+            -->
+            <div class="about-sidebar__frame">
+              <img
+                src="assets/img/hero/author.jpg"
+                alt="Portrait of Snezhana"
+                class="about-sidebar__photo"
+                width="1280" height="960"
+                onerror="this.remove();"
+              />
+            </div>
+
+            <div>
+              <p class="about-sidebar__name">Snezhana</p>
+              <p class="about-sidebar__role">Sociology student, trash photographer, observer.</p>
+              <p class="about-sidebar__role">Paris</p>
+
+              <div class="about-sidebar__links">
+                <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">↗ Instagram</a>
+                <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">↗ Telegram</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Основной текст -->
+          <!--
+            ТЕКСТ О ПРОЕКТЕ:
+            Редактируй только содержимое абзацев <p>.
+            Не трогай HTML-структуру и классы.
+          -->
+          <div class="about-content">
+
+            <h3><span>01</span> Who am I?</h3>
+            <p>My name is Snezhana. Or Jane. As you want. I am a sociologist who lives in Paris and makes photographs of garbage.</p>
+            <p>I was just wondering… What do people throw away? And what does that say about us?</p>
+
+            <h3><span>02</span> The project</h3>
+            <p>Garbage of Paris started in 2022 as a private observation practice and became a public archive. I’m not a professional photographer, and I don’t strive for perfection.</p>
+            <p>What really interests me is how the things we throw away become an invisible part of our daily lives.</p>
+            <p>The project sits between visual sociology, urban ethnography, and what some might call contemporary art practice — though I am not attached to any of these categories. The photographs exist. You can look at them or not.</p>
+
+            <h3><span>03</span> The method</h3>
+            <p>I’ve always looked up in every sense of the word. But one day something happened, and I looked down. Now, whenever I notice trash, I immediately take a picture of it.</p>
+            <p>Every photograph in this archive has a date and a location because place and time matter. Trash is always unique. As unique as every walk.</p>
+
+            <h3><span>04</span> What this is not</h3>
+            <p>This isn’t a serious, methodologically rigorous project. I already write research papers and love sociology. Perhaps it’s more of an observational exercise? My friends and family already send me photos of garbage cans, so what else do I need to be happy?</p>
+
+            <div class="about-callout">
+              <blockquote>
+                <p>“Like people, garbage tends to stay close to other garbage.”</p>
+              </blockquote>
+              <div class="about-callout__actions">
+                <a href="manifesto.html" class="btn btn--solid">Read the manifesto</a>
+                <a href="gallery.html" class="btn btn--ghost">View the gallery</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
       <div class="footer-inner">
-        <div class="footer-left">
-          <strong>Garbage of Paris</strong>
-          <p>Visual sociology. Paris, 2024–</p>
-        </div>
+        <p class="footer-left">Visual sociology. Paris, 2022–</p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="gallery.html">Gallery</a>
           <a href="archive.html">Archive</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
         </nav>
       </div>
-      <p class="footer-copy">© Garbage of Paris. All photographs made by me or my close people.</p>
+      <p class="footer-copy">
+        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
+        <span>garbageofparis.fr</span>
+      </p>
     </div>
   </footer>
 
-  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+  <!-- Back to top -->
+  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
 
+  <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>

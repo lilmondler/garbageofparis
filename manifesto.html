@@ -5,20 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manifesto — Garbage of Paris</title>
   <meta name="description" content="On garbage as cultural object. A manifesto about waste, urban traces, and material culture in Paris." />
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
 
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="Manifesto — Garbage of Paris" />
+  <meta property="og:description" content="On garbage as cultural object. A manifesto about waste, urban traces, and material culture in Paris." />
+  <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="page-offset">
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">Garbage of Paris</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
+        <span>Garbage of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -29,148 +48,135 @@
     </nav>
   </header>
 
-  <!-- ==================== ЗАГОЛОВОК ==================== -->
-  <div class="section section--sm" style="border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
-    <div class="container">
-      <p class="label" style="margin-bottom: 0.5rem;">§ 04 — Position</p>
-      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">Manifesto</h1>
+  <main id="main">
 
-      <!-- Переключатель языков -->
-      <div class="manifesto-lang-toggle">
-        <button class="active" data-lang="en" onclick="switchLang('en')">English</button>
-        <button data-lang="fr" onclick="switchLang('fr')">Français</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== МАНИФЕСТ ==================== -->
-  <section class="section">
-    <div class="container">
-      <div class="manifesto-text">
-
-        <!-- ======= АНГЛИЙСКИЙ ТЕКСТ ======= -->
-        <!--
-          КАК РЕДАКТИРОВАТЬ МАНИФЕСТ:
-          Просто меняй содержимое абзацев <p>.
-          Не меняй class="manifesto-lang" и id="manifesto-en".
-          Чтобы добавить цитату — используй блок .manifesto-quote.
-        -->
-        <div class="manifesto-lang active" id="manifesto-en">
-
-          <h2>Garbage Manifesto</h2>
-
-          <p class="drop-cap">Before I briefly, concisely, and simply present my conclusions regarding the general justification </p>
-           <p>  of what exactly is so special about trash, </p>
-           <p> I would first like to make several important clarifications.</p>
-           <p> First of all, this “manifesto” is more of a mockery of the format and genre itself. I do not possess any crystallized “trash ideology”, and even if I did have such an aspiration, </p>
-           <p> knowing my own nature, I would hardly spit it all out into a coherent text, let alone publish it.</p>
-           <p> Secondly, my reflections on garbage in Paris and on trash in general do not claim any philosophical value, nor, even less, any seriousness.</p>
-           <p>So then: trash. </p>
-
-          <div class="manifesto-quote">
-            <p>Everything that has the right to exist</p>
+    <!-- ==================== ЗАГОЛОВОК ==================== -->
+    <header class="page-head">
+      <div class="container">
+        <div class="page-head__inner">
+          <div>
+            <p class="label">§ 05 — Position</p>
+            <h1>Manifesto</h1>
           </div>
 
-          <p>So then: trash. Throughout its development, Western European culture sought to conceal, suppress, and smooth out the so-called affects, that is, the various unpredictable manifestations of human biological nature, thereby raising the general threshold of sensitivity toward them. In this way, increasingly complex and convoluted — at times even contradictory — systems of norms and values were created,</p> 
-          <p>  systems that nevertheless fit within the broader idea of the progress and development of European civilization.</p>
-
-          <p>From this assertion it logically follows that any events or phenomena connected to this world of affects were either hidden behind a solid curtain of shame or entirely discarded onto the junkyard (ironically enough) of history, never to be raised within the context of global public discourse, and particularly not within art.</p>
-
-          <div class="manifesto-quote">
-            <p>Trash is the ideal object of contemplation </p>
+          <!-- Переключатель языков (manifesto.html#fr открывает французскую версию) -->
+          <div class="manifesto-lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="active" data-lang="en" aria-pressed="true">English</button>
+            <button type="button" data-lang="fr" aria-pressed="false">Français</button>
           </div>
-
-          <p>However, everything that “has the right to exist,” everything recognized as beautiful, aesthetic, and worthy of attention, eventually becomes outdated, worn down like a vinyl record, and no longer produces the familiar sense of “discomfort.” Consequently, art whose primary aim is to unsettle the inner harmony of the individual ceases to function.</p>
-
-          <p>And this is where the affects once hidden behind that curtain — and their manifestations — step onto the stage.</p>
-
-          <p>Trash is the ideal object of contemplation. It maintains a delicate balance between disgust and fascination, and does so in a dualistic manner, where fascination gives birth to disgust in the observer, </p>
-           <p> while disgust, given sufficient self-reflection, gives birth to fascination.</p>
-          <p>Trash is not merely a way to disturb or to ask an uncomfortable question; it is an attempt to draw attention to shame, to everything that human history has tried so carefully to conceal.</p>
-           <p>Trash is a symbol of uselessness, a symbol of decay. It is anti-beauty, the very thing that shapes our understanding of beauty itself.</p>
-           <p>It is not difficult to understand what motivates me when I engage in photographing trash.</p>
-           <p>I introduce into polished reality a fragment of the real — of that which people are taught to hide and avoid. I restore trash to its rightful place within the fabric of collective history.</p>
         </div>
+      </div>
+    </header>
 
-        <!-- ======= ФРАНЦУЗСКИЙ ТЕКСТ ======= -->
-        <!--
-          Замени текст на свой французский вариант манифеста.
-          Структура та же: абзацы <p>, цитаты .manifesto-quote.
-        -->
-        <div class="manifesto-lang" id="manifesto-fr">
+    <!-- ==================== МАНИФЕСТ ==================== -->
+    <section class="section" style="padding-top: var(--space-lg);">
+      <div class="container">
+        <div class="manifesto-text">
 
-          <h2>Le manifeste des déchets </h2>
+          <!-- ======= АНГЛИЙСКИЙ ТЕКСТ ======= -->
+          <!--
+            КАК РЕДАКТИРОВАТЬ МАНИФЕСТ:
+            Просто меняй содержимое абзацев <p>.
+            Один абзац = один <p>…</p> (не разрывай предложения на несколько <p>).
+            Не меняй class="manifesto-lang" и id="manifesto-en".
+            Чтобы добавить цитату — используй блок .manifesto-quote.
+          -->
+          <article class="manifesto-lang active" id="manifesto-en" lang="en">
 
-          <p class="drop-cap">Avant d’exposer brièvement, de manière concise et simple, mes conclusions concernant une justification générale de ce qui rend les déchets si particuliers, je voudrais d’abord apporter plusieurs précisions importantes.</p>
-          <p>Premièrement, ce « manifeste » constitue avant tout une forme de moquerie à l’égard du format et du genre eux-mêmes. Je ne possède aucune idéologie « poubelliste » véritablement cristallisée, et même si une telle ambition existait, connaissant ma propre nature, je serais probablement incapable d’en faire un texte cohérent, et encore moins de le publier.</p> 
-          <p>Deuxièmement, les réflexions que je développe ici au sujet des poubelles parisiennes et des déchets en général</p>
-          ne prétendent nullement posséder une quelconque valeur philosophique, et encore moins une réelle gravité intellectuelle.</p>
-          <p>Ainsi donc : les déchets. </p>
-          <p> Au cours de son développement, la culture ouest-européenne a cherché à dissimuler, à réprimer et à lisser ce que l’on pourrait appeler les « affects », </p>
-          <p>c’est-à-dire les différentes manifestations imprévisibles de la nature biologique de l’être humain, augmentant par là même le seuil collectif de sensibilité à leur égard.</p>
-          <p>C’est ainsi que se sont progressivement constitués des systèmes de normes et de valeurs toujours plus complexes et labyrinthiques — parfois même contradictoires — qui s’inscrivaient néanmoins dans l’idée générale du progrès et du développement de la civilisation européenne.</p>
-          <p>Il découle logiquement de cette affirmation que tous les événements et phénomènes appartenant à ce monde des affects furent soit recouverts d’un épais voile de honte, soit tout simplement jetés à la décharge</p>
-          <p>de l’histoire, sans jamais être véritablement intégrés au discours public global, et en particulier au domaine de l’art.</p>
-          <div class="manifesto-quote">
-            <p>Le déchet constitue un objet de contemplation idéal</p>
-          </div>
+            <h2>Garbage Manifesto</h2>
 
-          <p>Cependant, tout ce qui « mérite d’exister », tout ce qui est reconnu comme beau, esthétique et digne d’attention finit inévitablement par s’user, s’effacer, à la manière d’un disque rayé, et cesse dès lors de provoquer ce fameux « inconfort ».</p>
+            <p class="drop-cap">Before I briefly, concisely, and simply present my conclusions regarding the general justification of what exactly is so special about trash, I would first like to make several important clarifications.</p>
+            <p>First of all, this “manifesto” is more of a mockery of the format and genre itself. I do not possess any crystallized “trash ideology”, and even if I did have such an aspiration, knowing my own nature, I would hardly spit it all out into a coherent text, let alone publish it.</p>
+            <p>Secondly, my reflections on garbage in Paris and on trash in general do not claim any philosophical value, nor, even less, any seriousness.</p>
 
-          <p>Par conséquent, un art dont l’objectif principal consiste à troubler l’harmonie intérieure de l’individu cesse progressivement d’agir.</p>
-          <p>C’est alors que les affects jusque-là dissimulés derrière ce voile font leur entrée sur scène, accompagnés de toutes leurs manifestations.</p>
-          <p>Le déchet constitue un objet de contemplation idéal. Il maintient un équilibre subtil entre le dégoût et la fascination, dans une logique profondément dualiste où la fascination suscite le dégoût chez l’observateur, tandis que le dégoût, lorsqu’il s’accompagne d’une certaine réflexivité, engendre à son tour la fascination.</p>
-          <p>Le déchet n’est pas seulement un moyen de déranger ou de poser une question inconfortable ; il représente une tentative d’attirer l’attention sur la honte, sur tout ce que l’histoire humaine s’efforce avec tant d’acharnement de dissimuler.</p>
-          <div class="manifesto-quote">
-            <p>Je restitue aux déchets leur place légitime dans la trame de l’histoire collective</p>
-          </div>
+            <div class="manifesto-quote">
+              <p>Everything that has the right to exist</p>
+            </div>
 
-          <p>Le déchet est un symbole de l’inutilité, un symbole du déclin. Il est une anti-beauté qui participe paradoxalement à la formation même de notre conception du beau.</p>
+            <p>So then: trash. Throughout its development, Western European culture sought to conceal, suppress, and smooth out the so-called affects, that is, the various unpredictable manifestations of human biological nature, thereby raising the general threshold of sensitivity toward them. In this way, increasingly complex and convoluted — at times even contradictory — systems of norms and values were created, systems that nevertheless fit within the broader idea of the progress and development of European civilization.</p>
+            <p>From this assertion it logically follows that any events or phenomena connected to this world of affects were either hidden behind a solid curtain of shame or entirely discarded onto the junkyard (ironically enough) of history, never to be raised within the context of global public discourse, and particularly not within art.</p>
 
-          <p>Il n’est pas difficile de comprendre ce qui motive ma pratique de la photographie des déchets. J’introduis dans une réalité polie et soigneusement lissée une parcelle du réel, de ce qu’il est convenu de cacher et d’éviter.</p> 
-          <p> Je restitue aux déchets leur place légitime dans la trame de l’histoire collective.</p>
+            <div class="manifesto-quote">
+              <p>Trash is the ideal object of contemplation</p>
+            </div>
 
-  
+            <p>However, everything that “has the right to exist,” everything recognized as beautiful, aesthetic, and worthy of attention, eventually becomes outdated, worn down like a vinyl record, and no longer produces the familiar sense of “discomfort.” Consequently, art whose primary aim is to unsettle the inner harmony of the individual ceases to function.</p>
+            <p>And this is where the affects once hidden behind that curtain — and their manifestations — step onto the stage.</p>
+            <p>Trash is the ideal object of contemplation. It maintains a delicate balance between disgust and fascination, and does so in a dualistic manner, where fascination gives birth to disgust in the observer, while disgust, given sufficient self-reflection, gives birth to fascination.</p>
+            <p>Trash is not merely a way to disturb or to ask an uncomfortable question; it is an attempt to draw attention to shame, to everything that human history has tried so carefully to conceal.</p>
+            <p>Trash is a symbol of uselessness, a symbol of decay. It is anti-beauty, the very thing that shapes our understanding of beauty itself.</p>
+            <p>It is not difficult to understand what motivates me when I engage in photographing trash. I introduce into polished reality a fragment of the real — of that which people are taught to hide and avoid. I restore trash to its rightful place within the fabric of collective history.</p>
+
+            <p class="manifesto-end" aria-hidden="true">* * *</p>
+          </article>
+
+          <!-- ======= ФРАНЦУЗСКИЙ ТЕКСТ ======= -->
+          <!--
+            Структура та же: абзацы <p>, цитаты .manifesto-quote.
+          -->
+          <article class="manifesto-lang" id="manifesto-fr" lang="fr" hidden>
+
+            <h2>Le manifeste des déchets</h2>
+
+            <p class="drop-cap">Avant d’exposer brièvement, de manière concise et simple, mes conclusions concernant une justification générale de ce qui rend les déchets si particuliers, je voudrais d’abord apporter plusieurs précisions importantes.</p>
+            <p>Premièrement, ce « manifeste » constitue avant tout une forme de moquerie à l’égard du format et du genre eux-mêmes. Je ne possède aucune idéologie « poubelliste » véritablement cristallisée, et même si une telle ambition existait, connaissant ma propre nature, je serais probablement incapable d’en faire un texte cohérent, et encore moins de le publier.</p>
+            <p>Deuxièmement, les réflexions que je développe ici au sujet des poubelles parisiennes et des déchets en général ne prétendent nullement posséder une quelconque valeur philosophique, et encore moins une réelle gravité intellectuelle.</p>
+            <p>Ainsi donc : les déchets. Au cours de son développement, la culture ouest-européenne a cherché à dissimuler, à réprimer et à lisser ce que l’on pourrait appeler les « affects », c’est-à-dire les différentes manifestations imprévisibles de la nature biologique de l’être humain, augmentant par là même le seuil collectif de sensibilité à leur égard.</p>
+            <p>C’est ainsi que se sont progressivement constitués des systèmes de normes et de valeurs toujours plus complexes et labyrinthiques — parfois même contradictoires — qui s’inscrivaient néanmoins dans l’idée générale du progrès et du développement de la civilisation européenne.</p>
+            <p>Il découle logiquement de cette affirmation que tous les événements et phénomènes appartenant à ce monde des affects furent soit recouverts d’un épais voile de honte, soit tout simplement jetés à la décharge de l’histoire, sans jamais être véritablement intégrés au discours public global, et en particulier au domaine de l’art.</p>
+
+            <div class="manifesto-quote">
+              <p>Le déchet constitue un objet de contemplation idéal</p>
+            </div>
+
+            <p>Cependant, tout ce qui « mérite d’exister », tout ce qui est reconnu comme beau, esthétique et digne d’attention finit inévitablement par s’user, s’effacer, à la manière d’un disque rayé, et cesse dès lors de provoquer ce fameux « inconfort ».</p>
+            <p>Par conséquent, un art dont l’objectif principal consiste à troubler l’harmonie intérieure de l’individu cesse progressivement d’agir.</p>
+            <p>C’est alors que les affects jusque-là dissimulés derrière ce voile font leur entrée sur scène, accompagnés de toutes leurs manifestations.</p>
+            <p>Le déchet constitue un objet de contemplation idéal. Il maintient un équilibre subtil entre le dégoût et la fascination, dans une logique profondément dualiste où la fascination suscite le dégoût chez l’observateur, tandis que le dégoût, lorsqu’il s’accompagne d’une certaine réflexivité, engendre à son tour la fascination.</p>
+            <p>Le déchet n’est pas seulement un moyen de déranger ou de poser une question inconfortable ; il représente une tentative d’attirer l’attention sur la honte, sur tout ce que l’histoire humaine s’efforce avec tant d’acharnement de dissimuler.</p>
+
+            <div class="manifesto-quote">
+              <p>Je restitue aux déchets leur place légitime dans la trame de l’histoire collective</p>
+            </div>
+
+            <p>Le déchet est un symbole de l’inutilité, un symbole du déclin. Il est une anti-beauté qui participe paradoxalement à la formation même de notre conception du beau.</p>
+            <p>Il n’est pas difficile de comprendre ce qui motive ma pratique de la photographie des déchets. J’introduis dans une réalité polie et soigneusement lissée une parcelle du réel, de ce qu’il est convenu de cacher et d’éviter. Je restitue aux déchets leur place légitime dans la trame de l’histoire collective.</p>
+
+            <p class="manifesto-end" aria-hidden="true">* * *</p>
+          </article>
 
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
       <div class="footer-inner">
-        <div class="footer-left">
-          <strong>Garbage of Paris</strong>
-          <p>Visual sociology. Paris, 2024–</p>
-        </div>
+        <p class="footer-left">Visual sociology. Paris, 2022–</p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="gallery.html">Gallery</a>
           <a href="archive.html">Archive</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
         </nav>
       </div>
-      <p class="footer-copy">© Garbage of Paris. All photographs by Snezhana.</p>
+      <p class="footer-copy">
+        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
+        <span>garbageofparis.fr</span>
+      </p>
     </div>
   </footer>
 
-  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+  <!-- Back to top -->
+  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
 
+  <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    // Переключение языков манифеста
-    function switchLang(lang) {
-      document.querySelectorAll('.manifesto-lang').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.manifesto-lang-toggle button').forEach(btn => btn.classList.remove('active'));
-      document.getElementById('manifesto-' + lang).classList.add('active');
-      document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
-    }
-  </script>
 </body>
 </html>

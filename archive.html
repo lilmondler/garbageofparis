@@ -5,20 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Archive — Garbage of Paris</title>
   <meta name="description" content="Archive of urban observations indexed by year. A field log of waste, traces and objects in Paris." />
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
 
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="Archive — Garbage of Paris" />
+  <meta property="og:description" content="Archive of urban observations indexed by year. A field log of waste, traces and objects in Paris." />
+  <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="page-offset">
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">Garbage of Paris</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
+        <span>Garbage of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -29,54 +48,62 @@
     </nav>
   </header>
 
-  <!-- ==================== ЗАГОЛОВОК ==================== -->
-  <div class="section section--sm" style="border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
-    <div class="container">
-      <p class="label" style="margin-bottom: 0.5rem;">§ 03 — Field log</p>
-      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.5rem;">Archive</h1>
-      <p style="color: var(--grey-dark); font-style: italic; max-width: 500px;">
-        All observations indexed chronologically. Waste as evidence. The city as document.
-      </p>
-    </div>
-  </div>
+  <main id="main">
 
-  <!-- ==================== АРХИВ ==================== -->
-  <section class="section">
-    <div class="container">
-      <!--
-        АРХИВ:
-        Строится автоматически из data.js, сгруппирован по годам.
-        Для добавления новой записи — только data.js.
-      -->
-      <div id="archive-container">
-        <!-- Заполняется через main.js из data.js -->
+    <!-- ==================== ЗАГОЛОВОК ==================== -->
+    <header class="page-head">
+      <div class="container">
+        <div class="page-head__inner">
+          <div>
+            <p class="label">§ 04 — Field log</p>
+            <h1>Archive</h1>
+          </div>
+          <p class="page-head__lead">All observations indexed chronologically. Waste as evidence. The city as document.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
+
+    <!-- ==================== АРХИВ ==================== -->
+    <section class="section" style="padding-top: var(--space-md);">
+      <div class="container">
+        <!--
+          АРХИВ:
+          Строится автоматически из data.js, сгруппирован по годам.
+          Для добавления новой записи — только data.js.
+        -->
+        <div id="archive-container">
+          <!-- Заполняется через main.js из data.js -->
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
       <div class="footer-inner">
-        <div class="footer-left">
-          <strong>Garbage of Paris</strong>
-          <p>Visual sociology. Paris, 2024–</p>
-        </div>
+        <p class="footer-left">Visual sociology. Paris, 2022–</p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="gallery.html">Gallery</a>
           <a href="archive.html">Archive</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
         </nav>
       </div>
-      <p class="footer-copy">© Garbage of Paris. All photographs by Snezhana.</p>
+      <p class="footer-copy">
+        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
+        <span>garbageofparis.fr</span>
+      </p>
     </div>
   </footer>
 
-  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+  <!-- Back to top -->
+  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
 
+  <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
