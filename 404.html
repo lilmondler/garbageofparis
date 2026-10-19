@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Not found — Garbage of Paris</title>
   <meta name="description" content="This page was thrown away." />
-  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
   <meta property="og:type" content="website" />
@@ -17,33 +16,33 @@
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
 
-  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-
+  <!-- Шрифты: Literata (заголовки и текст) + Caveat (рукописные пометки) + Courier Prime (бирки).
+       Файлы лежат в assets/fonts — без Google Fonts. -->
+  <link rel="preload" href="/assets/fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/caveat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-<body class="page-offset">
+<body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="/index.html" class="nav-logo">
-        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
-        <span>Garbage of Paris</span>
+      <a href="/index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+        <span class="nav-logo__word">garbage</span>
+        <span class="nav-logo__note">of Paris</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span></span><span></span>
+        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/gallery.html">Gallery</a></li>
-        <li><a href="/archive.html">Archive</a></li>
-        <li><a href="/manifesto.html">Manifesto</a></li>
-        <li><a href="/about.html">About</a></li>
+        <li><a href="/index.html">home</a></li>
+        <li><a href="/gallery.html">gallery</a></li>
+        <li><a href="/archive.html">archive</a></li>
+        <li><a href="/manifesto.html">manifesto</a></li>
+        <li><a href="/about.html">about</a></li>
       </ul>
     </nav>
   </header>
@@ -52,12 +51,18 @@
 
     <section class="notfound">
       <div class="container">
-        <p class="label">Error — page not found</p>
-        <h1>404</h1>
-        <p>This page has been thrown away. Or maybe it never existed. Either way, the bin is empty.</p>
-        <div class="hero__links">
-          <a href="/index.html" class="btn btn--solid">Back home</a>
-          <a href="/gallery.html" class="btn btn--ghost">View gallery</a>
+        <p class="kicker">error 404 · page not found</p>
+        <h1 class="headword">this page <span class="pos">n.</span></h1>
+        <ol class="senses">
+          <li><span class="struck">1. A document that exists at this address.</span></li>
+        </ol>
+        <p class="correction">
+          <svg class="correction__caret" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>thrown away. the bin is empty.</span>
+        </p>
+        <div class="actions mt-md">
+          <a href="/index.html" class="btn btn--ink">back home</a>
+          <a href="/gallery.html" class="hand-link">look at the gallery →</a>
         </div>
       </div>
     </section>
@@ -66,27 +71,27 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-title"><a href="/index.html">Garbage<br>of Paris</a></p>
-      <div class="footer-inner">
-        <p class="footer-left">Visual sociology. Paris, 2022–</p>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="/gallery.html">Gallery</a>
-          <a href="/archive.html">Archive</a>
-          <a href="/manifesto.html">Manifesto</a>
-          <a href="/about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
-        </nav>
-      </div>
-      <p class="footer-copy">
-        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
-        <span>garbageofparis.fr</span>
+      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-def">
+        <span class="struck">Things nobody wants.</span>
+        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/gallery.html">gallery</a>
+          <a href="/archive.html">archive</a>
+          <a href="/manifesto.html">manifesto</a>
+          <a href="/about.html">about</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
+        </nav>
+        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+      </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
 
   <!-- Данные и скрипты -->
   <script src="/assets/js/data.js"></script>

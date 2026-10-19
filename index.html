@@ -3,188 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garbage of Paris — A visual sociology of waste</title>
+  <title>Garbage of Paris — a visual sociology of waste</title>
   <meta name="description" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
-  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Garbage of Paris" />
-  <meta property="og:title" content="Garbage of Paris — A visual sociology of waste" />
+  <meta property="og:title" content="Garbage of Paris — a visual sociology of waste" />
   <meta property="og:description" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
   <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 
-  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-
+  <!-- Шрифты: Literata (заголовки и текст) + Caveat (рукописные пометки) + Courier Prime (бирки).
+       Файлы лежат в assets/fonts — без Google Fonts. -->
+  <link rel="preload" href="assets/fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/caveat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="page-offset">
+<body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">
-        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
-        <span>Garbage of Paris</span>
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+        <span class="nav-logo__word">garbage</span>
+        <span class="nav-logo__note">of Paris</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span></span><span></span>
+        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="archive.html">Archive</a></li>
-        <li><a href="manifesto.html">Manifesto</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html" aria-current="page">home</a></li>
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="archive.html">archive</a></li>
+        <li><a href="manifesto.html">manifesto</a></li>
+        <li><a href="about.html">about</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
 
-    <!-- ==================== ГЕРОЙ ==================== -->
-    <section class="hero">
-      <div class="hero__inner">
+    <!-- ==================== СЛОВАРНАЯ СТАТЬЯ ==================== -->
+    <section class="entry-hero">
+      <div class="container">
+        <div class="entry-hero__grid">
 
-        <div class="hero__top">
-          <p class="hero__label">Paris — 2022–now</p>
-          <p class="hero__label">Visual sociology / field log</p>
-        </div>
+          <div class="entry-hero__text">
+            <p class="kicker">dictionary of the street · Paris, 2022 —</p>
 
-        <h1 class="hero__title">Garbage <em>of</em> Paris</h1>
+            <h1 class="headword">garbage <span class="pos">n., uncountable</span></h1>
+            <p class="pron">/ˈɡɑːr.bɪdʒ/ &nbsp;·&nbsp; fr. <i>ordures, déchets, poubelle</i></p>
 
-        <div class="hero__grid">
-          <div class="hero__aside">
-            <p class="hero__subtitle">A visual sociology of waste, traces and urban life.</p>
-            <div class="hero__links">
-              <a href="gallery.html" class="btn btn--solid">View gallery →</a>
-              <a href="manifesto.html" class="btn btn--ghost">Read manifesto</a>
+            <!--
+              ТЕКСТ СТАТЬИ:
+              .struck — зачёркнуто красной ручкой,
+              .correction — синяя рукописная поправка.
+            -->
+            <ol class="senses">
+              <li><span class="struck">1. Waste material; things that are thrown away.</span></li>
+            </ol>
+            <p class="correction">
+              <svg class="correction__caret" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>the private made public,<br>the interior made exterior</span>
+            </p>
+
+            <p class="entry-hero__lede">Garbage of Paris is a visual sociology of waste, traces and urban life. Bags, bins, stains, objects, signs — photographed where they were left.</p>
+
+            <div class="actions">
+              <a href="gallery.html" class="btn btn--ink">see the evidence →</a>
+              <a href="manifesto.html" class="hand-link">read the manifesto</a>
             </div>
+
+            <p class="signature">Snezhana</p>
           </div>
 
           <!--
-            ФОТО ГЕРОЯ:
+            ФОТО НА ГЛАВНОЙ:
             Замени src на путь к своему главному фото.
-            Рекомендуемый размер: 1800×1000px или шире (пропорции 16:9).
-            Если фото нет — показывается серая заглушка.
+            Лучше всего — квадратное или почти квадратное фото.
           -->
-          <figure class="hero__figure">
-            <div class="hero__image-wrap">
-              <img
-                src="assets/img/hero/hero.jpg"
-                alt="A red pouf, a small wooden table and a quilted cushion left in front of a grey carriage door"
-                class="hero__image"
-                width="1057" height="594"
-                fetchpriority="high"
-                onerror="this.parentElement.classList.add('is-missing'); this.remove();"
-              />
-            </div>
-            <figcaption class="hero__figcaption">
-              <span>fig. 00 — Left at the door</span>
-              <span>Paris</span>
-            </figcaption>
-          </figure>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== СЧЁТЧИКИ (заполняются из data.js) ==================== -->
-    <section class="container" aria-label="The archive in numbers">
-      <div class="stats">
-        <div class="stat"><span class="stat__value" id="stat-photos">—</span><span class="stat__label">Photographs</span></div>
-        <div class="stat"><span class="stat__value" id="stat-places">—</span><span class="stat__label">Places</span></div>
-        <div class="stat"><span class="stat__value" id="stat-categories">—</span><span class="stat__label">Categories</span></div>
-        <div class="stat"><span class="stat__value" id="stat-latest">—</span><span class="stat__label">Latest entry</span></div>
-      </div>
-    </section>
-
-    <!-- ==================== INTRO ==================== -->
-    <section class="section">
-      <div class="container">
-        <div class="intro-grid">
-          <div class="intro-heading">
-            <span class="section-number">§ 01</span>
-            <h2>About the project</h2>
+          <div class="entry-hero__photo">
+            <figure class="polaroid polaroid--hero polaroid--center" style="--tilt: 2.5deg">
+              <span class="polaroid__photo">
+                <img
+                  src="assets/img/hero/hero.jpg"
+                  alt="A red pouf, a small wooden table and a quilted cushion left in front of a grey carriage door"
+                  width="1057" height="594"
+                  fetchpriority="high"
+                  onerror="this.parentElement.classList.add('is-missing'); this.remove();"
+                />
+              </span>
+              <figcaption class="polaroid__note">left at the door, Paris</figcaption>
+            </figure>
           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== О ПРОЕКТЕ + ЧЕК ==================== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="usage-grid">
 
           <!--
             ТЕКСТ НА ГЛАВНОЙ:
             Меняй содержимое абзацев, не трогая HTML-структуру.
           -->
-          <div class="intro">
-            <p class="intro__lead">My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
+          <div class="usage">
+            <span class="section-number">§ 01 — usage</span>
+            <h2>about the project <span class="pos">phr.</span></h2>
+            <p class="usage__lead">My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
             <p>And so this is Garbage of Paris. Bags, bins, stains, objects, signs. The private made public. The interior made exterior.</p>
             <p>Interpretations are left to the viewer.</p>
 
-            <figure class="pull-quote">
-              <blockquote><p>Trash is the ideal object of contemplation.</p></blockquote>
-              <a href="manifesto.html" class="link-arrow">Read the full manifesto <span aria-hidden="true">→</span></a>
-            </figure>
+            <span class="margin-note">“Trash is the ideal object of contemplation.”</span>
 
-            <div class="intro__social">
-              <a href="https://www.instagram.com/garbageofparis" class="btn btn--accent" target="_blank" rel="noopener">Instagram ↗</a>
-              <a href="https://t.me/garbageofparis" class="btn btn--ghost" target="_blank" rel="noopener">Telegram ↗</a>
+            <div class="actions">
+              <a href="https://www.instagram.com/garbageofparis" class="btn" target="_blank" rel="noopener">instagram ↗</a>
+              <a href="https://t.me/garbageofparis" class="btn" target="_blank" rel="noopener">telegram ↗</a>
             </div>
           </div>
+
+          <!-- Чек: цифры считаются автоматически из data.js -->
+          <aside class="receipt" aria-label="The archive in numbers">
+            <p class="receipt__title">Garbage of Paris</p>
+            <p class="receipt__sub">inventory · rue de partout</p>
+            <hr class="receipt__rule" />
+            <p class="receipt__row"><span>photographs</span><b id="stat-photos">—</b></p>
+            <p class="receipt__row"><span>places</span><b id="stat-places">—</b></p>
+            <p class="receipt__row"><span>categories</span><b id="stat-categories">—</b></p>
+            <p class="receipt__row"><span>last find</span><b id="stat-latest">—</b></p>
+            <hr class="receipt__rule" />
+            <p class="receipt__row receipt__total"><span>total paid</span><b>0,00 €</b></p>
+            <p class="receipt__thanks">merci · no refunds · no returns</p>
+            <span class="receipt__stamp" aria-hidden="true">free!</span>
+          </aside>
+
         </div>
       </div>
     </section>
 
-    <!-- ==================== LATEST OBSERVATIONS ==================== -->
+    <!-- ==================== ПОСЛЕДНИЕ НАХОДКИ ==================== -->
     <section class="section" style="padding-top: 0;">
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-number">§ 02</span>
-            <h2>Latest observations</h2>
+            <span class="section-number">§ 02 — latest</span>
+            <h2>fresh finds <span class="pos">n., pl.</span></h2>
           </div>
-          <a href="gallery.html" class="link-arrow">View all <span aria-hidden="true">→</span></a>
+          <a href="gallery.html" class="hand-link">see all of them →</a>
         </div>
 
-        <!--
-          Этот блок заполняется автоматически из data.js
-          (последние 4 фотографии по дате).
-          Ничего не меняй здесь.
-        -->
-        <div class="latest-grid" id="latest-grid">
-          <!-- Заполняется через main.js из data.js -->
-        </div>
+        <!-- Заполняется автоматически из data.js (4 последних фото) -->
+        <div class="latest-grid" id="latest-grid"></div>
       </div>
     </section>
 
-    <!-- ==================== ССЫЛКИ НА РАЗДЕЛЫ ==================== -->
+    <!-- ==================== РАЗДЕЛЫ ==================== -->
     <section class="section" style="padding-top: 0; padding-bottom: 0;">
       <div class="container">
         <div class="index-cards">
 
           <a class="index-card" href="gallery.html">
-            <span class="section-number">§ 03</span>
-            <h3>Gallery</h3>
+            <span class="index-card__head"><span>§ 03</span><span>GOP-GAL</span></span>
+            <h3>gallery</h3>
             <p>All photographs, filterable by year and category.</p>
-            <span class="link-arrow">Open gallery <span aria-hidden="true">→</span></span>
+            <span class="hand-link">open →</span>
           </a>
 
           <a class="index-card" href="archive.html">
-            <span class="section-number">§ 04</span>
-            <h3>Archive</h3>
-            <p>Observations indexed by year. A field log.</p>
-            <span class="link-arrow">Open archive <span aria-hidden="true">→</span></span>
+            <span class="index-card__head"><span>§ 04</span><span>GOP-ARC</span></span>
+            <h3>archive</h3>
+            <p>Every find, indexed by year. A dictionary of the street.</p>
+            <span class="hand-link">open →</span>
           </a>
 
           <a class="index-card" href="manifesto.html">
-            <span class="section-number">§ 05</span>
-            <h3>Manifesto</h3>
-            <p>If you want to know more.</p>
-            <span class="link-arrow">Read manifesto <span aria-hidden="true">→</span></span>
+            <span class="index-card__head"><span>§ 05</span><span>GOP-MAN</span></span>
+            <h3>manifesto</h3>
+            <p>If you want to know more. In English and en français.</p>
+            <span class="hand-link">read →</span>
           </a>
 
         </div>
@@ -195,27 +200,27 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
-      <div class="footer-inner">
-        <p class="footer-left">Visual sociology. Paris, 2022–</p>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="gallery.html">Gallery</a>
-          <a href="archive.html">Archive</a>
-          <a href="manifesto.html">Manifesto</a>
-          <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
-        </nav>
-      </div>
-      <p class="footer-copy">
-        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
-        <span>garbageofparis.fr</span>
+      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-def">
+        <span class="struck">Things nobody wants.</span>
+        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="gallery.html">gallery</a>
+          <a href="archive.html">archive</a>
+          <a href="manifesto.html">manifesto</a>
+          <a href="about.html">about</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
+        </nav>
+        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+      </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
 
   <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>

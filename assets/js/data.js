@@ -5,23 +5,26 @@
 
   Это главный файл данных. Все фотографии хранятся здесь.
 
-  КАК ДОБАВИТЬ НОВОЕ ФОТО:
+  САМЫЙ ПРОСТОЙ СПОСОБ ДОБАВИТЬ ФОТО — страница studio.html
+  (garbageofparis.fr/studio.html): выбери фото, заполни поля,
+  нажми «Publish». Этот файл обновится сам.
+
+  ВРУЧНУЮ:
   1. Загрузи изображение в папку assets/img/gallery/
-  2. Скопируй один объект ниже и добавь его в массив
+  2. Скопируй один блок { ... } ниже, вставь его и поменяй значения
   3. Сохрани файл — галерея, архив и главная обновятся сами
 
   ПОЛЯ:
-  - title:    короткое название (показывается в галерее)
+  - title:    короткое название
   - image:    путь к файлу от корня сайта
-  - year:     год съёмки, например "2025" — используется для фильтров
-              (если не указать, возьмётся из date)
-  - date:     "2025-05-12" — ISO формат, для сортировки
+  - date:     дата съёмки "2025-05-12" (год — первые 4 цифры)
   - location: район или адрес в Париже
-  - category: одна из: bins / streets / leftovers / signs / objects / accidents / traces
+  - category: одна из категорий в списке CATEGORIES внизу файла
   - caption:  подпись к фото (одна-две фразы)
-  - alt:      описание того, что на фото, для скринридеров (accessibility)
+  - alt:      что изображено на фото — для незрячих читателей
 
   Порядок в массиве не важен — сортировка по дате автоматическая.
+  Следи за запятыми между блоками и кавычками вокруг текста.
   ============================================================
 */
 
@@ -31,7 +34,6 @@ const photos = [
   {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
-    year: "2026",
     date: "2026-04-06",
     location: "Stalingrad",
     category: "leftovers",
@@ -43,7 +45,6 @@ const photos = [
   {
     title: "Nike shoe",
     image: "assets/img/gallery/photo_2025-12-30_19-50-29.jpg",
-    year: "2025",
     date: "2025-12-30",
     location: "Madeleine",
     category: "objects",
@@ -53,7 +54,6 @@ const photos = [
   {
     title: "Cis men",
     image: "assets/img/gallery/photo_2025-12-20_16-36-12.jpg",
-    year: "2025",
     date: "2025-12-20",
     location: "Paris",
     category: "signs",
@@ -63,7 +63,6 @@ const photos = [
   {
     title: "Some basic trash",
     image: "assets/img/gallery/photo_2025-11-19_10-48-22.jpg",
-    year: "2025",
     date: "2025-11-19",
     location: "Paris",
     category: "bins",
@@ -73,7 +72,6 @@ const photos = [
   {
     title: "Red umbrella",
     image: "assets/img/gallery/photo_2025-10-13_10-51-22.jpg",
-    year: "2025",
     date: "2025-10-13",
     location: "Saint-Michel-Notre-Dame",
     category: "objects",
@@ -83,7 +81,6 @@ const photos = [
   {
     title: "After the party",
     image: "assets/img/gallery/photo_2025-09-11_13-30-12.jpg",
-    year: "2025",
     date: "2025-09-11",
     location: "Saint-Michel-Notre-Dame",
     category: "leftovers",
@@ -95,7 +92,6 @@ const photos = [
   {
     title: "Garbage",
     image: "assets/img/gallery/photo_2024-09-15_22-35-06.jpg",
-    year: "2024",
     date: "2024-09-15",
     location: "Paris",
     category: "bins",
@@ -105,7 +101,6 @@ const photos = [
   {
     title: "Bread and shoes",
     image: "assets/img/gallery/photo_2024-08-04_18-39-15.jpg",
-    year: "2024",
     date: "2024-08-04",
     location: "Paris",
     category: "objects",
@@ -115,7 +110,6 @@ const photos = [
   {
     title: "Add some pink",
     image: "assets/img/gallery/photo_2024-07-01_14-47-06.jpg",
-    year: "2024",
     date: "2024-07-01",
     location: "1e arrondissement",
     category: "bins",
@@ -125,20 +119,19 @@ const photos = [
   {
     title: "Business as usual",
     image: "assets/img/gallery/photo_2024-06-20_00-28-22.jpg",
-    year: "2024",
     date: "2024-06-20",
     location: "Paris",
     category: "streets",
     caption: "Someone is always too busy to notice.",
     alt: "A full street bin and black rubbish bags on the pavement, a man in a suit checking his phone nearby"
-  },
+  }
 
 ];
 
 /*
   КАТЕГОРИИ — порядок, в котором показываются фильтры.
-  В галерее появляются только те категории, у которых есть хотя бы одно фото.
-  Если добавляешь новую категорию, добавь её также сюда.
+  В галерее появляются только категории, в которых есть фото.
+  Новую категорию можно просто дописать в список.
 */
 
 const CATEGORIES = [
