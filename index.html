@@ -3,23 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garbage of Paris - A visual sociology of waste</title>
+  <title>Garbage of Paris — A visual sociology of waste</title>
   <meta name="description" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
+  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
 
-  <!-- Шрифты: Archivo Narrow (навигация, метки) + IM Fell English (тексты) -->
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="Garbage of Paris — A visual sociology of waste" />
+  <meta property="og:description" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
+  <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="page-offset">
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">Garbage of Paris</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">≡</button>
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
+        <span>Garbage of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -30,176 +48,177 @@
     </nav>
   </header>
 
-  <!-- ==================== ГЕРОЙ ==================== -->
-  <section class="hero">
-    <div class="hero__inner">
+  <main id="main">
 
-      <p class="hero__label">Paris — 2022–2026 — Visual Sociology</p>
+    <!-- ==================== ГЕРОЙ ==================== -->
+    <section class="hero">
+      <div class="hero__inner">
 
-      <h1 class="hero__title">Garbage<br>of Paris</h1>
-      <p class="hero__subtitle">A visual sociology of waste, traces and urban life</p>
+        <div class="hero__top">
+          <p class="hero__label">Paris — 2022–now</p>
+          <p class="hero__label">Visual sociology / field log</p>
+        </div>
 
-      <!--
-        ФОТО ГЕРОЯ:
-        Замени src на путь к своему главному фото.
-        Рекомендуемый размер: 1800×900px или шире.
-        Если фото ещё нет — блок-заглушка отображается автоматически.
-      -->
-      <div class="hero__image--placeholder" id="hero-image-wrap" aria-hidden="true">
-        <img
-          src="assets/img/hero/hero.jpg"
-          alt="Garbage bins on a Paris street"
-          class="hero__image"
-          id="hero-img"
-          onerror="this.closest('.hero__image--placeholder') && this.style.display='none'"
-        />
-        <span id="hero-placeholder-text" style="display:none">[ hero photograph ]</span>
+        <h1 class="hero__title">Garbage <em>of</em> Paris</h1>
+
+        <div class="hero__grid">
+          <div class="hero__aside">
+            <p class="hero__subtitle">A visual sociology of waste, traces and urban life.</p>
+            <div class="hero__links">
+              <a href="gallery.html" class="btn btn--solid">View gallery →</a>
+              <a href="manifesto.html" class="btn btn--ghost">Read manifesto</a>
+            </div>
+          </div>
+
+          <!--
+            ФОТО ГЕРОЯ:
+            Замени src на путь к своему главному фото.
+            Рекомендуемый размер: 1800×1000px или шире (пропорции 16:9).
+            Если фото нет — показывается серая заглушка.
+          -->
+          <figure class="hero__figure">
+            <div class="hero__image-wrap">
+              <img
+                src="assets/img/hero/hero.jpg"
+                alt="A red pouf, a small wooden table and a quilted cushion left in front of a grey carriage door"
+                class="hero__image"
+                width="1057" height="594"
+                fetchpriority="high"
+                onerror="this.parentElement.classList.add('is-missing'); this.remove();"
+              />
+            </div>
+            <figcaption class="hero__figcaption">
+              <span>fig. 00 — Left at the door</span>
+              <span>Paris</span>
+            </figcaption>
+          </figure>
+        </div>
+
       </div>
+    </section>
 
-      <div class="hero__links">
-        <a href="gallery.html" class="btn">View gallery</a>
-        <a href="manifesto.html" class="btn btn--ghost">Read manifesto</a>
-        <a href="https://www.instagram.com/garbageofparis" class="btn btn--ghost" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://t.me/garbageofparis" class="btn btn--ghost" target="_blank" rel="noopener">Telegram</a>
+    <!-- ==================== СЧЁТЧИКИ (заполняются из data.js) ==================== -->
+    <section class="container" aria-label="The archive in numbers">
+      <div class="stats">
+        <div class="stat"><span class="stat__value" id="stat-photos">—</span><span class="stat__label">Photographs</span></div>
+        <div class="stat"><span class="stat__value" id="stat-places">—</span><span class="stat__label">Places</span></div>
+        <div class="stat"><span class="stat__value" id="stat-categories">—</span><span class="stat__label">Categories</span></div>
+        <div class="stat"><span class="stat__value" id="stat-latest">—</span><span class="stat__label">Latest entry</span></div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ==================== INTRO ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-heading">
+            <span class="section-number">§ 01</span>
+            <h2>About the project</h2>
+          </div>
 
-  <!-- ==================== INTRO ==================== -->
-  <section class="section section--sm">
-    <div class="container">
-      <div class="intro">
-        <span class="section-number">§ 01</span>
-        <h2 style="margin-bottom: 1.2rem; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.07em;">About the project</h2>
+          <!--
+            ТЕКСТ НА ГЛАВНОЙ:
+            Меняй содержимое абзацев, не трогая HTML-структуру.
+          -->
+          <div class="intro">
+            <p class="intro__lead">My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
+            <p>And so this is Garbage of Paris. Bags, bins, stains, objects, signs. The private made public. The interior made exterior.</p>
+            <p>Interpretations are left to the viewer.</p>
+
+            <figure class="pull-quote">
+              <blockquote><p>Trash is the ideal object of contemplation.</p></blockquote>
+              <a href="manifesto.html" class="link-arrow">Read the full manifesto <span aria-hidden="true">→</span></a>
+            </figure>
+
+            <div class="intro__social">
+              <a href="https://www.instagram.com/garbageofparis" class="btn btn--accent" target="_blank" rel="noopener">Instagram ↗</a>
+              <a href="https://t.me/garbageofparis" class="btn btn--ghost" target="_blank" rel="noopener">Telegram ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LATEST OBSERVATIONS ==================== -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-number">§ 02</span>
+            <h2>Latest observations</h2>
+          </div>
+          <a href="gallery.html" class="link-arrow">View all <span aria-hidden="true">→</span></a>
+        </div>
 
         <!--
-          ТЕКСТ НА ГЛАВНОЙ:
-          Меняй содержимое абзацев, не трогая HTML-структуру.
+          Этот блок заполняется автоматически из data.js
+          (последние 4 фотографии по дате).
+          Ничего не меняй здесь.
         -->
-        <p>My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
-
-        <p>And so this is Garbage of Paris. Bags, bins, stains, objects, signs. The private made public. The interior made exterior.</p>
-
-        <p>Interpretations are left to the viewer.</p>
-
-        <div class="intro__manifesto-preview mt-md">
-          <p>"Trash is the ideal object of contemplation"</p>
-          <a href="manifesto.html" class="link-arrow">Read the full manifesto →</a>
-        </div>
-
-        <div class="intro__social mt-md">
-          <a href="https://www.instagram.com/garbageofparis" class="btn btn--accent" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://t.me/garbageofparis" class="btn btn--ghost" target="_blank" rel="noopener">Telegram</a>
+        <div class="latest-grid" id="latest-grid">
+          <!-- Заполняется через main.js из data.js -->
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <hr class="divider" />
+    <!-- ==================== ССЫЛКИ НА РАЗДЕЛЫ ==================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="container">
+        <div class="index-cards">
 
-  <!-- ==================== LATEST OBSERVATIONS ==================== -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Latest observations</h2>
-        <a href="gallery.html" class="link-arrow">View all →</a>
-      </div>
+          <a class="index-card" href="gallery.html">
+            <span class="section-number">§ 03</span>
+            <h3>Gallery</h3>
+            <p>All photographs, filterable by year and category.</p>
+            <span class="link-arrow">Open gallery <span aria-hidden="true">→</span></span>
+          </a>
 
-      <!--
-        Этот блок заполняется автоматически из data.js
-        (последние 4 фотографии по дате).
-        Ничего не меняй здесь.
-      -->
-      <div class="latest-grid" id="latest-grid">
-        <!-- Заполняется через main.js из data.js -->
-      </div>
-    </div>
-  </section>
+          <a class="index-card" href="archive.html">
+            <span class="section-number">§ 04</span>
+            <h3>Archive</h3>
+            <p>Observations indexed by year. A field log.</p>
+            <span class="link-arrow">Open archive <span aria-hidden="true">→</span></span>
+          </a>
 
-  <hr class="divider" />
+          <a class="index-card" href="manifesto.html">
+            <span class="section-number">§ 05</span>
+            <h3>Manifesto</h3>
+            <p>If you want to know more.</p>
+            <span class="link-arrow">Read manifesto <span aria-hidden="true">→</span></span>
+          </a>
 
-  <!-- ==================== ССЫЛКИ НА РАЗДЕЛЫ ==================== -->
-  <section class="section section--sm">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border);">
-
-        <div style="background: var(--white); padding: 2rem;">
-          <span class="section-number">§ 02</span>
-          <h3 style="margin-bottom: 0.8rem;">Gallery</h3>
-          <p style="font-size: 0.875rem; color: var(--grey-dark); margin-bottom: 1.2rem;">
-            All photographs, filterable by year and category.
-          </p>
-          <a href="gallery.html" class="btn">Open gallery</a>
         </div>
-
-        <div style="background: var(--white); padding: 2rem;">
-          <span class="section-number">§ 03</span>
-          <h3 style="margin-bottom: 0.8rem;">Archive</h3>
-          <p style="font-size: 0.875rem; color: var(--grey-dark); margin-bottom: 1.2rem;">
-            Observations indexed by year. A field log.
-          </p>
-          <a href="archive.html" class="btn">Open archive</a>
-        </div>
-
-        <div style="background: var(--white); padding: 2rem;">
-          <span class="section-number">§ 04</span>
-          <h3 style="margin-bottom: 0.8rem;">Manifesto</h3>
-          <p style="font-size: 0.875rem; color: var(--grey-dark); margin-bottom: 1.2rem;">
-            If you want to know more
-          </p>
-          <a href="manifesto.html" class="btn">Read manifesto</a>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
       <div class="footer-inner">
-        <div class="footer-left">
-          <strong>Garbage of Paris</strong>
-          <p>Visual sociology. Paris, 2024–</p>
-        </div>
+        <p class="footer-left">Visual sociology. Paris, 2022–</p>
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="gallery.html">Gallery</a>
           <a href="archive.html">Archive</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
         </nav>
       </div>
-      <p class="footer-copy">© Garbage of Paris. All photographs by Snezhana.</p>
+      <p class="footer-copy">
+        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
+        <span>garbageofparis.fr</span>
+      </p>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" aria-label="Back to top">↑ top</button>
+  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
 
   <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
-
-  <!-- Фикс для placeholder героя -->
-  <script>
-    (function() {
-      var img = document.getElementById('hero-img');
-      var placeholder = document.getElementById('hero-placeholder-text');
-      var wrap = document.getElementById('hero-image-wrap');
-      if (img) {
-        img.addEventListener('error', function() {
-          img.style.display = 'none';
-          if (placeholder) placeholder.style.display = '';
-        });
-        img.addEventListener('load', function() {
-          if (placeholder) placeholder.style.display = 'none';
-        });
-      }
-    })();
-  </script>
-
 </body>
 </html>
