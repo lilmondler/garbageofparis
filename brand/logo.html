@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Logo — Garbage of Paris</title>
+<!--
+  ИСХОДНИК ЛОГОТИПОВ.
+  Каждый логотип — квадрат 1080×1080 (.art). PNG-файлы в этой папке
+  сняты с этой страницы. Аватары в Instagram и Telegram круглые,
+  поэтому всё важное держится внутри центрального круга.
+-->
+<link rel="stylesheet" href="../assets/css/fonts.css" />
+<style>
+  :root {
+    --paper: #f5f1e9; --card: #fdfcf7; --ink: #1c1b18; --grey: #7a756b;
+    --blue: #233f8f; --red: #cf3b2c; --tape: rgba(231, 220, 182, 0.9);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ccc; padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; font-family: 'Literata', serif; }
+  .art {
+    position: relative; width: 1080px; height: 1080px; overflow: hidden; flex: none;
+    background: var(--paper) var(--grain);
+    color: var(--ink);
+  }
+  .art svg.layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .hand { font-family: 'Caveat', cursive; font-weight: 700; color: var(--blue); }
+  .serif { font-family: 'Literata', serif; font-weight: 900; }
+
+  /* ---------- 1. Монограмма «g» ---------- */
+  #mono .g {
+    position: absolute; left: 50%; top: 47%;
+    transform: translate(-50%, -50%);
+    font-size: 840px; line-height: 1; letter-spacing: -0.04em;
+  }
+  #mono .note {
+    position: absolute; left: 520px; top: 690px;
+    font-size: 150px; line-height: 1; transform: rotate(-9deg); white-space: nowrap;
+  }
+
+  /* ---------- 2. Словарная статья ---------- */
+  #entry .kick {
+    position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+    font-size: 64px; color: #3b3934; font-weight: 600;
+  }
+  #entry .word {
+    position: absolute; left: 0; right: 0; top: 360px; text-align: center;
+    font-size: 262px; line-height: 1; letter-spacing: -0.05em;
+  }
+  #entry .note {
+    position: absolute; left: 0; right: 0; top: 670px; text-align: center;
+    font-size: 132px; line-height: 1; transform: rotate(-4deg);
+  }
+
+  /* ---------- 3. Штамп ---------- */
+  #stamp .g {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -57%) rotate(-6deg);
+    font-size: 440px; line-height: 1; color: var(--ink);
+  }
+  #stamp .ring { mix-blend-mode: multiply; }
+
+  /* ---------- 4. Полароид ---------- */
+  #pola .frame {
+    position: absolute; left: 50%; top: 50%; width: 600px;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    background: var(--card); padding: 34px 34px 0;
+    box-shadow: 0 4px 8px rgba(40,30,10,.12), 0 50px 70px -30px rgba(40,30,10,.5);
+  }
+  #pola .frame::before {
+    content: ''; position: absolute; top: -40px; left: 50%; width: 260px; height: 76px;
+    transform: translateX(-50%) rotate(3deg); background: var(--tape);
+    clip-path: polygon(3% 0, 97% 4%, 100% 22%, 97% 45%, 100% 70%, 96% 100%, 2% 96%, 0 74%, 3% 50%, 0 26%);
+  }
+  #pola .photo { width: 100%; aspect-ratio: 1; overflow: hidden; background: #ddd; }
+  #pola .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  #pola .cap { text-align: center; font-size: 92px; line-height: 1; padding: 22px 0 34px; }
+
+  /* ---------- 5. Тёмная монограмма ---------- */
+  #dark { background: #1c1b18 var(--grain); color: var(--paper); }
+  #dark .g {
+    position: absolute; left: 50%; top: 47%; transform: translate(-50%, -50%);
+    font-size: 840px; line-height: 1; letter-spacing: -0.04em; color: var(--paper);
+  }
+  #dark .note {
+    position: absolute; left: 520px; top: 690px; font-size: 150px; line-height: 1;
+    transform: rotate(-9deg); white-space: nowrap; color: #8fa6ec;
+  }
+
+  /* ---------- 6. Карточка-превью ссылки 1200×630 ---------- */
+  #banner { width: 1200px; height: 630px; }
+  #banner .inner { position: absolute; left: 96px; top: 70px; right: 96px; }
+  #banner .kick { font-size: 46px; color: #3b3934; font-weight: 600; line-height: 1; }
+  #banner .word { display: flex; align-items: baseline; gap: 26px; margin-top: 18px; font-size: 212px; line-height: 0.95; letter-spacing: -0.05em; }
+  #banner .word i { font-family: 'Literata', serif; font-style: italic; font-weight: 400; font-size: 52px; letter-spacing: 0; color: var(--grey); }
+  #banner .struck { margin-top: 62px; font-size: 40px; color: var(--grey); font-weight: 400; text-decoration: line-through wavy #cf3b2c; text-decoration-thickness: 3px; text-decoration-skip-ink: none; }
+  #banner .note { display: flex; align-items: flex-start; gap: 18px; margin: 10px 0 0 40px; font-size: 76px; line-height: 1; transform: rotate(-1.5deg); }
+  #banner .note svg { width: 40px; height: 40px; margin-top: 14px; flex: none; }
+  #banner .url { position: absolute; right: 96px; bottom: 70px; font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 28px; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- 1. Монограмма -->
+<div class="art" id="mono">
+  <svg class="layer" viewBox="0 0 1080 1080" aria-hidden="true">
+    <text x="540" y="610" text-anchor="middle" font-family="Literata" font-weight="900" font-size="660" letter-spacing="-20" fill="#1c1b18">g</text>
+    <path d="M250 455 C 300 420, 335 492, 395 457 S 490 422, 545 459 S 640 494, 700 457 S 790 422, 835 455"
+      fill="none" stroke="#cf3b2c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M300 905 L 330 845 L 360 905" fill="none" stroke="#233f8f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="575" y="905" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="128" fill="#233f8f" transform="rotate(-5 575 880)">of Paris</text>
+  </svg>
+</div>
+
+<!-- 2. Словарная статья -->
+<div class="art" id="entry">
+  <svg class="layer" viewBox="0 0 1080 1080" aria-hidden="true">
+    <text x="540" y="380" text-anchor="middle" font-family="Caveat" font-weight="600" font-size="62" fill="#3b3934">dictionary of the street</text>
+    <text x="540" y="590" text-anchor="middle" font-family="Literata" font-weight="900" font-size="212" letter-spacing="-10" fill="#1c1b18">garbage</text>
+    <path d="M205 528 C 245 503, 278 553, 325 528 S 405 503, 450 530 S 530 556, 575 528 S 655 503, 700 530 S 780 555, 875 526"
+      fill="none" stroke="#cf3b2c" stroke-width="11" stroke-linecap="round"/>
+    <path d="M300 770 L 326 718 L 352 770" fill="none" stroke="#233f8f" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="560" y="772" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="124" fill="#233f8f" transform="rotate(-4 560 750)">of Paris</text>
+  </svg>
+</div>
+
+<!-- 3. Штамп -->
+<div class="art" id="stamp">
+  <svg class="layer ring" viewBox="0 0 1080 1080" aria-hidden="true">
+    <defs>
+      <path id="ringPath" d="M540 540 m -303 0 a 303 303 0 1 1 606 0 a 303 303 0 1 1 -606 0"/>
+      <filter id="worn" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2 1.85" result="m"/>
+        <feComposite in="SourceGraphic" in2="m" operator="in"/>
+      </filter>
+    </defs>
+    <g filter="url(#worn)" transform="rotate(-8 540 540)">
+      <circle cx="540" cy="540" r="405" fill="none" stroke="#cf3b2c" stroke-width="18"/>
+      <circle cx="540" cy="540" r="378" fill="none" stroke="#cf3b2c" stroke-width="6"/>
+      <circle cx="540" cy="540" r="262" fill="none" stroke="#cf3b2c" stroke-width="6"/>
+      <text font-family="Courier Prime, monospace" font-weight="700" font-size="64" fill="#cf3b2c">
+        <textPath href="#ringPath" startOffset="0" textLength="1870" lengthAdjust="spacing">GARBAGE OF PARIS ✶ DICTIONARY OF THE STREET ✶ </textPath>
+      </text>
+    </g>
+    <text x="540" y="598" text-anchor="middle" font-family="Literata" font-weight="900" font-size="410" fill="#1c1b18" transform="rotate(-6 540 540)">g</text>
+  </svg>
+</div>
+
+<!-- 4. Полароид -->
+<div class="art" id="pola">
+  <div class="frame">
+    <div class="photo"><img src="../assets/img/gallery/photo_2025-10-13_10-51-22.jpg" alt="" /></div>
+    <p class="cap hand">garbage of Paris</p>
+  </div>
+</div>
+
+<!-- 5. Тёмная монограмма -->
+<div class="art" id="dark">
+  <svg class="layer" viewBox="0 0 1080 1080" aria-hidden="true">
+    <text x="540" y="610" text-anchor="middle" font-family="Literata" font-weight="900" font-size="660" letter-spacing="-20" fill="#f5f1e9">g</text>
+    <path d="M250 455 C 300 420, 335 492, 395 457 S 490 422, 545 459 S 640 494, 700 457 S 790 422, 835 455"
+      fill="none" stroke="#e5513f" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M300 905 L 330 845 L 360 905" fill="none" stroke="#9bb0f0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="575" y="905" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="128" fill="#9bb0f0" transform="rotate(-5 575 880)">of Paris</text>
+  </svg>
+</div>
+
+<!-- 6. Карточка-превью ссылки (og:image) -->
+<div class="art" id="banner">
+  <div class="inner">
+    <p class="kick hand" style="color:#3b3934;font-weight:600;">dictionary of the street · Paris, 2022 —</p>
+    <p class="word serif">garbage <i>n.</i></p>
+    <p class="struck">1. Waste material; things that are thrown away.</p>
+    <p class="note hand">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="#233f8f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>the private made public</span>
+    </p>
+  </div>
+  <span class="url">garbageofparis.fr</span>
+</div>
+
+</body>
+</html>
