@@ -59,6 +59,15 @@ const photos = [
     alt: ""
   },
   {
+    title: "Basics",
+    image: "assets/img/gallery/2026-04-18_basics.jpg",
+    date: "2026-04-18",
+    location: "1e arrondissement",
+    category: "bins",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     date: "2026-04-06",
