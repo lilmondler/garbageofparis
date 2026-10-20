@@ -32,6 +32,15 @@ const photos = [
 
   // — 2026 —
   {
+    title: "Decay",
+    image: "assets/img/gallery/2026-10-18_decay.jpg",
+    date: "2026-10-18",
+    location: "Châtelet Les Halles",
+    category: "traces",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     date: "2026-04-06",
