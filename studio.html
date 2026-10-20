@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Garbage of Paris</title>
+  <meta name="description" content="Add new photographs to Garbage of Paris." />
+  <meta name="theme-color" content="#f5f1e9" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="Studio — Garbage of Paris" />
+  <meta property="og:description" content="Add new photographs to Garbage of Paris." />
+  <meta property="og:image" content="https://garbageofparis.fr/assets/img/hero/hero.jpg" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Literata (заголовки и текст) + Caveat (рукописные пометки) + Courier Prime (бирки).
+       Файлы лежат в assets/fonts — без Google Fonts. -->
+  <link rel="preload" href="assets/fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/caveat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/studio.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+        <span class="nav-logo__word">garbage</span>
+        <span class="nav-logo__note">of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">home</a></li>
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="archive.html">archive</a></li>
+        <li><a href="manifesto.html">manifesto</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!--
+      STUDIO — страница для добавления фото на сайт.
+      Её нет в меню, поисковики её не индексируют.
+      Без токена GitHub она ничего не может изменить.
+    -->
+    <header class="page-head">
+      <div class="container">
+        <div class="page-head__grid">
+          <div>
+            <p class="kicker">§ 00 · только для своих</p>
+            <h1>studio <span class="pos">n.</span></h1>
+            <p class="page-head__def"><b>1.</b>Место, куда приносят новый мусор.</p>
+          </div>
+          <p class="page-head__note">выбери фото, подпиши, нажми «опубликовать» — всё</p>
+        </div>
+        <hr class="page-head__rule" />
+      </div>
+    </header>
+
+    <section class="section section--tight-top">
+      <div class="container studio">
+
+        <!-- ========== ПОДКЛЮЧЕНИЕ К GITHUB ========== -->
+        <section class="studio-card studio-connect" id="connect" aria-labelledby="connect-title">
+          <div class="studio-card__head">
+            <h2 id="connect-title">1. подключение</h2>
+            <p class="studio-status" id="connect-status">не подключено</p>
+          </div>
+
+          <div id="connect-form">
+            <p>Чтобы сайт мог сам сохранять фото в репозиторий, нужен <b>ключ доступа GitHub</b>. Его создают один раз, и он хранится только в этом браузере.</p>
+            <ol class="studio-steps">
+              <li>Открой <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com → новый ключ (fine-grained token)</a>.</li>
+              <li><b>Token name</b>: например, <code>garbage studio</code>. <b>Expiration</b>: 1 год (или сколько хочешь).</li>
+              <li><b>Repository access</b> → <i>Only select repositories</i> → выбери <code>garbageofparis</code>.</li>
+              <li><b>Permissions</b> → <b>Contents</b> → <i>Read and write</i>.</li>
+              <li>Нажми <b>Generate token</b>, скопируй ключ (начинается с <code>github_pat_</code>) и вставь сюда:</li>
+            </ol>
+            <form class="studio-row" id="token-form" autocomplete="off">
+              <label class="sr-only" for="token-input">Ключ GitHub</label>
+              <input class="studio-input" id="token-input" type="password" autocomplete="new-password" placeholder="github_pat_…" spellcheck="false" required />
+              <button class="btn btn--ink" type="submit">подключить</button>
+            </form>
+          </div>
+
+          <div id="connect-done" hidden>
+            <p>Подключено к <code id="repo-label"></code>. Ключ хранится только в этом браузере — на другом телефоне или компьютере его нужно будет вставить ещё раз.</p>
+            <div class="actions">
+              <button class="hand-link" type="button" id="forget-token">забыть ключ</button>
+            </div>
+          </div>
+
+          <details class="studio-advanced">
+            <summary>настройки репозитория</summary>
+            <div class="studio-grid studio-grid--3">
+              <label>владелец<input type="text" class="studio-input" id="cfg-owner" spellcheck="false" /></label>
+              <label>репозиторий<input type="text" class="studio-input" id="cfg-repo" spellcheck="false" /></label>
+              <label>ветка<input type="text" class="studio-input" id="cfg-branch" spellcheck="false" /></label>
+            </div>
+          </details>
+        </section>
+
+        <!-- ========== НОВАЯ НАХОДКА ========== -->
+        <section class="studio-card" aria-labelledby="form-title">
+          <div class="studio-card__head">
+            <h2 id="form-title">2. новая находка</h2>
+            <button class="hand-link" type="button" id="cancel-edit" hidden>отменить редактирование</button>
+          </div>
+
+          <form id="photo-form" class="studio-form" novalidate>
+            <div class="studio-form__fields">
+
+              <label class="studio-drop" id="drop">
+                <input type="file" id="f-file" accept="image/*" />
+                <span class="studio-drop__text" id="drop-text">
+                  <b>выбрать фото</b>
+                  <span>или перетащи его сюда · JPG, PNG, WebP · с телефона можно прямо из галереи</span>
+                </span>
+              </label>
+              <p class="studio-hint" id="file-info"></p>
+
+              <div class="studio-grid">
+                <label>название *
+                  <input type="text" class="studio-input" id="f-title" maxlength="80" required placeholder="Red umbrella" />
+                </label>
+                <label>дата съёмки *
+                  <input class="studio-input" id="f-date" type="date" required />
+                </label>
+                <label>место
+                  <input type="text" class="studio-input" id="f-location" list="locations" placeholder="Saint-Michel" />
+                  <datalist id="locations"></datalist>
+                </label>
+                <label>категория *
+                  <select class="studio-input" id="f-category" required></select>
+                </label>
+                <label id="new-cat-wrap" hidden>новая категория
+                  <input type="text" class="studio-input" id="f-new-category" placeholder="например: furniture" />
+                </label>
+              </div>
+
+              <label>подпись
+                <textarea class="studio-input" id="f-caption" rows="2" placeholder="Even the trash is protected from the autumn rain."></textarea>
+              </label>
+              <label>что на фото (для незрячих читателей)
+                <textarea class="studio-input" id="f-alt" rows="2" placeholder="An open red umbrella stuck in a metal street bin"></textarea>
+                <span class="studio-hint">коротко и по-английски, как будто описываешь фото по телефону</span>
+              </label>
+
+              <div class="studio-submit">
+                <button class="btn btn--ink" type="submit" id="publish-btn">опубликовать на сайте</button>
+                <p class="studio-hint" id="publish-hint">сначала подключи GitHub (шаг 1)</p>
+              </div>
+
+              <details class="studio-advanced" id="manual">
+                <summary>без GitHub: скачать фото и текст для data.js</summary>
+                <p>Если не хочешь подключать ключ: скачай сжатое фото, загрузи его на GitHub в папку <code>assets/img/gallery/</code> и вставь скопированный текст в <code>assets/js/data.js</code>.</p>
+                <div class="actions">
+                  <button class="btn" type="button" id="download-photo">скачать фото</button>
+                  <button class="btn" type="button" id="copy-entry">скопировать запись</button>
+                </div>
+              </details>
+            </div>
+
+            <!-- Живое превью: так фото будет выглядеть в галерее -->
+            <div class="studio-preview" aria-live="polite">
+              <p class="kicker">превью</p>
+              <div id="preview"></div>
+            </div>
+          </form>
+
+          <ol class="studio-log" id="log" aria-live="polite"></ol>
+        </section>
+
+        <!-- ========== УЖЕ НА САЙТЕ ========== -->
+        <section class="studio-card" aria-labelledby="list-title">
+          <div class="studio-card__head">
+            <h2 id="list-title">3. уже на сайте</h2>
+            <button class="hand-link" type="button" id="reload-list">обновить</button>
+          </div>
+          <p class="studio-hint" id="list-hint">подключи GitHub, чтобы видеть и редактировать фото</p>
+          <ul class="studio-list" id="photo-list"></ul>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/data-format.js"></script>
+  <script src="assets/js/studio.js"></script>
+</body>
+</html>

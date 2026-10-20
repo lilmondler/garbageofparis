@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery — Garbage of Paris</title>
   <meta name="description" content="Gallery of photographs documenting waste, urban traces and everyday objects in Paris." />
-  <meta name="theme-color" content="#f4f0e8" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
   <meta property="og:type" content="website" />
@@ -17,76 +16,66 @@
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 
-  <!-- Шрифты: Archivo Narrow (заголовки, навигация) + IM Fell English (тексты) + JetBrains Mono (метки) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-
+  <!-- Шрифты: Literata (заголовки и текст) + Caveat (рукописные пометки) + Courier Prime (бирки).
+       Файлы лежат в assets/fonts — без Google Fonts. -->
+  <link rel="preload" href="assets/fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/caveat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="page-offset">
+<body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo">
-        <svg viewBox="0 0 60 80" fill="none" aria-hidden="true"><rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="3"/><path d="M13 19 L16 74 L44 74 L47 19 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="24" x2="22.5" y2="68" stroke="currentColor" stroke-width="2.5"/><line x1="36" y1="24" x2="37.5" y2="68" stroke="currentColor" stroke-width="2.5"/></svg>
-        <span>Garbage of Paris</span>
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+        <span class="nav-logo__word">garbage</span>
+        <span class="nav-logo__note">of Paris</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span></span><span></span>
+        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html" aria-current="page">Gallery</a></li>
-        <li><a href="archive.html">Archive</a></li>
-        <li><a href="manifesto.html">Manifesto</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">home</a></li>
+        <li><a href="gallery.html" aria-current="page">gallery</a></li>
+        <li><a href="archive.html">archive</a></li>
+        <li><a href="manifesto.html">manifesto</a></li>
+        <li><a href="about.html">about</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
 
-    <!-- ==================== ЗАГОЛОВОК СТРАНИЦЫ ==================== -->
+    <!-- ==================== ЗАГОЛОВОК ==================== -->
     <header class="page-head">
       <div class="container">
-        <div class="page-head__inner">
+        <div class="page-head__grid">
           <div>
-            <p class="label">§ 03 — Photographs</p>
-            <h1>Gallery</h1>
+            <p class="kicker">§ 03 · photographs</p>
+            <h1>gallery <span class="pos">n.</span></h1>
+            <p class="page-head__def"><b>1.</b>A collection of urban observations, pinned to the wall.</p>
           </div>
-          <p class="page-head__lead">A collection of urban observations. Click any photograph to open it.</p>
+          <p class="page-head__note">click any photo to look closer ↓</p>
         </div>
+        <hr class="page-head__rule" />
       </div>
     </header>
 
     <!-- ==================== ГАЛЕРЕЯ ==================== -->
-    <section class="section" style="padding-top: var(--space-md);">
+    <section class="section section--tight-top">
       <div class="container">
 
         <div class="gallery-toolbar">
-          <!--
-            ФИЛЬТРЫ:
-            Заполняются автоматически из data.js.
-            Не редактируй этот блок вручную.
-          -->
-          <div class="gallery-filters" id="gallery-filters">
-            <!-- Заполняется через main.js -->
-          </div>
+          <!-- Фильтры строятся автоматически из data.js -->
+          <div class="gallery-filters" id="gallery-filters"></div>
           <p class="gallery-status" id="gallery-status" aria-live="polite"></p>
         </div>
 
-        <!--
-          СЕТКА ГАЛЕРЕИ:
-          Карточки строятся автоматически из data.js.
-          Чтобы добавить фото — только data.js.
-        -->
-        <div class="gallery-grid" id="gallery-grid" role="list">
-          <!-- Заполняется через main.js из data.js -->
-        </div>
+        <!-- Карточки строятся автоматически из data.js -->
+        <div class="gallery-grid" id="gallery-grid" role="list"></div>
 
       </div>
     </section>
@@ -95,27 +84,27 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-title"><a href="index.html">Garbage<br>of Paris</a></p>
-      <div class="footer-inner">
-        <p class="footer-left">Visual sociology. Paris, 2022–</p>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="gallery.html">Gallery</a>
-          <a href="archive.html">Archive</a>
-          <a href="manifesto.html">Manifesto</a>
-          <a href="about.html">About</a>
-          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">Instagram ↗</a>
-          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">Telegram ↗</a>
-        </nav>
-      </div>
-      <p class="footer-copy">
-        <span>© Garbage of Paris. Photographs by Snezhana and close people.</span>
-        <span>garbageofparis.fr</span>
+      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-def">
+        <span class="struck">Things nobody wants.</span>
+        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="gallery.html">gallery</a>
+          <a href="archive.html">archive</a>
+          <a href="manifesto.html">manifesto</a>
+          <a href="about.html">about</a>
+          <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
+          <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
+        </nav>
+        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+      </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
 
   <!-- Данные и скрипты -->
   <script src="assets/js/data.js"></script>

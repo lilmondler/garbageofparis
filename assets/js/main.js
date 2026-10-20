@@ -7,9 +7,9 @@
   Содержит:
   1. Мобильное меню
   2. Lightbox
-  3. Рендер галереи с фильтрами
-  4. Рендер архива по годам
-  5. Блок latest и счётчики на главной
+  3. Галерея с фильтрами
+  4. Архив-словарь по годам
+  5. Главная: последние находки и «чек»-инвентаризация
   6. Back to top
   7. Сплэш-экран (мобильные)
   8. Переключатель языка манифеста
@@ -34,19 +34,37 @@ function esc(value) {
 function formatDate(iso) {
   // "2025-05-12" → "12.05.2025"
   if (!iso) return '';
-  const [y, m, d] = iso.split('-');
-  return `${d}.${m}.${y}`;
+  const [y, m, d] = String(iso).split('-');
+  return d && m ? `${d}.${m}.${y}` : String(iso);
 }
 
 function photoYear(p) {
   return String(p.year || (p.date || '').slice(0, 4));
 }
 
-// Все фото, самые свежие первыми (строки ISO сравниваются корректно)
+// Все фото, самые свежие первыми. Каждому присваивается номер находки:
+// № 1 — самая старая фотография в архиве.
+let photoCache = null;
 function sortedPhotos() {
-  if (typeof photos === 'undefined') return [];
-  return [...photos].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  if (photoCache) return photoCache;
+  const list = (typeof photos !== 'undefined' && Array.isArray(photos)) ? photos : [];
+  const asc = list
+    .filter(p => p && p.image)
+    .slice()
+    .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+  asc.forEach((p, i) => { p._no = i + 1; });
+  photoCache = asc.reverse();
+  return photoCache;
 }
+
+function photoNo(p) {
+  return '№ ' + String(p._no || 0).padStart(3, '0');
+}
+
+// Наклон и скотч для полароидов — «случайные», но одинаковые при каждой загрузке
+const TILTS = [-2.2, 1.6, -0.8, 2.4, -1.6, 0.9, -2.6, 1.2];
+function tiltOf(i) { return TILTS[i % TILTS.length]; }
+function tapeOf(i) { return ['left', 'center', 'right'][(i * 7 + 1) % 3]; }
 
 function safeSession(action, key, value) {
   try {
@@ -54,6 +72,16 @@ function safeSession(action, key, value) {
   } catch (e) {
     return null;
   }
+}
+
+function onMediaChange(query, handler) {
+  const mq = window.matchMedia(query);
+  if (mq.addEventListener) mq.addEventListener('change', handler);
+  else if (mq.addListener) mq.addListener(handler); // старый Safari
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 
@@ -74,8 +102,6 @@ function initMobileMenu() {
   }
 
   toggle.addEventListener('click', () => setOpen(!menu.classList.contains('is-open')));
-
-  // Закрыть меню при клике на ссылку, по Escape и при переходе на десктоп
   menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) {
@@ -83,18 +109,7 @@ function initMobileMenu() {
       toggle.focus();
     }
   });
-  window.matchMedia('(min-width: 769px)').addEventListener('change', e => {
-    if (e.matches) setOpen(false);
-  });
-}
-
-// Тень у шапки после начала прокрутки
-function initHeaderState() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-  update();
-  window.addEventListener('scroll', update, { passive: true });
+  onMediaChange('(min-width: 769px)', e => { if (e.matches) setOpen(false); });
 }
 
 
@@ -119,16 +134,16 @@ function createLightbox() {
     <div class="lb-backdrop"></div>
     <div class="lb-topbar">
       <span class="lb-counter" aria-live="polite"></span>
-      <button class="lb-close" type="button" aria-label="Close">Close ✕</button>
+      <button class="lb-close" type="button" aria-label="Close">close ×</button>
     </div>
-    <button class="lb-prev" type="button" aria-label="Previous photograph">←</button>
-    <button class="lb-next" type="button" aria-label="Next photograph">→</button>
+    <button class="lb-prev" type="button" aria-label="Previous photograph">← prev</button>
+    <button class="lb-next" type="button" aria-label="Next photograph">next →</button>
     <figure class="lb-content">
-      <div class="lb-img-wrap">
-        <img class="lb-img" src="" alt="" />
+      <div class="lb-frame">
+        <img class="lb-img" alt="" />
+        <p class="lb-title"></p>
       </div>
       <figcaption class="lb-meta">
-        <p class="lb-title"></p>
         <p class="lb-caption"></p>
         <p class="lb-info"></p>
       </figcaption>
@@ -140,10 +155,8 @@ function createLightbox() {
   lb.querySelector('.lb-close').addEventListener('click', closeLightbox);
   lb.querySelector('.lb-prev').addEventListener('click', () => moveLightbox(-1));
   lb.querySelector('.lb-next').addEventListener('click', () => moveLightbox(1));
-
-  // Клик по пустому месту вокруг фото тоже закрывает
   lb.querySelector('.lb-content').addEventListener('click', e => {
-    if (e.target === e.currentTarget || e.target.classList.contains('lb-img-wrap')) closeLightbox();
+    if (e.target === e.currentTarget) closeLightbox();
   });
 
   const img = lb.querySelector('.lb-img');
@@ -235,9 +248,8 @@ function renderLightboxSlide() {
   lb.querySelector('.lb-title').textContent = p.title || '';
   lb.querySelector('.lb-caption').textContent = p.caption || '';
   lb.querySelector('.lb-info').textContent =
-    [formatDate(p.date), p.location, p.category].filter(Boolean).join('  ·  ');
-  lb.querySelector('.lb-counter').textContent =
-    `${String(lightboxIndex + 1).padStart(2, '0')} / ${String(lightboxPhotos.length).padStart(2, '0')}`;
+    [photoNo(p), formatDate(p.date), p.location, p.category].filter(Boolean).join('  ·  ');
+  lb.querySelector('.lb-counter').textContent = `${lightboxIndex + 1} / ${lightboxPhotos.length}`;
 
   // Подгружаем соседние фото заранее
   [-1, 1].forEach(d => {
@@ -246,7 +258,7 @@ function renderLightboxSlide() {
   });
 }
 
-// Делает набор элементов кликабельными: открывают lightbox по клику, Enter или пробелу
+// Делает элементы кликабельными: открывают lightbox по клику, Enter или пробелу
 function bindLightboxTriggers(container, selector, list) {
   container.querySelectorAll(selector).forEach((el, i) => {
     el.addEventListener('click', () => openLightbox(list, i));
@@ -257,6 +269,27 @@ function bindLightboxTriggers(container, selector, list) {
       }
     });
   });
+}
+
+// Разметка полароида (используется на главной и в галерее)
+function polaroidHTML(p, i, opts) {
+  const o = opts || {};
+  return `
+    <article class="find" style="--tilt:${tiltOf(i)}deg" ${o.role ? `role="${o.role}"` : ''}>
+      <button class="polaroid polaroid--${tapeOf(i)}" type="button" aria-label="Open photograph: ${esc(p.title)}">
+        <span class="polaroid__photo">
+          <img src="${esc(p.image)}" alt="${esc(p.alt || p.title)}" loading="${o.eager ? 'eager' : 'lazy'}" decoding="async" />
+        </span>
+        <span class="polaroid__note">${esc(p.title)}</span>
+      </button>
+      <p class="find__tag">
+        <span>${photoNo(p)}</span>
+        <time datetime="${esc(p.date)}">${formatDate(p.date)}</time>
+        <span class="find__cat">${esc(p.category)}</span>
+      </p>
+      ${o.caption === false ? '' : `<p class="find__caption">${esc(p.caption)}</p>`}
+      <p class="find__place">${esc(p.location)}</p>
+    </article>`;
 }
 
 
@@ -283,10 +316,11 @@ function buildFilters(sorted, container, state) {
   const filtersWrap = document.getElementById('gallery-filters');
   if (!filtersWrap) return;
 
+  const categories = (typeof CATEGORIES !== 'undefined' && Array.isArray(CATEGORIES)) ? CATEGORIES : [];
   const years = [...new Set(sorted.map(photoYear))].sort((a, b) => b.localeCompare(a));
-  // Только категории, в которых есть фото (+ те, что есть в данных, но не в списке)
-  const usedCats = new Set(sorted.map(p => p.category));
-  const cats = [...CATEGORIES.filter(c => usedCats.has(c)), ...[...usedCats].filter(c => c && !CATEGORIES.includes(c))];
+  // Только категории, в которых есть фото (+ новые, которых нет в списке)
+  const usedCats = new Set(sorted.map(p => p.category).filter(Boolean));
+  const cats = [...categories.filter(c => usedCats.has(c)), ...[...usedCats].filter(c => !categories.includes(c))];
 
   if (state.year !== 'all' && !years.includes(state.year)) state.year = 'all';
   if (state.cat !== 'all' && !cats.includes(state.cat)) state.cat = 'all';
@@ -295,18 +329,18 @@ function buildFilters(sorted, container, state) {
   const btn = (type, value, label, n) => `
     <button class="filter-btn${state[type] === value ? ' active' : ''}" type="button"
       data-type="${type}" data-filter="${esc(value)}" aria-pressed="${state[type] === value}">
-      ${esc(label)}<span class="filter-count">${n}</span>
+      ${esc(label)}<sup class="filter-count">${n}</sup>
     </button>`;
 
   filtersWrap.innerHTML = `
     <div class="filter-group" role="group" aria-label="Filter by year">
-      <span class="filter-label">Year</span>
-      ${btn('year', 'all', 'All', sorted.length)}
+      <span class="filter-label">year:</span>
+      ${btn('year', 'all', 'all', sorted.length)}
       ${years.map(y => btn('year', y, y, count('year', y))).join('')}
     </div>
     <div class="filter-group" role="group" aria-label="Filter by category">
-      <span class="filter-label">Category</span>
-      ${btn('cat', 'all', 'All', sorted.length)}
+      <span class="filter-label">what:</span>
+      ${btn('cat', 'all', 'everything', sorted.length)}
       ${cats.map(c => btn('cat', c, c, count('cat', c))).join('')}
     </div>
   `;
@@ -323,12 +357,14 @@ function buildFilters(sorted, container, state) {
       x.setAttribute('aria-pressed', String(on));
     });
 
-    // Сохраняем фильтр в адресе, чтобы им можно было поделиться
-    const url = new URL(location.href);
-    ['year', 'category'].forEach(k => url.searchParams.delete(k));
-    if (state.year !== 'all') url.searchParams.set('year', state.year);
-    if (state.cat !== 'all') url.searchParams.set('category', state.cat);
-    history.replaceState(null, '', url);
+    // Фильтр сохраняется в адресе — ссылкой можно поделиться
+    try {
+      const url = new URL(location.href);
+      ['year', 'category'].forEach(k => url.searchParams.delete(k));
+      if (state.year !== 'all') url.searchParams.set('year', state.year);
+      if (state.cat !== 'all') url.searchParams.set('category', state.cat);
+      history.replaceState(null, '', url);
+    } catch (err) { /* file:// и т.п. — не страшно */ }
 
     applyFilters(sorted, container, state);
   });
@@ -343,40 +379,22 @@ function applyFilters(sorted, container, state) {
 
   const status = document.getElementById('gallery-status');
   if (status) {
-    status.textContent = `${filtered.length} ${filtered.length === 1 ? 'photograph' : 'photographs'}`;
+    status.textContent = `${filtered.length} ${filtered.length === 1 ? 'find' : 'finds'}`;
   }
 }
 
 function renderGallery(items, container) {
   if (items.length === 0) {
-    container.innerHTML = '<p class="gallery-empty">No photographs match this filter.</p>';
+    container.innerHTML = '<p class="gallery-empty">Nothing here. Even the bins are empty.</p>';
     return;
   }
-
-  container.innerHTML = items.map((p, i) => `
-    <article class="photo-card" role="listitem">
-      <button class="photo-card__open" type="button" aria-label="Open photograph: ${esc(p.title)}">
-        <span class="photo-card__img-wrap">
-          <img src="${esc(p.image)}" alt="${esc(p.alt)}" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async" />
-          <span class="photo-card__zoom" aria-hidden="true">View ↗</span>
-        </span>
-      </button>
-      <div class="photo-card__meta">
-        <span class="photo-card__cat">${esc(p.category)}</span>
-        <time class="photo-card__date" datetime="${esc(p.date)}">${formatDate(p.date)}</time>
-      </div>
-      <h3 class="photo-card__title">${esc(p.title)}</h3>
-      <p class="photo-card__caption">${esc(p.caption)}</p>
-      <p class="photo-card__location">${esc(p.location)}</p>
-    </article>
-  `).join('');
-
-  bindLightboxTriggers(container, '.photo-card__open', items);
+  container.innerHTML = items.map((p, i) => polaroidHTML(p, i, { role: 'listitem', eager: i < 6 })).join('');
+  bindLightboxTriggers(container, '.polaroid', items);
 }
 
 
 /* ============================================================
-   4. АРХИВ ПО ГОДАМ
+   4. АРХИВ-СЛОВАРЬ ПО ГОДАМ
    ============================================================ */
 
 function initArchive() {
@@ -396,21 +414,21 @@ function initArchive() {
     <section class="archive-year" aria-labelledby="archive-${esc(year)}">
       <header class="archive-year__head">
         <h2 class="archive-year__title" id="archive-${esc(year)}">${esc(year)}</h2>
-        <span class="archive-year__count">${byYear[year].length} ${byYear[year].length === 1 ? 'entry' : 'entries'}</span>
+        <span class="archive-year__count">${byYear[year].length} ${byYear[year].length === 1 ? 'find' : 'finds'}</span>
       </header>
       <ol class="archive-entries">
-        ${byYear[year].map(p => `
-          <li class="archive-entry" tabindex="0" role="button" aria-label="Open photograph: ${esc(p.title)}">
-            <time class="archive-entry__date" datetime="${esc(p.date)}">${formatDate(p.date)}</time>
-            <div class="archive-entry__body">
-              <p class="archive-entry__title">${esc(p.title)}</p>
-              <p class="archive-entry__caption">${esc(p.caption)}</p>
-              <p class="archive-entry__meta">
-                <span class="archive-entry__location">${esc(p.location)}</span>
-                <span class="archive-entry__cat">${esc(p.category)}</span>
+        ${byYear[year].map((p, i) => `
+          <li class="dict-entry" tabindex="0" role="button" aria-label="Open photograph: ${esc(p.title)}">
+            <span class="dict-entry__no">${photoNo(p)}</span>
+            <div class="dict-entry__body">
+              <p class="dict-entry__head">
+                <span class="dict-entry__word">${esc(p.title)}</span>
+                <span class="dict-entry__pos">n., ${esc(p.category)}</span>
               </p>
+              <p class="dict-entry__def">${esc(p.caption)}</p>
+              <p class="dict-entry__meta">${formatDate(p.date)} — ${esc(p.location)}</p>
             </div>
-            <span class="archive-entry__thumb">
+            <span class="dict-entry__thumb" style="--tilt:${tiltOf(i + 3)}deg">
               <img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" />
             </span>
           </li>
@@ -420,36 +438,21 @@ function initArchive() {
   `).join('');
 
   // Один lightbox на весь архив — листается через все годы
-  bindLightboxTriggers(container, '.archive-entry', sorted);
+  bindLightboxTriggers(container, '.dict-entry', sorted);
 }
 
 
 /* ============================================================
-   5. БЛОК LATEST И СЧЁТЧИКИ НА ГЛАВНОЙ
+   5. ГЛАВНАЯ: ПОСЛЕДНИЕ НАХОДКИ И «ЧЕК»
    ============================================================ */
 
 function initLatest() {
   const container = document.getElementById('latest-grid');
   if (!container) return;
 
-  const latest = sortedPhotos().slice(0, 4); // Показываем 4 последних
-
-  container.innerHTML = latest.map((p, i) => `
-    <article class="latest-card" role="button" tabindex="0" aria-label="Open photograph: ${esc(p.title)}">
-      <div class="latest-card__img-wrap">
-        <img src="${esc(p.image)}" alt="${esc(p.alt)}" loading="lazy" decoding="async" />
-        <span class="latest-card__index" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
-      </div>
-      <div class="latest-card__meta">
-        <span class="latest-card__cat">${esc(p.category)}</span>
-        <time class="latest-card__date" datetime="${esc(p.date)}">${formatDate(p.date)}</time>
-      </div>
-      <h3 class="latest-card__title">${esc(p.title)}</h3>
-      <p class="latest-card__location">${esc(p.location)}</p>
-    </article>
-  `).join('');
-
-  bindLightboxTriggers(container, '.latest-card', latest);
+  const latest = sortedPhotos().slice(0, 4); // 4 последних
+  container.innerHTML = latest.map((p, i) => polaroidHTML(p, i + 1, { caption: false, eager: true })).join('');
+  bindLightboxTriggers(container, '.polaroid', latest);
 }
 
 function initStats() {
@@ -459,11 +462,9 @@ function initStats() {
     if (el) el.textContent = value;
   };
   set('stat-photos', all.length);
-  set('stat-places', new Set(all.map(p => p.location)).size);
-  set('stat-categories', new Set(all.map(p => p.category)).size);
-
-  const years = all.map(photoYear).filter(Boolean).sort();
-  if (years.length) set('stat-latest', years[years.length - 1]);
+  set('stat-places', new Set(all.map(p => p.location).filter(Boolean)).size);
+  set('stat-categories', new Set(all.map(p => p.category).filter(Boolean)).size);
+  if (all.length) set('stat-latest', formatDate(all[0].date));
 }
 
 
@@ -475,13 +476,12 @@ function initBackToTop() {
   const btn = document.getElementById('back-to-top');
   if (!btn) return;
 
-  const update = () => btn.classList.toggle('visible', window.scrollY > 400);
+  const update = () => btn.classList.toggle('visible', window.scrollY > 500);
   update();
   window.addEventListener('scroll', update, { passive: true });
 
   btn.addEventListener('click', () => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   });
 }
 
@@ -489,18 +489,13 @@ function initBackToTop() {
 /* ============================================================
    7. СПЛЭШ-ЭКРАН (только мобильные)
    ============================================================
-
-   Появляется при первом открытии сайта на мобильном.
-   Показывается 1 раз за сессию (sessionStorage).
-   Анимация: логотип + заголовок → fade out.
+   Появляется при первом открытии сайта на мобильном,
+   один раз за сессию. Тап — закрыть досрочно.
    ============================================================ */
 
 function initSplash() {
-  // Только на мобильных и только если пользователь не просил меньше анимаций
   if (window.innerWidth > 768) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  // Только один раз за сессию
+  if (prefersReducedMotion()) return;
   if (safeSession('get', 'gop-splash-shown')) return;
   safeSession('set', 'gop-splash-shown', '1');
 
@@ -509,30 +504,16 @@ function initSplash() {
   splash.setAttribute('aria-hidden', 'true');
   splash.innerHTML = `
     <div class="splash-inner">
-      <div class="splash-logo">
-        <svg viewBox="0 0 60 80" width="60" height="80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="8" y="14" width="44" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <rect x="26" y="8" width="8" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M13 19 L16 72 Q16 74 18 74 L42 74 Q44 74 44 72 L47 19 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          <line x1="24" y1="22" x2="22" y2="71" stroke="currentColor" stroke-width="1" opacity="0.45"/>
-          <line x1="36" y1="22" x2="38" y2="71" stroke="currentColor" stroke-width="1" opacity="0.45"/>
-          <line x1="14.5" y1="42" x2="45.5" y2="42" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-        </svg>
-      </div>
-      <div class="splash-title">
-        <span class="splash-word">Garbage</span>
-        <span class="splash-word">of Paris</span>
-      </div>
-      <div class="splash-sub">Visual sociology</div>
+      <p class="splash-kicker">dictionary of the street</p>
+      <p class="splash-word">garbage</p>
+      <p class="splash-struck">waste; refuse</p>
+      <p class="splash-note">of Paris</p>
     </div>
   `;
 
   document.body.appendChild(splash);
   document.body.classList.add('splash-open');
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => splash.classList.add('splash-visible'));
-  });
+  requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('splash-visible')));
 
   let closed = false;
   function hide() {
@@ -542,11 +523,11 @@ function initSplash() {
     setTimeout(() => {
       splash.remove();
       document.body.classList.remove('splash-open');
-    }, 700);
+    }, 600);
   }
 
-  setTimeout(hide, 2200);
-  splash.addEventListener('click', hide); // Тап — закрыть досрочно
+  setTimeout(hide, 2400);
+  splash.addEventListener('click', hide);
 }
 
 
@@ -586,17 +567,15 @@ function initManifestoLang() {
 
 /* ============================================================
    ИНИЦИАЛИЗАЦИЯ
+   Каждый блок запускается отдельно: ошибка в одном
+   не ломает остальные.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
-  initSplash();
-  createLightbox();
-  initMobileMenu();
-  initHeaderState();
-  initGallery();
-  initArchive();
-  initLatest();
-  initStats();
-  initBackToTop();
-  initManifestoLang();
+  [
+    initSplash, createLightbox, initMobileMenu, initGallery, initArchive,
+    initLatest, initStats, initBackToTop, initManifestoLang
+  ].forEach(fn => {
+    try { fn(); } catch (err) { console.error(fn.name, err); }
+  });
 });
