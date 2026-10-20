@@ -50,6 +50,15 @@ const photos = [
     alt: ""
   },
   {
+    title: "Sleeping area",
+    image: "assets/img/gallery/2026-07-13_sleeping-area.jpg",
+    date: "2026-07-13",
+    location: "20e arrondissement",
+    category: "objects",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     date: "2026-04-06",
