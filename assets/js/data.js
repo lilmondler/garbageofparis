@@ -41,6 +41,15 @@ const photos = [
     alt: ""
   },
   {
+    title: "Decay 2",
+    image: "assets/img/gallery/2026-10-18_decay-2.jpg",
+    date: "2026-10-18",
+    location: "1e arrondissement",
+    category: "streets",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "J'adore le cinéma!",
     image: "assets/img/gallery/photo_2026-04-06_19-26-28.jpg",
     date: "2026-04-06",
