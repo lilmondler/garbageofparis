@@ -50,6 +50,15 @@ const photos = [
     alt: ""
   },
   {
+    title: "Red chair",
+    image: "assets/img/gallery/2026-08-15_red-chair.jpg",
+    date: "2026-08-15",
+    location: "Paris",
+    category: "objects",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "Sleeping area",
     image: "assets/img/gallery/2026-07-13_sleeping-area.jpg",
     date: "2026-07-13",
