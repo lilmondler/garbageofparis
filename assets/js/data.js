@@ -50,6 +50,15 @@ const photos = [
     alt: ""
   },
   {
+    title: "Ecole des Francs Bourgeois",
+    image: "assets/img/gallery/2026-09-15_ecole-des-francs-bourgeois.jpg",
+    date: "2026-09-15",
+    location: "Paris",
+    category: "streets",
+    caption: "",
+    alt: ""
+  },
+  {
     title: "Red chair",
     image: "assets/img/gallery/2026-08-15_red-chair.jpg",
     date: "2026-08-15",
