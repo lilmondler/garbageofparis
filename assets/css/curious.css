@@ -1,0 +1,357 @@
+/*
+  ============================================================
+  GARBAGE OF PARIS — curious.css
+  Страница curious.html: интерактивная урна с фактами.
+  ============================================================
+*/
+
+/* ---------- раскладка: урна слева, карточка справа ---------- */
+
+.dig {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.dig__bin-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- урна ---------- */
+
+.dig__bin {
+  position: relative;
+  display: block;
+  width: min(100%, 420px);
+  cursor: pointer;
+  transform-origin: 50% 95%;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.dig__bin svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.dig__bin:hover { transform: rotate(-2deg) scale(1.02); }
+.dig__bin:active { transform: scale(0.98); }
+
+.dig__bin::after {
+  content: 'tap me!';
+  position: absolute;
+  top: 2%;
+  right: -2%;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: var(--red);
+  transform: rotate(10deg);
+  animation: nudge 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.dig__bin.is-empty::after { content: 'empty!'; animation: none; }
+
+@keyframes nudge {
+  0%, 100% { transform: rotate(10deg) translateY(0); }
+  50%      { transform: rotate(6deg) translateY(-6px); }
+}
+
+.dig__bin.is-shaking { animation: shake 0.5s ease; }
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-6deg); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(2deg); }
+}
+
+.bin-item {
+  transition: opacity 0.35s ease;
+}
+
+.bin-item.is-gone { opacity: 0; }
+
+.dig__count {
+  margin-top: 0.6rem;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--blue);
+  text-align: center;
+}
+
+/* ---------- летящий предмет ---------- */
+
+.flyer {
+  position: fixed;
+  z-index: 500;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.flyer svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- карточка-статья ---------- */
+
+.fact-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  background:
+    linear-gradient(var(--red), var(--red)) 0 0 / 100% 3px no-repeat,
+    var(--card);
+  padding: clamp(1.25rem, 3vw, 2.2rem);
+  box-shadow: var(--shadow);
+  transform: rotate(-0.6deg);
+}
+
+.fact-card--intro,
+.fact-card--done { grid-template-columns: 1fr; }
+
+.fact-card.is-new { animation: card-flip 0.6s var(--ease-out) both; }
+
+@keyframes card-flip {
+  from { opacity: 0; transform: perspective(900px) rotateY(-70deg) rotate(-0.6deg); }
+  to   { opacity: 1; transform: perspective(900px) rotateY(0) rotate(-0.6deg); }
+}
+
+.fact-card__art {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--paper);
+  border: 1.5px dashed var(--line);
+}
+
+.fact-card__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fact-card__svg.is-landed { animation: land 0.45s var(--ease-out); }
+
+@keyframes land {
+  0%   { transform: scale(1.12) rotate(-3deg); }
+  60%  { transform: scale(0.96) rotate(1deg); }
+  100% { transform: none; }
+}
+
+.fact-card__stamp {
+  position: absolute;
+  right: -0.6rem;
+  bottom: -0.8rem;
+  font-family: var(--font-type);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  color: var(--red);
+  background: var(--card);
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  padding: 0.25rem 0.55rem;
+  transform: rotate(-8deg);
+  white-space: nowrap;
+}
+
+.fact-card__word {
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  line-height: 1;
+  margin: 0.4rem 0 0.9rem;
+}
+
+.fact-card__word .pos {
+  font-size: 0.42em;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.fact-card__text {
+  font-size: var(--text-md);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.fact-card__note {
+  margin-top: 1rem !important;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.65rem;
+  line-height: 1.15;
+  color: var(--blue);
+  transform: rotate(-1.5deg);
+}
+
+.garbologist-stamp {
+  display: inline-block;
+  margin-top: 1.2rem !important;
+  font-family: var(--font-type);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--red);
+  border: 3px double var(--red);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transform: rotate(-7deg);
+  animation: stamp-in 0.5s 0.3s var(--ease-out) both;
+}
+
+@keyframes stamp-in {
+  from { opacity: 0; transform: rotate(-7deg) scale(2.2); }
+  to   { opacity: 1; transform: rotate(-7deg) scale(1); }
+}
+
+/* ---------- шкала времени ---------- */
+
+.timeline-hint {
+  font-size: var(--text-md);
+  color: var(--ink-2);
+  margin: -1.5rem 0 1.8rem;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding-top: 1.2rem;
+}
+
+/* верёвка, на которой висят находки */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.55rem;
+  height: 0.7rem;
+  background: var(--scribble-red) no-repeat center / 100% 100%;
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+
+.timeline__item > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.timeline__svg,
+.timeline__slot {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 96px;
+  aspect-ratio: 1;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.timeline__item:nth-child(odd) .timeline__svg,
+.timeline__item:nth-child(odd) .timeline__slot { transform: rotate(-3deg); }
+.timeline__item:nth-child(even) .timeline__svg,
+.timeline__item:nth-child(even) .timeline__slot { transform: rotate(2.5deg); }
+
+.timeline__item.is-found button:hover .timeline__svg { transform: rotate(0) scale(1.08); }
+
+.timeline__slot {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--line);
+  background: transparent;
+  box-shadow: none;
+  border: 2px dashed var(--line);
+}
+
+.timeline__when {
+  margin-top: 0.6rem;
+  font-family: var(--font-type);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--red);
+  line-height: 1.2;
+}
+
+.timeline__word {
+  margin-top: 0.1rem;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.05;
+  color: var(--blue);
+}
+
+/* ---------- источники ---------- */
+
+.sources {
+  max-width: 46rem;
+  padding-top: var(--space-md);
+  border-top: 1.5px dashed var(--line);
+}
+
+.sources p:not(.kicker) {
+  margin-top: 0.4rem !important;
+  font-size: var(--text-sm);
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+.sources a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- конфетти ---------- */
+
+.confetti-bit {
+  position: fixed;
+  top: 0;
+  z-index: 600;
+  pointer-events: none;
+  border: 1px solid rgba(28, 27, 24, 0.25);
+}
+
+/* ---------- адаптивность ---------- */
+
+@media (max-width: 900px) {
+  .dig { grid-template-columns: 1fr; }
+  .dig__bin { width: min(80%, 340px); }
+
+  .timeline {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 1.6rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .fact-card { grid-template-columns: 1fr; }
+  .fact-card__art { width: 160px; }
+  .timeline { gap: 1.2rem 0.45rem; }
+  .timeline__word { display: none; }
+  .timeline__when { font-size: 0.66rem; }
+}
