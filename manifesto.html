@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manifesto — Garbage of Paris</title>
-  <meta name="description" content="On garbage as cultural object. A manifesto about waste, urban traces, and material culture in Paris." />
+  <title data-i18n="manifesto.title">Manifesto — Garbage of Paris</title>
+  <meta name="description" data-i18n-content="manifesto.desc" content="On garbage as cultural object. A manifesto about waste, urban traces, and material culture in Paris." />
   <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
@@ -28,26 +28,32 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+    <nav class="nav" aria-label="Main navigation" data-i18n-aria="nav.aria">
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home" data-i18n-aria="nav.logo">
         <span class="nav-logo__word">garbage</span>
         <span class="nav-logo__note">of Paris</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-i18n-aria="menu.open">
+        <span class="nav-toggle__open" data-i18n="nav.menu">menu</span><span class="nav-toggle__close" data-i18n="nav.close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html">home</a></li>
-        <li><a href="gallery.html">gallery</a></li>
-        <li><a href="archive.html">archive</a></li>
-        <li><a href="curious.html">curious</a></li>
-        <li><a href="manifesto.html" aria-current="page">manifesto</a></li>
-        <li><a href="about.html">about</a></li>
+        <li><a href="index.html" data-i18n="nav.home">home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">gallery</a></li>
+        <li><a href="archive.html" data-i18n="nav.archive">archive</a></li>
+        <li><a href="curious.html" data-i18n="nav.curious">curious</a></li>
+        <li><a href="manifesto.html" aria-current="page" data-i18n="nav.manifesto">manifesto</a></li>
+        <li><a href="about.html" data-i18n="nav.about">about</a></li>
       </ul>
+      <!-- Переключатель языка (переводы — в assets/js/i18n.js) -->
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.aria" hidden>
+        <button type="button" data-set-lang="en" lang="en" aria-label="English" aria-pressed="true">en</button>
+        <button type="button" data-set-lang="fr" lang="fr" aria-label="Français" aria-pressed="false">fr</button>
+        <button type="button" data-set-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">ru</button>
+      </div>
     </nav>
   </header>
 
@@ -58,19 +64,21 @@
       <div class="container">
         <div class="page-head__grid">
           <div>
-            <p class="kicker">§ 05 · position</p>
-            <h1>manifesto <span class="pos">n.</span></h1>
-            <p class="page-head__def"><b>1.</b><span class="struck">A public declaration of policy and aims.</span></p>
+            <p class="kicker" data-i18n="manifesto.kicker">§ 05 · position</p>
+            <h1 data-i18n="manifesto.h1">manifesto <span class="pos">n.</span></h1>
+            <p class="page-head__def"><b>1.</b><span class="struck" data-i18n="manifesto.def">A public declaration of policy and aims.</span></p>
             <p class="correction" style="margin-top: .6rem;">
               <svg class="correction__caret" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span>more of a mockery of the genre</span>
+              <span data-i18n="manifesto.correction">more of a mockery of the genre</span>
             </p>
           </div>
 
-          <!-- Переключатель языков (manifesto.html#fr открывает французскую версию) -->
-          <div class="manifesto-lang-toggle" role="group" aria-label="Language">
-            <button type="button" class="active" data-lang="en" aria-pressed="true">english</button>
-            <button type="button" data-lang="fr" aria-pressed="false">français</button>
+          <!-- Переключатель языка у текста — работает вместе с кнопкой в шапке.
+               manifesto.html#fr или #ru открывает манифест сразу на нужном языке. -->
+          <div class="manifesto-lang-toggle" role="group" aria-label="Language" data-i18n-aria="lang.aria">
+            <button type="button" class="active" data-set-lang="en" lang="en" aria-pressed="true">english</button>
+            <button type="button" data-set-lang="fr" lang="fr" aria-pressed="false">français</button>
+            <button type="button" data-set-lang="ru" lang="ru" aria-pressed="false">русский</button>
           </div>
         </div>
         <hr class="page-head__rule" />
@@ -89,7 +97,7 @@
             Один абзац = один <p>…</p> (не разрывай предложения на несколько <p>).
             Чтобы добавить рукописную цитату — используй блок .manifesto-quote.
           -->
-          <article class="manifesto-lang active" id="manifesto-en" lang="en">
+          <article class="manifesto-lang active" id="manifesto-en" lang="en" data-lang-block="en">
 
             <h2>Garbage Manifesto</h2>
 
@@ -119,7 +127,7 @@
           </article>
 
           <!-- ======= ФРАНЦУЗСКИЙ ТЕКСТ ======= -->
-          <article class="manifesto-lang" id="manifesto-fr" lang="fr" hidden>
+          <article class="manifesto-lang" id="manifesto-fr" lang="fr" data-lang-block="fr" hidden>
 
             <h2>Le manifeste des déchets</h2>
 
@@ -150,6 +158,36 @@
             <p class="manifesto-end"><span>— Snezhana</span></p>
           </article>
 
+          <!-- ======= РУССКИЙ ТЕКСТ (оригинал) ======= -->
+          <article class="manifesto-lang" id="manifesto-ru" lang="ru" data-lang-block="ru" hidden>
+
+            <h2>Манифест мусора</h2>
+
+            <p class="drop-cap">Перед тем, как я кратко, лаконично и просто изложу свои умозаключения касательно общего оправдания на тему того, чего же особенного из себя представляет мусор, хотелось бы сразу сделать несколько важных уточнений.</p>
+            <p>Во-первых, данный «манифест» — это скорее издевка над форматом и жанром. У меня нет выкристаллизованной «мусорной» идеологии, а даже если бы подобное стремление и имелось бы, зная мою натуру, я бы вряд ли выплюнула это все в стройный текст, ну и тем более опубликовала.</p>
+            <p>Во-вторых, изложенные мною мысли на тему мусорок в Париже и мусора в целом не претендуют на философскую ценность, и уж тем более на какую-либо серьезность.</p>
+
+            <div class="manifesto-quote">
+              <p>Все, что имеет право на существование</p>
+            </div>
+
+            <p>Итак, мусор. По мере своего развития западноевропейская культура стремилась скрыть, подавить и сгладить так называемые «аффекты», т.е. различные непредсказуемые проявления биологической природы человека, тем самым увеличивая к ним общий порог чувствительности. Таким образом создавались все более сложные и запутанные (порой даже противоречивые) системы норм и ценностей, которые тем не менее вписывались в общую идею прогресса и развития европейской цивилизации.</p>
+            <p>Из данного утверждения логично вытекает то, что любые события и явления, которые относились к этому миру аффектов, либо покрывались прочной ширмой стыда, либо вообще выбрасывались на свалку (иронично) истории, и не поднимались в контексте глобального общественного дискурса, и в частности искусства.</p>
+
+            <div class="manifesto-quote">
+              <p>Мусор — идеальный объект для созерцания</p>
+            </div>
+
+            <p>Однако все, что «имеет право на существование», все, признанное красивым, эстетичным и достойным внимания, так или иначе устаревает, стирается, подобно пластинке, и уже не доставляет известного «дискомфорта». Соответственно искусство, которое ставит своей целью, прежде всего, расшатывание внутренней гармонии человека, перестает работать.</p>
+            <p>И тут на сцену выходят скрывавшиеся за ней аффекты и их проявления.</p>
+            <p>Мусор — идеальный объект для созерцания. Он выдерживает тонкую грань между отвращением и интересом, притом в дуалистическом ключе, где интерес у созерцающего рождает отвращение, а отвращение при должной саморефлексии рождает интерес.</p>
+            <p>Мусор — это не просто способ побеспокоить, задать каверзный вопрос, это попытка обратить внимание на стыд, на все, что человеческая история так тщательно пытается скрыть.</p>
+            <p>Мусор — это символ ненужности, символ упадка, это анти-красота, формирующая наше представление о прекрасном.</p>
+            <p>Несложно понять, чем я руководствуюсь, занимаясь мусорными фотоснимками. Я вношу в отполированную реальность частицу настоящего, того, что принято скрывать и чего принято избегать. Я возвращаю мусору его законное место в канве общей истории.</p>
+
+            <p class="manifesto-end"><span>— Снежана</span></p>
+          </article>
+
         </div>
       </div>
     </section>
@@ -158,30 +196,31 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-entry">garbage <span class="pos" data-i18n="footer.pos">n., of Paris</span></p>
       <p class="footer-def">
-        <span class="struck">Things nobody wants.</span>
-        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
+        <span class="struck" data-i18n="footer.struck">Things nobody wants.</span>
+        <span class="hand hand--blue" data-i18n="footer.hand">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
       <div class="footer-inner">
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="gallery.html">gallery</a>
-          <a href="archive.html">archive</a>
-          <a href="curious.html">curious</a>
-          <a href="manifesto.html">manifesto</a>
-          <a href="about.html">about</a>
+        <nav class="footer-nav" aria-label="Footer navigation" data-i18n-aria="footer.aria">
+          <a href="gallery.html" data-i18n="nav.gallery">gallery</a>
+          <a href="archive.html" data-i18n="nav.archive">archive</a>
+          <a href="curious.html" data-i18n="nav.curious">curious</a>
+          <a href="manifesto.html" data-i18n="nav.manifesto">manifesto</a>
+          <a href="about.html" data-i18n="nav.about">about</a>
           <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
           <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
         </nav>
-        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
+  <button id="back-to-top" type="button" aria-label="Back to top" data-i18n-aria="top.aria" data-i18n="top">↑ up</button>
 
   <!-- Данные и скрипты -->
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>

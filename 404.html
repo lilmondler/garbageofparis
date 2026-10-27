@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Not found — Garbage of Paris</title>
-  <meta name="description" content="This page was thrown away." />
+  <title data-i18n="404.title">Not found — Garbage of Paris</title>
+  <meta name="description" data-i18n-content="404.desc" content="This page was thrown away." />
   <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
@@ -28,26 +28,32 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="/index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+    <nav class="nav" aria-label="Main navigation" data-i18n-aria="nav.aria">
+      <a href="/index.html" class="nav-logo" aria-label="Garbage of Paris — home" data-i18n-aria="nav.logo">
         <span class="nav-logo__word">garbage</span>
         <span class="nav-logo__note">of Paris</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-i18n-aria="menu.open">
+        <span class="nav-toggle__open" data-i18n="nav.menu">menu</span><span class="nav-toggle__close" data-i18n="nav.close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="/index.html">home</a></li>
-        <li><a href="/gallery.html">gallery</a></li>
-        <li><a href="/archive.html">archive</a></li>
-        <li><a href="/curious.html">curious</a></li>
-        <li><a href="/manifesto.html">manifesto</a></li>
-        <li><a href="/about.html">about</a></li>
+        <li><a href="/index.html" data-i18n="nav.home">home</a></li>
+        <li><a href="/gallery.html" data-i18n="nav.gallery">gallery</a></li>
+        <li><a href="/archive.html" data-i18n="nav.archive">archive</a></li>
+        <li><a href="/curious.html" data-i18n="nav.curious">curious</a></li>
+        <li><a href="/manifesto.html" data-i18n="nav.manifesto">manifesto</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">about</a></li>
       </ul>
+      <!-- Переключатель языка (переводы — в assets/js/i18n.js) -->
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.aria" hidden>
+        <button type="button" data-set-lang="en" lang="en" aria-label="English" aria-pressed="true">en</button>
+        <button type="button" data-set-lang="fr" lang="fr" aria-label="Français" aria-pressed="false">fr</button>
+        <button type="button" data-set-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">ru</button>
+      </div>
     </nav>
   </header>
 
@@ -55,18 +61,18 @@
 
     <section class="notfound">
       <div class="container">
-        <p class="kicker">error 404 · page not found</p>
-        <h1 class="headword">this page <span class="pos">n.</span></h1>
+        <p class="kicker" data-i18n="404.kicker">error 404 · page not found</p>
+        <h1 class="headword" data-i18n="404.h1">this page <span class="pos">n.</span></h1>
         <ol class="senses">
-          <li><span class="struck">1. A document that exists at this address.</span></li>
+          <li><span class="struck" data-i18n="404.sense">1. A document that exists at this address.</span></li>
         </ol>
         <p class="correction">
           <svg class="correction__caret" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>thrown away. the bin is empty.</span>
+          <span data-i18n="404.correction">thrown away. the bin is empty.</span>
         </p>
         <div class="actions mt-md">
-          <a href="/index.html" class="btn btn--ink">back home</a>
-          <a href="/gallery.html" class="hand-link">look at the gallery →</a>
+          <a href="/index.html" class="btn btn--ink" data-i18n="404.home">back home</a>
+          <a href="/gallery.html" class="hand-link" data-i18n="404.gallery">look at the gallery →</a>
         </div>
       </div>
     </section>
@@ -75,30 +81,31 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-entry">garbage <span class="pos" data-i18n="footer.pos">n., of Paris</span></p>
       <p class="footer-def">
-        <span class="struck">Things nobody wants.</span>
-        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
+        <span class="struck" data-i18n="footer.struck">Things nobody wants.</span>
+        <span class="hand hand--blue" data-i18n="footer.hand">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
       <div class="footer-inner">
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="/gallery.html">gallery</a>
-          <a href="/archive.html">archive</a>
-          <a href="/curious.html">curious</a>
-          <a href="/manifesto.html">manifesto</a>
-          <a href="/about.html">about</a>
+        <nav class="footer-nav" aria-label="Footer navigation" data-i18n-aria="footer.aria">
+          <a href="/gallery.html" data-i18n="nav.gallery">gallery</a>
+          <a href="/archive.html" data-i18n="nav.archive">archive</a>
+          <a href="/curious.html" data-i18n="nav.curious">curious</a>
+          <a href="/manifesto.html" data-i18n="nav.manifesto">manifesto</a>
+          <a href="/about.html" data-i18n="nav.about">about</a>
           <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
           <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
         </nav>
-        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
+  <button id="back-to-top" type="button" aria-label="Back to top" data-i18n-aria="top.aria" data-i18n="top">↑ up</button>
 
   <!-- Данные и скрипты -->
+  <script src="/assets/js/i18n.js"></script>
   <script src="/assets/js/data.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>

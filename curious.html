@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curious — Garbage of Paris</title>
-  <meta name="description" content="Pull things out of an interactive Paris bin and learn the history of rubbish: Eugène Poubelle, rag-pickers, a hill made of jars and more." />
+  <title data-i18n="curious.title">Curious — Garbage of Paris</title>
+  <meta name="description" data-i18n-content="curious.desc" content="Pull things out of an interactive Paris bin and learn the history of rubbish: Eugène Poubelle, rag-pickers, a hill made of jars and more." />
   <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
@@ -29,26 +29,32 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+    <nav class="nav" aria-label="Main navigation" data-i18n-aria="nav.aria">
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home" data-i18n-aria="nav.logo">
         <span class="nav-logo__word">garbage</span>
         <span class="nav-logo__note">of Paris</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-i18n-aria="menu.open">
+        <span class="nav-toggle__open" data-i18n="nav.menu">menu</span><span class="nav-toggle__close" data-i18n="nav.close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html">home</a></li>
-        <li><a href="gallery.html">gallery</a></li>
-        <li><a href="archive.html">archive</a></li>
-        <li><a href="curious.html" aria-current="page">curious</a></li>
-        <li><a href="manifesto.html">manifesto</a></li>
-        <li><a href="about.html">about</a></li>
+        <li><a href="index.html" data-i18n="nav.home">home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">gallery</a></li>
+        <li><a href="archive.html" data-i18n="nav.archive">archive</a></li>
+        <li><a href="curious.html" aria-current="page" data-i18n="nav.curious">curious</a></li>
+        <li><a href="manifesto.html" data-i18n="nav.manifesto">manifesto</a></li>
+        <li><a href="about.html" data-i18n="nav.about">about</a></li>
       </ul>
+      <!-- Переключатель языка (переводы — в assets/js/i18n.js) -->
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.aria" hidden>
+        <button type="button" data-set-lang="en" lang="en" aria-label="English" aria-pressed="true">en</button>
+        <button type="button" data-set-lang="fr" lang="fr" aria-label="Français" aria-pressed="false">fr</button>
+        <button type="button" data-set-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">ru</button>
+      </div>
     </nav>
   </header>
 
@@ -173,11 +179,11 @@
       <div class="container">
         <div class="page-head__grid">
           <div>
-            <p class="kicker">§ 07 · for curious minds of all ages</p>
-            <h1>curious <span class="pos">adj.</span></h1>
-            <p class="page-head__def"><b>1.</b>Eager to know what is inside things. Especially bins.</p>
+            <p class="kicker" data-i18n="curious.kicker">§ 07 · for curious minds of all ages</p>
+            <h1 data-i18n="curious.h1">curious <span class="pos">adj.</span></h1>
+            <p class="page-head__def" data-i18n="curious.def"><b>1.</b>Eager to know what is inside things. Especially bins.</p>
           </div>
-          <p class="page-head__note">tap the bin and pull something out ↓</p>
+          <p class="page-head__note" data-i18n="curious.note">tap the bin and pull something out ↓</p>
         </div>
         <hr class="page-head__rule" />
       </div>
@@ -190,7 +196,7 @@
 
           <div class="dig__bin-col">
             <button class="dig__bin" id="dig-bin" type="button" aria-describedby="dig-count">
-              <span class="sr-only">Pull something out of the bin</span>
+              <span class="sr-only" data-i18n="curious.bin">Pull something out of the bin</span>
               <svg viewBox="300 530 480 640" aria-hidden="true" focusable="false">
                 <ellipse cx="548" cy="1128" rx="210" ry="22" fill="#1c1b18" opacity=".09"/>
                 <g filter="url(#sketch)" stroke-linecap="round" stroke-linejoin="round">
@@ -238,17 +244,17 @@
                 </g>
               </svg>
             </button>
-            <p class="dig__count" id="dig-count" aria-live="polite">10 things inside. tap the bin!</p>
+            <p class="dig__count" id="dig-count" aria-live="polite" data-i18n="curious.count">10 things inside. tap the bin!</p>
           </div>
 
           <div class="dig__card-col" id="dig-card" aria-live="polite">
             <!-- Карточка с фактом подставляется из curious.js -->
             <article class="fact-card fact-card--intro">
               <div class="fact-card__body">
-                <p class="kicker">how to play</p>
-                <h2 class="fact-card__word">rummage <span class="pos">v.</span></h2>
-                <p class="fact-card__text">There are ten things hiding in this Parisian bin. Each one has a story about rubbish — from ancient Rome to today. Tap the bin, pull them out one by one and become a real <b>garbologist</b> (yes, that's a real word: a person who studies rubbish!).</p>
-                <p class="fact-card__note">ready? tap the bin ←</p>
+                <p class="kicker" data-i18n="curious.intro.kicker">how to play</p>
+                <h2 class="fact-card__word" data-i18n="curious.intro.word">rummage <span class="pos">v.</span></h2>
+                <p class="fact-card__text" data-i18n="curious.intro.text">There are ten things hiding in this Parisian bin. Each one has a story about rubbish — from ancient Rome to today. Tap the bin, pull them out one by one and become a real <b>garbologist</b> (yes, that's a real word: a person who studies rubbish!).</p>
+                <p class="fact-card__note" data-i18n="curious.intro.note">ready? tap the bin ←</p>
               </div>
             </article>
           </div>
@@ -262,12 +268,12 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-number">§ 07.2 — timeline</span>
-            <h2>through time <span class="pos">adv. phr.</span></h2>
+            <span class="section-number" data-i18n="curious.timeline.no">§ 07.2 — timeline</span>
+            <h2 data-i18n="curious.timeline.h">through time <span class="pos">adv. phr.</span></h2>
           </div>
-          <button class="hand-link" type="button" id="dig-reset">put everything back in the bin ↺</button>
+          <button class="hand-link" type="button" id="dig-reset" data-i18n="curious.reset">put everything back in the bin ↺</button>
         </div>
-        <p class="timeline-hint">Everything you pull out lands on its spot in history. Tap a find to read it again.</p>
+        <p class="timeline-hint" data-i18n="curious.hint">Everything you pull out lands on its spot in history. Tap a find to read it again.</p>
         <ol class="timeline" id="dig-timeline"></ol>
       </div>
     </section>
@@ -276,8 +282,8 @@
     <section class="section" style="padding-top: 0; padding-bottom: 0;">
       <div class="container">
         <div class="sources">
-          <p class="kicker">where this comes from</p>
-          <p>Facts checked against encyclopedias and public sources, for example
+          <p class="kicker" data-i18n="curious.sources.kicker">where this comes from</p>
+          <p data-i18n="curious.sources">Facts checked against encyclopedias and public sources, for example
             <a href="https://en.wikipedia.org/wiki/Eug%C3%A8ne_Poubelle" target="_blank" rel="noopener">Eugène Poubelle</a>,
             <a href="https://en.wikipedia.org/wiki/Monte_Testaccio" target="_blank" rel="noopener">Monte Testaccio</a>,
             <a href="https://fr.wikipedia.org/wiki/Chiffonnier" target="_blank" rel="noopener">Chiffonnier</a>
@@ -290,30 +296,31 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-entry">garbage <span class="pos" data-i18n="footer.pos">n., of Paris</span></p>
       <p class="footer-def">
-        <span class="struck">Things nobody wants.</span>
-        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
+        <span class="struck" data-i18n="footer.struck">Things nobody wants.</span>
+        <span class="hand hand--blue" data-i18n="footer.hand">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
       <div class="footer-inner">
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="gallery.html">gallery</a>
-          <a href="archive.html">archive</a>
-          <a href="curious.html">curious</a>
-          <a href="manifesto.html">manifesto</a>
-          <a href="about.html">about</a>
+        <nav class="footer-nav" aria-label="Footer navigation" data-i18n-aria="footer.aria">
+          <a href="gallery.html" data-i18n="nav.gallery">gallery</a>
+          <a href="archive.html" data-i18n="nav.archive">archive</a>
+          <a href="curious.html" data-i18n="nav.curious">curious</a>
+          <a href="manifesto.html" data-i18n="nav.manifesto">manifesto</a>
+          <a href="about.html" data-i18n="nav.about">about</a>
           <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
           <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
         </nav>
-        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
+  <button id="back-to-top" type="button" aria-label="Back to top" data-i18n-aria="top.aria" data-i18n="top">↑ up</button>
 
   <!-- Данные и скрипты -->
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/curious.js"></script>
