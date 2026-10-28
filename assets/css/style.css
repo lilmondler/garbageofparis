@@ -79,6 +79,7 @@
 
   /* Рукописные штрихи (SVG). stroke не растягивается вместе с картинкой */
   --scribble-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c38-6 96-7 194-4' fill='none' stroke='%23cf3b2c' stroke-width='2.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --wave-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 6'%3E%3Cpath d='M0 3C2 0.6 4 0.6 6 3S10 5.4 12 3' fill='none' stroke='%23cf3b2c' stroke-width='1.9'/%3E%3C/svg%3E");
   --scribble-red-double: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 6c50-4 110-4 194-1M8 13c60-4 120-3 186-2' fill='none' stroke='%23cf3b2c' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   --circle-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50' preserveAspectRatio='none'%3E%3Cpath d='M66 5C34 2 7 10 4 24c-3 15 27 23 59 22 33-1 55-9 53-23C114 9 86 2 50 7' fill='none' stroke='%23233f8f' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
   --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -221,12 +222,15 @@ p + p { margin-top: 1em; }
   letter-spacing: 0;
 }
 
-/* Зачёркнуто красной ручкой */
+/* Зачёркнуто красной ручкой.
+   Волна — фоновая картинка по середине строки, а не text-decoration:
+   у line-through высоту задаёт шрифт, и на кириллице линия уходила вниз.
+   box-decoration-break: clone — волна по центру каждой строки при переносе. */
 .struck {
   color: var(--grey);
-  text-decoration: line-through wavy var(--red);
-  text-decoration-thickness: 2px;
-  text-decoration-skip-ink: none;
+  background: var(--wave-red) repeat-x 0 61% / 0.62em 0.32em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* Подчёркнуто красной ручкой */
@@ -1830,10 +1834,10 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
 }
 
 .splash-struck {
+  width: fit-content;
   font-size: 1.4rem;
   color: var(--grey);
-  text-decoration: line-through wavy var(--red);
-  text-decoration-thickness: 2px;
+  background: var(--wave-red) repeat-x 0 61% / 0.62em 0.32em;
   transition-delay: 0.45s !important;
 }
 
