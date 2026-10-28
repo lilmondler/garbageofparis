@@ -57,6 +57,12 @@
 
 .dig__bin.is-empty::after { content: 'empty!'; animation: none; }
 
+/* Надпись на урне на других языках */
+html:lang(fr) .dig__bin::after { content: 'touche-moi !'; }
+html:lang(fr) .dig__bin.is-empty::after { content: 'vide !'; }
+html:lang(ru) .dig__bin::after { content: 'нажми!'; }
+html:lang(ru) .dig__bin.is-empty::after { content: 'пусто!'; }
+
 @keyframes nudge {
   0%, 100% { transform: rotate(10deg) translateY(0); }
   50%      { transform: rotate(6deg) translateY(-6px); }

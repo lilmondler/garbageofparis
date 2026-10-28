@@ -52,7 +52,7 @@
   /* Шрифты */
   --font-serif: 'Literata', Georgia, 'Times New Roman', serif;
   --font-hand:  'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
-  --font-type:  'Courier Prime', 'Courier New', Courier, monospace;
+  --font-type:  'Courier Prime', 'PT Mono', 'Courier New', Courier, monospace; /* PT Mono — только для кириллицы */
 
   /* Размеры */
   --text-xs:   0.78rem;
@@ -396,6 +396,52 @@ p + p { margin-top: 1em; }
 .nav-toggle__close { display: none; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__open { display: none; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__close { display: inline; }
+
+/* Переключатель языка: en · fr · ru, текущий обведён синей ручкой */
+.nav-links { margin-left: auto; }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  order: 2;
+  padding-left: clamp(0.8rem, 1.8vw, 1.4rem);
+  border-left: 1px dashed var(--line);
+}
+.lang-switch[hidden] { display: none; }
+
+.lang-switch button {
+  position: relative;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ink-2);
+  padding: 0.3rem 0.45rem 0.4rem;
+  transition: color var(--ease);
+}
+
+.lang-switch button + button { margin-left: 0.3rem; }
+.lang-switch button + button::before {
+  content: '·';
+  position: absolute;
+  left: -0.3rem;
+  color: var(--grey);
+}
+
+.lang-switch button::after {
+  content: '';
+  position: absolute;
+  inset: 0 -0.05rem 0.05rem;
+  background: var(--circle-blue) no-repeat center / 100% 100%;
+  opacity: 0;
+  transform: rotate(-6deg) scale(0.85);
+  transition: opacity 0.2s ease, transform 0.25s var(--ease-out);
+}
+
+.lang-switch button:hover { color: var(--ink); }
+.lang-switch button.active { color: var(--blue); font-weight: 700; }
+.lang-switch button.active::after { opacity: 1; transform: rotate(-6deg); }
 
 
 /* ============================================================
@@ -874,6 +920,8 @@ p + p { margin-top: 1em; }
 .polaroid--hero .polaroid__photo { aspect-ratio: 1 / 1; }
 .polaroid--hero .polaroid__note { font-size: 1.8rem; min-height: 4rem; padding-top: 0.8rem; }
 .polaroid--hero:hover { transform: rotate(var(--tilt, 0deg)); }
+
+html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
 
 .polaroid__photo.is-missing::after {
   content: 'photo';
@@ -1621,31 +1669,12 @@ p + p { margin-top: 1em; }
    18. МЕДИАЗАПРОСЫ
    ============================================================ */
 
+/* Меню прячется под кнопку «menu» уже на планшетах:
+   рядом с переключателем языка (и на fr/ru) пункты меню в одну строку не помещаются */
 @media (max-width: 1024px) {
-  .entry-hero__grid { grid-template-columns: 1fr; }
-  .entry-hero__photo { width: min(100%, 380px); margin-top: var(--space-md); }
+  .nav-toggle { display: block; order: 3; }
 
-  .usage-grid { grid-template-columns: 1fr; }
-
-  .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .index-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  .about-layout { grid-template-columns: 1fr; }
-  .about-sidebar {
-    position: static;
-    display: grid;
-    grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-    gap: var(--space-md);
-    align-items: center;
-  }
-  .about-card { margin-top: 0; }
-}
-
-@media (max-width: 768px) {
-  :root { --header-h: 58px; }
-
-  .nav-toggle { display: block; }
+  .lang-switch { margin-left: auto; border-left: 0; padding-left: 0; }
 
   .nav-links {
     position: fixed;
@@ -1673,6 +1702,41 @@ p + p { margin-top: 1em; }
   }
 
   .nav-links a { font-size: 2.6rem; }
+}
+
+/* Совсем узкие телефоны: логотип, языки и «menu» в одну строку */
+@media (max-width: 400px) {
+  .nav { gap: 0.6rem; }
+  .nav-logo__word { font-size: 1.25rem; }
+  .nav-logo__note { font-size: 1.15rem; }
+  .lang-switch button { font-size: 1.3rem; padding: 0.3rem 0.3rem 0.4rem; }
+  .lang-switch button + button::before { display: none; }
+  .nav-toggle { font-size: 1.35rem; }
+}
+
+@media (max-width: 1024px) {
+  .entry-hero__grid { grid-template-columns: 1fr; }
+  .entry-hero__photo { width: min(100%, 380px); margin-top: var(--space-md); }
+
+  .usage-grid { grid-template-columns: 1fr; }
+
+  .latest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .index-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .about-layout { grid-template-columns: 1fr; }
+  .about-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+    gap: var(--space-md);
+    align-items: center;
+  }
+  .about-card { margin-top: 0; }
+}
+
+@media (max-width: 768px) {
+  :root { --header-h: 58px; }
 
   .page-head__grid { grid-template-columns: 1fr; }
   .page-head__note,

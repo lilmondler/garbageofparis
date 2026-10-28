@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garbage of Paris — a visual sociology of waste</title>
-  <meta name="description" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
+  <title data-i18n="index.title">Garbage of Paris — a visual sociology of waste</title>
+  <meta name="description" data-i18n-content="index.desc" content="Garbage of Paris is a visual sociology project about waste, urban traces, and everyday life in Paris. Photography by Snezhana." />
   <meta name="theme-color" content="#f5f1e9" />
 
   <!-- Превью ссылки в соцсетях и мессенджерах -->
@@ -28,26 +28,32 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+    <nav class="nav" aria-label="Main navigation" data-i18n-aria="nav.aria">
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home" data-i18n-aria="nav.logo">
         <span class="nav-logo__word">garbage</span>
         <span class="nav-logo__note">of Paris</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-i18n-aria="menu.open">
+        <span class="nav-toggle__open" data-i18n="nav.menu">menu</span><span class="nav-toggle__close" data-i18n="nav.close">close ×</span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html" aria-current="page">home</a></li>
-        <li><a href="gallery.html">gallery</a></li>
-        <li><a href="archive.html">archive</a></li>
-        <li><a href="curious.html">curious</a></li>
-        <li><a href="manifesto.html">manifesto</a></li>
-        <li><a href="about.html">about</a></li>
+        <li><a href="index.html" aria-current="page" data-i18n="nav.home">home</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">gallery</a></li>
+        <li><a href="archive.html" data-i18n="nav.archive">archive</a></li>
+        <li><a href="curious.html" data-i18n="nav.curious">curious</a></li>
+        <li><a href="manifesto.html" data-i18n="nav.manifesto">manifesto</a></li>
+        <li><a href="about.html" data-i18n="nav.about">about</a></li>
       </ul>
+      <!-- Переключатель языка (переводы — в assets/js/i18n.js) -->
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.aria" hidden>
+        <button type="button" data-set-lang="en" lang="en" aria-label="English" aria-pressed="true">en</button>
+        <button type="button" data-set-lang="fr" lang="fr" aria-label="Français" aria-pressed="false">fr</button>
+        <button type="button" data-set-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">ru</button>
+      </div>
     </nav>
   </header>
 
@@ -59,10 +65,10 @@
         <div class="entry-hero__grid">
 
           <div class="entry-hero__text">
-            <p class="kicker">dictionary of the street · Paris, 2022 —</p>
+            <p class="kicker" data-i18n="index.kicker">dictionary of the street · Paris, 2022 —</p>
 
-            <h1 class="headword">garbage <span class="pos">n., uncountable</span></h1>
-            <p class="pron">/ˈɡɑːr.bɪdʒ/ &nbsp;·&nbsp; fr. <i>ordures, déchets, poubelle</i></p>
+            <h1 class="headword">garbage <span class="pos" data-i18n="index.pos">n., uncountable</span></h1>
+            <p class="pron" data-i18n="index.pron">/ˈɡɑːr.bɪdʒ/ &nbsp;·&nbsp; fr. <i>ordures, déchets, poubelle</i></p>
 
             <!--
               ТЕКСТ СТАТЬИ:
@@ -70,21 +76,21 @@
               .correction — синяя рукописная поправка.
             -->
             <ol class="senses">
-              <li><span class="struck">1. Waste material; things that are thrown away.</span></li>
+              <li><span class="struck" data-i18n="index.sense">1. Waste material; things that are thrown away.</span></li>
             </ol>
             <p class="correction">
               <svg class="correction__caret" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 18 L10 3 L18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span>the private made public,<br>the interior made exterior</span>
+              <span data-i18n="index.correction">the private made public,<br>the interior made exterior</span>
             </p>
 
-            <p class="entry-hero__lede">Garbage of Paris is a visual sociology of waste, traces and urban life. Bags, bins, stains, objects, signs — photographed where they were left.</p>
+            <p class="entry-hero__lede" data-i18n="index.lede">Garbage of Paris is a visual sociology of waste, traces and urban life. Bags, bins, stains, objects, signs — photographed where they were left.</p>
 
             <div class="actions">
-              <a href="gallery.html" class="btn btn--ink">see the evidence →</a>
-              <a href="manifesto.html" class="hand-link">read the manifesto</a>
+              <a href="gallery.html" class="btn btn--ink" data-i18n="index.evidence">see the evidence →</a>
+              <a href="manifesto.html" class="hand-link" data-i18n="index.read">read the manifesto</a>
             </div>
 
-            <p class="signature">Snezhana</p>
+            <p class="signature" data-i18n="index.signature">Snezhana</p>
           </div>
 
           <!--
@@ -121,13 +127,13 @@
             Меняй содержимое абзацев, не трогая HTML-структуру.
           -->
           <div class="usage">
-            <span class="section-number">§ 01 — usage</span>
-            <h2>about the project <span class="pos">phr.</span></h2>
-            <p class="usage__lead">My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
-            <p>And so this is Garbage of Paris. Bags, bins, stains, objects, signs. The private made public. The interior made exterior.</p>
-            <p>Interpretations are left to the viewer.</p>
+            <span class="section-number" data-i18n="index.usage.no">§ 01 — usage</span>
+            <h2 data-i18n="index.usage.h">about the project <span class="pos">phr.</span></h2>
+            <p class="usage__lead" data-i18n="index.usage.lead">My name is Snezhana. Or Jane. As you want. I am a sociologist who makes photographs of garbage.</p>
+            <p data-i18n="index.usage.p1">And so this is Garbage of Paris. Bags, bins, stains, objects, signs. The private made public. The interior made exterior.</p>
+            <p data-i18n="index.usage.p2">Interpretations are left to the viewer.</p>
 
-            <span class="margin-note">“Trash is the ideal object of contemplation.”</span>
+            <span class="margin-note" data-i18n="index.usage.note">“Trash is the ideal object of contemplation.”</span>
 
             <div class="actions">
               <a href="https://www.instagram.com/garbageofparis" class="btn" target="_blank" rel="noopener">instagram ↗</a>
@@ -136,18 +142,18 @@
           </div>
 
           <!-- Чек: цифры считаются автоматически из data.js -->
-          <aside class="receipt" aria-label="The archive in numbers">
+          <aside class="receipt" aria-label="The archive in numbers" data-i18n-aria="index.receipt.aria">
             <p class="receipt__title">Garbage of Paris</p>
-            <p class="receipt__sub">inventory · rue de partout</p>
+            <p class="receipt__sub" data-i18n="index.receipt.sub">inventory · rue de partout</p>
             <hr class="receipt__rule" />
-            <p class="receipt__row"><span>photographs</span><b id="stat-photos">—</b></p>
-            <p class="receipt__row"><span>places</span><b id="stat-places">—</b></p>
-            <p class="receipt__row"><span>categories</span><b id="stat-categories">—</b></p>
-            <p class="receipt__row"><span>last find</span><b id="stat-latest">—</b></p>
+            <p class="receipt__row"><span data-i18n="index.receipt.photos">photographs</span><b id="stat-photos">—</b></p>
+            <p class="receipt__row"><span data-i18n="index.receipt.places">places</span><b id="stat-places">—</b></p>
+            <p class="receipt__row"><span data-i18n="index.receipt.cats">categories</span><b id="stat-categories">—</b></p>
+            <p class="receipt__row"><span data-i18n="index.receipt.latest">last find</span><b id="stat-latest">—</b></p>
             <hr class="receipt__rule" />
-            <p class="receipt__row receipt__total"><span>total paid</span><b>0,00 €</b></p>
-            <p class="receipt__thanks">merci · no refunds · no returns</p>
-            <span class="receipt__stamp" aria-hidden="true">free!</span>
+            <p class="receipt__row receipt__total"><span data-i18n="index.receipt.total">total paid</span><b>0,00 €</b></p>
+            <p class="receipt__thanks" data-i18n="index.receipt.thanks">merci · no refunds · no returns</p>
+            <span class="receipt__stamp" aria-hidden="true" data-i18n="index.receipt.stamp">free!</span>
           </aside>
 
         </div>
@@ -159,10 +165,10 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-number">§ 02 — latest</span>
-            <h2>fresh finds <span class="pos">n., pl.</span></h2>
+            <span class="section-number" data-i18n="index.latest.no">§ 02 — latest</span>
+            <h2 data-i18n="index.latest.h">fresh finds <span class="pos">n., pl.</span></h2>
           </div>
-          <a href="gallery.html" class="hand-link">see all of them →</a>
+          <a href="gallery.html" class="hand-link" data-i18n="index.latest.all">see all of them →</a>
         </div>
 
         <!-- Заполняется автоматически из data.js (4 последних фото) -->
@@ -177,30 +183,30 @@
 
           <a class="index-card" href="gallery.html">
             <span class="index-card__head"><span>§ 03</span><span>GOP-GAL</span></span>
-            <h3>gallery</h3>
-            <p>All photographs, filterable by year and category.</p>
-            <span class="hand-link">open →</span>
+            <h3 data-i18n="nav.gallery">gallery</h3>
+            <p data-i18n="index.card.gallery">All photographs, filterable by year and category.</p>
+            <span class="hand-link" data-i18n="index.card.open">open →</span>
           </a>
 
           <a class="index-card" href="archive.html">
             <span class="index-card__head"><span>§ 04</span><span>GOP-ARC</span></span>
-            <h3>archive</h3>
-            <p>Every find, indexed by year. A dictionary of the street.</p>
-            <span class="hand-link">open →</span>
+            <h3 data-i18n="nav.archive">archive</h3>
+            <p data-i18n="index.card.archive">Every find, indexed by year. A dictionary of the street.</p>
+            <span class="hand-link" data-i18n="index.card.open">open →</span>
           </a>
 
           <a class="index-card" href="curious.html">
             <span class="index-card__head"><span>§ 07</span><span>GOP-CUR</span></span>
-            <h3>curious</h3>
-            <p>Dig in a Paris bin and learn where rubbish comes from. Fun for kids.</p>
-            <span class="hand-link">play →</span>
+            <h3 data-i18n="nav.curious">curious</h3>
+            <p data-i18n="index.card.curious">Dig in a Paris bin and learn where rubbish comes from. Fun for kids.</p>
+            <span class="hand-link" data-i18n="index.card.play">play →</span>
           </a>
 
           <a class="index-card" href="manifesto.html">
             <span class="index-card__head"><span>§ 05</span><span>GOP-MAN</span></span>
-            <h3>manifesto</h3>
-            <p>If you want to know more. In English and en français.</p>
-            <span class="hand-link">read →</span>
+            <h3 data-i18n="nav.manifesto">manifesto</h3>
+            <p data-i18n="index.card.manifesto">If you want to know more. In English, en français and по-русски.</p>
+            <span class="hand-link" data-i18n="index.card.read">read →</span>
           </a>
 
         </div>
@@ -211,30 +217,31 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-entry">garbage <span class="pos">n., of Paris</span></p>
+      <p class="footer-entry">garbage <span class="pos" data-i18n="footer.pos">n., of Paris</span></p>
       <p class="footer-def">
-        <span class="struck">Things nobody wants.</span>
-        <span class="hand hand--blue">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
+        <span class="struck" data-i18n="footer.struck">Things nobody wants.</span>
+        <span class="hand hand--blue" data-i18n="footer.hand">a visual sociology of everyday life. Paris, 2022 — still collecting.</span>
       </p>
       <div class="footer-inner">
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="gallery.html">gallery</a>
-          <a href="archive.html">archive</a>
-          <a href="curious.html">curious</a>
-          <a href="manifesto.html">manifesto</a>
-          <a href="about.html">about</a>
+        <nav class="footer-nav" aria-label="Footer navigation" data-i18n-aria="footer.aria">
+          <a href="gallery.html" data-i18n="nav.gallery">gallery</a>
+          <a href="archive.html" data-i18n="nav.archive">archive</a>
+          <a href="curious.html" data-i18n="nav.curious">curious</a>
+          <a href="manifesto.html" data-i18n="nav.manifesto">manifesto</a>
+          <a href="about.html" data-i18n="nav.about">about</a>
           <a href="https://www.instagram.com/garbageofparis" target="_blank" rel="noopener">instagram ↗</a>
           <a href="https://t.me/garbageofparis" target="_blank" rel="noopener">telegram ↗</a>
         </nav>
-        <p class="footer-copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© Garbage of Paris. Photographs by Snezhana and close people.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to top -->
-  <button id="back-to-top" type="button" aria-label="Back to top">↑ up</button>
+  <button id="back-to-top" type="button" aria-label="Back to top" data-i18n-aria="top.aria" data-i18n="top">↑ up</button>
 
   <!-- Данные и скрипты -->
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
