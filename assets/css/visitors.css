@@ -1,0 +1,119 @@
+/*
+  ============================================================
+  GARBAGE OF PARIS — visitors.css
+  Галерея зрителей (visitors.html) и страница модерации
+  (backstage.html). Поля формы и карточки — из studio.css.
+  ============================================================
+*/
+
+/* Форма в одну колонку — превью, как в студии, здесь не нужно */
+.visitors-form {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 46rem;
+}
+
+.visitors-closed {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--blue) !important;
+  transform: rotate(-1deg);
+}
+
+/* Ловушка для спам-ботов: поле есть в разметке, но людям не видно */
+.visitors-trap {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.studio label.visitors-consent {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.visitors-consent input {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  accent-color: var(--blue);
+}
+
+.visitors-message {
+  font-family: var(--font-type);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--ink-2) !important;
+}
+
+.visitors-message.is-ok {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--blue) !important;
+}
+
+.visitors-message.is-error { color: var(--red) !important; font-weight: 700; }
+
+.studio-submit .btn[disabled] { opacity: 0.5; cursor: progress; }
+
+/* Подпись «фото: имя» под карточкой на стене */
+.find__by {
+  margin-top: 0.15rem !important;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--blue);
+}
+
+
+/* ============================================================
+   BACKSTAGE — модерация
+   ============================================================ */
+
+.backstage-item {
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.backstage-item img,
+.backstage-item .studio-item__ph {
+  width: 120px;
+  height: 120px;
+  cursor: zoom-in;
+}
+
+.backstage-item .studio-item__actions {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.backstage-empty {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--grey) !important;
+}
+
+@media (max-width: 560px) {
+  .backstage-item { grid-template-columns: 88px minmax(0, 1fr); }
+  .backstage-item img,
+  .backstage-item .studio-item__ph { width: 88px; height: 88px; }
+  .backstage-item .studio-item__actions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1.4rem;
+  }
+}

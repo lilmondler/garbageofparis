@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backstage — Garbage of Paris</title>
+  <meta name="description" content="Moderation of visitor photos." />
+  <meta name="theme-color" content="#f5f1e9" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Превью ссылки в соцсетях и мессенджерах -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Garbage of Paris" />
+  <meta property="og:title" content="Garbage of Paris" />
+  <meta property="og:description" content="Garbage of Paris" />
+  <meta property="og:image" content="https://garbageofparis.fr/brand/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Шрифты: Literata (заголовки и текст) + Caveat (рукописные пометки) + Courier Prime (бирки).
+       Файлы лежат в assets/fonts — без Google Fonts. -->
+  <link rel="preload" href="assets/fonts/literata-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/caveat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/studio.css" />
+  <link rel="stylesheet" href="assets/css/visitors.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Garbage of Paris — home">
+        <span class="nav-logo__word">garbage</span>
+        <span class="nav-logo__note">of Paris</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span class="nav-toggle__open">menu</span><span class="nav-toggle__close">close ×</span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">home</a></li>
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="archive.html">archive</a></li>
+        <li><a href="visitors.html">your finds</a></li>
+        <li><a href="curious.html">curious</a></li>
+        <li><a href="manifesto.html">manifesto</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!--
+      BACKSTAGE — модерация галереи зрителей (visitors.html).
+      Её нет в меню, поисковики её не индексируют.
+      Войти может только владелец проекта Supabase (первый пользователь
+      в Authentication → Users). Без входа страница ничего не может изменить.
+    -->
+    <header class="page-head">
+      <div class="container">
+        <div class="page-head__grid">
+          <div>
+            <p class="kicker">§ 00 · только для своих</p>
+            <h1>backstage <span class="pos">n.</span></h1>
+            <p class="page-head__def"><b>1.</b>Куда приходят чужие находки, прежде чем попасть на стену.</p>
+          </div>
+          <p class="page-head__note">показать или выбросить — решаешь ты</p>
+        </div>
+        <hr class="page-head__rule" />
+      </div>
+    </header>
+
+    <section class="section section--tight-top">
+      <div class="container studio">
+
+        <!-- ========== ВХОД ========== -->
+        <section class="studio-card" aria-labelledby="login-title">
+          <div class="studio-card__head">
+            <h2 id="login-title">вход</h2>
+            <p class="studio-status" id="b-status">не выполнен</p>
+          </div>
+
+          <p id="b-unconfigured" hidden>Supabase ещё не подключён: заполни <code>assets/js/visitors-config.js</code> (инструкция — <code>supabase/README.md</code>).</p>
+
+          <form class="studio-grid" id="b-login" autocomplete="on" hidden>
+            <label>email
+              <input class="studio-input" id="b-email" type="email" autocomplete="username" required />
+            </label>
+            <label>пароль
+              <input class="studio-input" id="b-password" type="password" autocomplete="current-password" required />
+            </label>
+            <div class="studio-submit">
+              <button class="btn btn--ink" type="submit">войти</button>
+            </div>
+          </form>
+
+          <div id="b-done" hidden>
+            <p>Вошла как <code id="b-who"></code>. Вход запоминается в этом браузере.</p>
+            <div class="actions">
+              <button class="hand-link" type="button" id="b-refresh">обновить списки ↻</button>
+              <button class="hand-link" type="button" id="b-logout">выйти</button>
+            </div>
+          </div>
+
+          <ul class="studio-log" id="b-log" aria-live="polite"></ul>
+        </section>
+
+        <!-- ========== ОЧЕРЕДЬ ========== -->
+        <section class="studio-card" aria-labelledby="queue-title" id="b-queue-card" hidden>
+          <div class="studio-card__head">
+            <h2 id="queue-title">новые <span class="pos">ждут проверки</span></h2>
+            <p class="studio-status" id="b-queue-count"></p>
+          </div>
+          <div class="studio-list" id="b-queue"></div>
+        </section>
+
+        <!-- ========== НА СТЕНЕ ========== -->
+        <section class="studio-card" aria-labelledby="wall-title" id="b-wall-card" hidden>
+          <div class="studio-card__head">
+            <h2 id="wall-title">на стене <span class="pos">видно всем</span></h2>
+            <a class="hand-link" href="visitors.html" target="_blank" rel="noopener">открыть страницу ↗</a>
+          </div>
+          <div class="studio-list" id="b-wall"></div>
+        </section>
+
+        <!-- ========== УБОРКА ========== -->
+        <section class="studio-card" aria-labelledby="clean-title" id="b-clean-card" hidden>
+          <div class="studio-card__head">
+            <h2 id="clean-title">уборка</h2>
+          </div>
+          <p id="b-orphans-text">Файлы без подписи (если отправка оборвалась на полпути).</p>
+          <div class="actions">
+            <button class="btn" type="button" id="b-orphans">удалить лишние файлы</button>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/vendor/supabase-2.117.3.js"></script>
+  <script src="assets/js/visitors-config.js"></script>
+  <script src="assets/js/backstage.js"></script>
+</body>
+</html>

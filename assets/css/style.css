@@ -1708,6 +1708,15 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   .nav-links a { font-size: 2.6rem; }
 }
 
+/* Небольшие ноутбуки: семь пунктов меню и языки в одну строку (на fr/ru слова длиннее) */
+@media (min-width: 1025px) and (max-width: 1240px) {
+  .nav { gap: 1.2rem; }
+  .nav-links { gap: 0.95rem; }
+  .nav-links a { font-size: 1.32rem; }
+  .lang-switch { padding-left: 0.8rem; }
+  .lang-switch button { font-size: 1.35rem; padding-left: 0.35rem; padding-right: 0.35rem; }
+}
+
 /* Совсем узкие телефоны: логотип, языки и «menu» в одну строку */
 @media (max-width: 400px) {
   .nav { gap: 0.6rem; }
