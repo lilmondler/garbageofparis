@@ -18,6 +18,6 @@
 */
 
 window.VISITOR_GALLERY = {
-  url: '',   // Project URL, например https://abcdefgh.supabase.co
-  key: ''    // publishable key (sb_publishable_…) или anon public key (eyJ…)
+  url: 'https://pkeneuhwrlbenvczdajd.supabase.co',
+  key: 'sb_publishable_4Y_SRAvfCZBWFLhJzFhHAw_uvgOpxHj'
 };
