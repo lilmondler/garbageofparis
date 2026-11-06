@@ -105,9 +105,9 @@
       word: 'le sac transparent',
       pos: { en: 'n. m.', fr: 'n. m.', ru: 'сущ., прозрачный пакет' },
       text: {
-        en: 'Why are Paris street bins see-through? For safety: in the 1990s the city decided bins should be places where nothing can be hidden. So now everybody can see your apple core… and photographers can see everything.',
-        fr: 'Pourquoi les poubelles des rues de Paris sont-elles transparentes ? Pour la sécurité : dans les années 1990, la ville a décidé qu’on ne devait rien pouvoir cacher dans les poubelles. Alors maintenant, tout le monde peut voir ton trognon de pomme… et les photographes voient tout.',
-        ru: 'Почему уличные урны в Париже прозрачные? Ради безопасности: в 1990-х город решил, что в урне нельзя ничего спрятать. Поэтому теперь все видят твой огрызок яблока… а фотографы видят всё.'
+        en: 'Why are Paris street bins see-through? For safety: in the 1990s the city decided bins should be places where nothing can be hidden. So now everybody can see your apple core… photographers can see everything… and so can the rats! They spot the snacks right away and come running to gobble it all up.',
+        fr: 'Pourquoi les poubelles des rues de Paris sont-elles transparentes ? Pour la sécurité : dans les années 1990, la ville a décidé qu’on ne devait rien pouvoir cacher dans les poubelles. Alors maintenant, tout le monde peut voir ton trognon de pomme… les photographes voient tout… et les rats aussi ! Ils repèrent tout de suite le festin et accourent pour tout dévorer.',
+        ru: 'Почему уличные урны в Париже прозрачные? Ради безопасности: в 1990-х город решил, что в урне нельзя ничего спрятать. Поэтому теперь все видят твой огрызок яблока… фотографы видят всё… и крысы тоже! Они сразу замечают угощение и сбегаются всё это слопать.'
       },
       note: {
         en: 'that’s how this website was born, a little bit',
