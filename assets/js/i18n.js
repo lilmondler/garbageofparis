@@ -24,6 +24,17 @@
 
   Названия и подписи к фото, места съёмки (data.js) не переводятся.
 
+  ОТДЕЛЬНЫЕ АДРЕСА ДЛЯ ЯЗЫКОВ (для поисковиков):
+  у основных страниц есть готовые копии fr/*.html и ru/*.html.
+  Их собирает tools/build-languages.mjs из английских страниц и
+  переводов из этого файла — вручную их не правят. На GitHub после
+  правки этого файла или страниц они пересобираются сами.
+  Кнопки «en · fr · ru» на таких страницах — обычные ссылки.
+  Выбор языка запоминается: assets/js/lang-redirect.js перекидывает
+  с английской страницы на выбранную версию.
+
+  На страницах без копий (404) язык переключается прямо на месте.
+
   Ссылки: ?lang=fr или ?lang=ru в адресе сразу открывают нужный язык,
   manifesto.html#fr / #ru — манифест на нужном языке.
   ============================================================
@@ -152,6 +163,7 @@
       'index.lede': 'Garbage of Paris est une sociologie visuelle des déchets, des traces et de la vie urbaine. Sacs, poubelles, taches, objets, signes — photographiés là où on les a laissés.',
       'index.evidence': 'voir les preuves →',
       'index.read': 'lire le manifeste',
+      'index.signature': 'Snezhana',
       'index.usage.no': '§ 01 — usage',
       'index.usage.h': 'à propos du projet <span class="pos">loc.</span>',
       'index.usage.lead': 'Je m’appelle Snezhana. Ou Jane. Comme vous voulez. Je suis sociologue et je photographie des déchets.',
@@ -285,6 +297,8 @@
       'visitors.note': 'vu une belle poubelle ? envoyez-la ↓',
       'visitors.form.h': 'envoyer une trouvaille <span class="pos">loc. v.</span>',
       'visitors.closed': 'La boîte aux trouvailles ouvre très bientôt. Revenez dans quelques jours !',
+      'visitors.drop': 'choisir une photo',
+      'visitors.drop.hint': 'ou faites-la glisser ici · JPG, PNG, WebP · directement depuis la galerie du téléphone, ça marche aussi',
       'visitors.f.name': 'votre nom ou pseudo',
       'visitors.f.optional': 'facultatif',
       'visitors.f.place': 'où à Paris',
@@ -522,6 +536,8 @@
       'visitors.note': 'видели красивую урну? пришлите ↓',
       'visitors.form.h': 'прислать находку <span class="pos">глаг. оборот</span>',
       'visitors.closed': 'Приём фото откроется совсем скоро. Загляните через несколько дней!',
+      'visitors.drop': 'выбрать фото',
+      'visitors.drop.hint': 'или перетащите его сюда · JPG, PNG, WebP · с телефона можно прямо из галереи',
       'visitors.f.name': 'ваше имя или ник',
       'visitors.f.optional': 'необязательно',
       'visitors.f.place': 'где в Париже',
@@ -600,7 +616,12 @@
   }
 
   // Язык при загрузке: ?lang= в адресе → #fr/#ru на манифесте → сохранённый выбор → английский
+  // У страницы есть готовые копии на других языках (fr/…, ru/…):
+  // её язык задан в самом HTML и не меняется на месте
+  const STATIC_PAGE = !!document.querySelector('link[rel="alternate"][hreflang]');
+
   function initialLang() {
+    if (STATIC_PAGE) return LANGS.includes(document.documentElement.lang) ? document.documentElement.lang : 'en';
     let fromUrl = null;
     try { fromUrl = new URLSearchParams(location.search).get('lang'); } catch (e) { /* старые браузеры */ }
     if (LANGS.includes(fromUrl)) {
@@ -683,11 +704,16 @@
       el.classList.toggle('active', on);
     });
 
-    // Кнопки переключателя
+    // Переключатель: ссылки (у страниц с копиями) или кнопки (404)
     document.querySelectorAll('[data-set-lang]').forEach(b => {
       const on = b.dataset.setLang === lang;
       b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', String(on));
+      if (b.tagName === 'A') {
+        if (on) b.setAttribute('aria-current', 'true');
+        else b.removeAttribute('aria-current');
+      } else {
+        b.setAttribute('aria-pressed', String(on));
+      }
     });
   }
 
@@ -717,12 +743,19 @@
     t: t,
     category: category,
     pick: pick,
-    set: setLang
+    set: setLang,
+    strings: STRINGS // для tools/build-languages.mjs
   };
 
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-set-lang]');
-    if (b) setLang(b.dataset.setLang);
+    if (!b) return;
+    if (b.tagName === 'A') {
+      // Ссылка ведёт на копию страницы — только запоминаем выбор
+      safeStorage('set', b.dataset.setLang);
+      return;
+    }
+    setLang(b.dataset.setLang);
   });
 
   // Скрипт подключён в конце <body>: страница уже прочитана — переводим сразу,

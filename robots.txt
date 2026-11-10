@@ -1,0 +1,6 @@
+# Поисковикам можно всё. studio.html и backstage.html закрыты от
+# поиска метатегом noindex на самих страницах.
+User-agent: *
+Allow: /
+
+Sitemap: https://garbageofparis.fr/sitemap.xml
