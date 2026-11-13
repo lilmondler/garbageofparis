@@ -414,8 +414,7 @@ p + p { margin-top: 1em; }
 }
 .lang-switch[hidden] { display: none; }
 
-.lang-switch :is(a, button) {
-  display: inline-block;
+.lang-switch button {
   position: relative;
   font-family: var(--font-hand);
   font-weight: 600;
@@ -426,15 +425,15 @@ p + p { margin-top: 1em; }
   transition: color var(--ease);
 }
 
-.lang-switch :is(a, button) + :is(a, button) { margin-left: 0.3rem; }
-.lang-switch :is(a, button) + :is(a, button)::before {
+.lang-switch button + button { margin-left: 0.3rem; }
+.lang-switch button + button::before {
   content: '·';
   position: absolute;
   left: -0.3rem;
   color: var(--grey);
 }
 
-.lang-switch :is(a, button)::after {
+.lang-switch button::after {
   content: '';
   position: absolute;
   inset: 0 -0.05rem 0.05rem;
@@ -444,9 +443,9 @@ p + p { margin-top: 1em; }
   transition: opacity 0.2s ease, transform 0.25s var(--ease-out);
 }
 
-.lang-switch :is(a, button):hover { color: var(--ink); }
-.lang-switch :is(a, button).active { color: var(--blue); font-weight: 700; }
-.lang-switch :is(a, button).active::after { opacity: 1; transform: rotate(-6deg); }
+.lang-switch button:hover { color: var(--ink); }
+.lang-switch button.active { color: var(--blue); font-weight: 700; }
+.lang-switch button.active::after { opacity: 1; transform: rotate(-6deg); }
 
 
 /* ============================================================
@@ -1355,8 +1354,7 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   justify-self: end;
 }
 
-.manifesto-lang-toggle :is(a, button) {
-  display: inline-block;
+.manifesto-lang-toggle button {
   position: relative;
   font-family: var(--font-hand);
   font-weight: 600;
@@ -1365,7 +1363,7 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   padding: 0 0.2rem;
 }
 
-.manifesto-lang-toggle :is(a, button)::after {
+.manifesto-lang-toggle button::after {
   content: '';
   position: absolute;
   inset: -0.15em -0.5em -0.05em;
@@ -1374,8 +1372,8 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   transition: opacity 0.2s ease;
 }
 
-.manifesto-lang-toggle :is(a, button).active { color: var(--blue); font-weight: 700; }
-.manifesto-lang-toggle :is(a, button).active::after { opacity: 1; }
+.manifesto-lang-toggle button.active { color: var(--blue); font-weight: 700; }
+.manifesto-lang-toggle button.active::after { opacity: 1; }
 
 .manifesto-text {
   max-width: var(--text-col);
@@ -1716,7 +1714,7 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   .nav-links { gap: 0.95rem; }
   .nav-links a { font-size: 1.32rem; }
   .lang-switch { padding-left: 0.8rem; }
-  .lang-switch :is(a, button) { font-size: 1.35rem; padding-left: 0.35rem; padding-right: 0.35rem; }
+  .lang-switch button { font-size: 1.35rem; padding-left: 0.35rem; padding-right: 0.35rem; }
 }
 
 /* Совсем узкие телефоны: логотип, языки и «menu» в одну строку */
@@ -1724,8 +1722,8 @@ html:lang(ru) .polaroid__photo.is-missing::after { content: 'фото'; }
   .nav { gap: 0.6rem; }
   .nav-logo__word { font-size: 1.25rem; }
   .nav-logo__note { font-size: 1.15rem; }
-  .lang-switch :is(a, button) { font-size: 1.3rem; padding: 0.3rem 0.3rem 0.4rem; }
-  .lang-switch :is(a, button) + :is(a, button)::before { display: none; }
+  .lang-switch button { font-size: 1.3rem; padding: 0.3rem 0.3rem 0.4rem; }
+  .lang-switch button + button::before { display: none; }
   .nav-toggle { font-size: 1.35rem; }
 }
 
