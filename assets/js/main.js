@@ -38,6 +38,14 @@ function findsLabel(n) {
   return window.I18N ? I18N.t('finds', { n }) : `${n} ${n === 1 ? 'find' : 'finds'}`;
 }
 
+// Путь к файлу сайта. Страницы fr/… и ru/… лежат на уровень глубже:
+// у них <html data-root="../">, и относительные пути из data.js
+// («assets/img/…») нужно поднять на уровень вверх.
+function assetUrl(path) {
+  if (!path || /^([a-z]+:|\/)/i.test(path)) return path;
+  return (document.documentElement.dataset.root || '') + path;
+}
+
 // Экранирование текста перед вставкой в HTML
 function esc(value) {
   return String(value == null ? '' : value)
@@ -274,7 +282,7 @@ function renderLightboxSlide() {
   const img = lb.querySelector('.lb-img');
 
   img.classList.add('is-loading');
-  img.src = p.image;
+  img.src = assetUrl(p.image);
   img.alt = p.alt || p.title || '';
   if (img.complete) img.classList.remove('is-loading');
 
@@ -287,7 +295,7 @@ function renderLightboxSlide() {
   // Подгружаем соседние фото заранее
   [-1, 1].forEach(d => {
     const n = lightboxPhotos[(lightboxIndex + d + lightboxPhotos.length) % lightboxPhotos.length];
-    if (n) new Image().src = n.image;
+    if (n) new Image().src = assetUrl(n.image);
   });
 }
 
@@ -311,7 +319,7 @@ function polaroidHTML(p, i, opts) {
     <article class="find" style="--tilt:${tiltOf(i)}deg" ${o.role ? `role="${o.role}"` : ''}>
       <button class="polaroid polaroid--${tapeOf(i)}" type="button" aria-label="${esc(tr('photo.open', { title: p.title }, 'Open photograph: {title}'))}">
         <span class="polaroid__photo">
-          <img src="${esc(p.image)}" alt="${esc(p.alt || p.title)}" loading="${o.eager ? 'eager' : 'lazy'}" decoding="async" />
+          <img src="${esc(assetUrl(p.image))}" alt="${esc(p.alt || p.title)}" loading="${o.eager ? 'eager' : 'lazy'}" decoding="async" />
         </span>
         <span class="polaroid__note">${esc(p.title)}</span>
       </button>
@@ -481,7 +489,7 @@ function renderArchive(container) {
               <p class="dict-entry__meta">${formatDate(p.date)} — ${esc(p.location)}</p>
             </div>
             <span class="dict-entry__thumb" style="--tilt:${tiltOf(i + 3)}deg">
-              <img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" />
+              <img src="${esc(assetUrl(p.image))}" alt="" loading="lazy" decoding="async" />
             </span>
           </li>
         `).join('')}
